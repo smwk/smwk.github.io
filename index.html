@@ -33,7 +33,7 @@
     </tr>
     <tr>
       <td></td>
-      <td style='padding-right:30px;'><div class=headline>Reporting on successful Azure logons</div>
+      <td style='padding-right:130px;'><div class=headline>Reporting on successful Azure logons</div>
         <div class=articleContent>The best way to protect users in Azure is to enable 2 factor authentication, but this can take time to setup and enforce for all users. One of the extra checks you can perform is to check the Azure sign-in logs using MS Graph. This will give you a list of logons, successful or otherwise, to all Azure services, showing the username, country and IP in the record. Using this information Microsoft provide alerts for suspicious logons, for exampple where a logon was detected from a country not normally seen.
         <br>
         These alerts can be very useful but sadly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
