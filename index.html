@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>PowerShell & Graph</title>
+  <title>PowerShell & Graph Blog</title>
     <style>
       body { margin: 0; padding: 0; background-color:#c9c7c7; }
 a:link {
@@ -124,9 +124,10 @@ ul li ul li {
     
     <li><a href="#" class=one>Articles</a>
       <ul class="dropdown">
-        <li><a href="#AzureLogons" class=one>Reporting on successful Azure logons</a></li>
-        <li><a href="#">Sub-2</a></li>
-        <li><a href="#">Sub-3</a></li>
+        <li><a href="#AzureLogons">Reporting on successful Azure logons</a></li>
+        <li><a href="#2">Secure Office365 reports with a certifificate</a></li>
+        <li><a href="#3">Using Graph to send emails with inline images</a></li>
+        <li><a href="#4">Visualizing Graph data into Google Charts</a></li>
       </ul>
     </li>
     <li><a href=about.html class=one>About</a></li>
@@ -142,12 +143,12 @@ ul li ul li {
         These alerts can be very useful but oddly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
          <br>
           &#8226;  Report on all users logged in successfully in a 24 hour period.<br>
-            &#8226;  Do IPv6 country lookups, something Microsoft does not currently do.<br>
-              &#8226;  Exclude certain countries from the report, eg you might not be interested in logons from your home country.<br>
-                &#8226;  Send an alert email if suspicious logons are detected.<br>
-                 <br>
-                  <img src=image01.png alt="Image of logons detected">
-                                    <div class=ImageCaption>Alert email to show logons from certain countries.</div>
+          &#8226;  Do IPv6 country lookups, something Microsoft does not currently do.<br>
+          &#8226;  Exclude certain countries from the report, eg you might not be interested in logons from your home country.<br>
+          &#8226;  Send an alert email if suspicious logons are detected.<br>
+          <br>
+          <img src=image01.png alt="Image of logons detected">
+          <div class=ImageCaption>Alert email to show logons from certain countries.</div>
                   <br>
                   <br>
                   <div class=tags>Tags: IPv4 Graph PowerShell</div><br>
