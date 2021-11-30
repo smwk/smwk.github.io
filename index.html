@@ -120,7 +120,7 @@ ul li ul li {
 <nav role="navigation">
   <ul>
     
-    <li><a href="#">Two</a>
+    <li><a href="#" class=one>Articles</a>
       <ul class="dropdown">
         <li><a href="#AzureLogons" class=one>Reporting on successful Azure logons</a></li>
         <li><a href="#">Sub-2</a></li>
@@ -131,13 +131,7 @@ ul li ul li {
     | <li><a href=links.html class=one>Links</a></li>
   </ul>
 </nav>
-
-
-      
-    
-   
- | <a href=about.html class=one>About</a> | <a href=links.html class=one>Links</a></b></td>
-    </tr>
+ </tr>
     <tr>
       <td></td>
       <td style='padding-right:200px;'><div class=headline id="AzureLogons"><b>Reporting on successful Azure logons</b></div><br>
@@ -145,10 +139,10 @@ ul li ul li {
         <br>
         These alerts can be very useful but oddly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
          <br>
-          <li> Report on all users logged in successfully in a 24 hour period.
-            <li> Do IPv6 country lookups, something Microsoft does not currently do.
-              <li> Exclude certain countries from the report, eg you might not be interested in logons from your home country.
-                <li> Send an alert email if suspicious logons are detected.<br>
+          &#8226;  Report on all users logged in successfully in a 24 hour period.<br>
+            &#8226;  Do IPv6 country lookups, something Microsoft does not currently do.<br>
+              &#8226;  Exclude certain countries from the report, eg you might not be interested in logons from your home country.<br>
+                &#8226;  Send an alert email if suspicious logons are detected.<br>
                  <br>
                   <img src=image01.png alt="Image of logons detected">
                                     <div class=ImageCaption>Alert email to show logons from certain countries.</div>
