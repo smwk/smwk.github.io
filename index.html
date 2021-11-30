@@ -112,7 +112,7 @@ a.one:hover {color: #e09738;}
       <td style='color:#e09738;padding30px;font-size:15px;height:30px;' class=one><b> <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Articles</button>
   <div id="myDropdown" class="dropdown-content">
-    <a href="#">Link 1</a>
+    <a href="#AzureLogons">Azure logons/a>
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
   </div>
@@ -120,7 +120,7 @@ a.one:hover {color: #e09738;}
     </tr>
     <tr>
       <td></td>
-      <td style='padding-right:200px;'><div class=headline><b>Reporting on successful Azure logons</b></div><br>
+      <td style='padding-right:200px;'><div class=headline id="AzureLogons"><b>Reporting on successful Azure logons</b></div><br>
         <div class=articleContent>The best way to protect users in Azure is to enable 2 factor authentication, but this can take time to setup and enforce for all users. One of the extra checks you can perform is to look at the Azure sign-in logs using MS Graph. This will give you a list of logons to all Azure services, showing the username, country and IP. Using this information Microsoft provide <a href='https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection'>alerts</a> for suspicious logons, for example where a logon was detected from a country not normally seen.<br>
         <br>
         These alerts can be very useful but oddly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
