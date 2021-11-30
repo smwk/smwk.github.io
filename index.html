@@ -57,59 +57,76 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
    margin: auto;
 } 
 
-      li {
-  color: #000;
-  background: #c9c7c7;
-  display: block;
+       /* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
   float: left;
-  padding: 1rem;
-  font-size:20px;
-  position: relative;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  transition-duration: 0.5s;
-}
-  
-li a {
-  color: #000;
 }
 
-li:hover,
-li:focus-within {
-  background: #c9c7c7;
-  cursor: pointer;
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-li:focus-within a {
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
   outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-ul li ul {
-  background: #777777;
-  visibility: hidden;
-  opacity: 0;
-  min-width: 400px;
-  position: absolute;
-  font-size: 14px;
-  transition: all 0.5s ease;
-  margin-top: 1rem;
-  left: 0;
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
   display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-ul li:hover > ul,
-ul li:focus-within > ul,
-ul li ul:hover,
-ul li ul:focus {
-  visibility: visible;
-  opacity: 1;
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
   display: block;
-  background: #777777;
+  text-align: left;
 }
 
-ul li ul li {
-  clear: both;
-  width: 100%;
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+} 
+
 
     </style>
     
@@ -124,24 +141,27 @@ ul li ul li {
     <tr>
       <td style='color:#e09738;padding30px;font-size:15px;height:30px;' class=one>
       
+ <div class="navbar">
+  <a href="#home">About</a>
+  <a href="#news">Links</a>
+  <div class="dropdown">
+    <button class="dropbtn">Articles
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+ <a href="#AzureLogons" class=two>Reporting on successful Azure logons</a>
+        <a href="#2" class=two>Secure Office365 reports with a certifificate</a>
+        <a href="#3" class=two>Using Graph to send emails with inline images</a>
+        <a href="#4" class=two>Visualizing Graph data with Google Charts</a>
+        <a href="#5" class=two>Keeping a log of NetScaler AlwaysON connections</a>
+        <a href="#6" class=two>Cleaning up your Windows DNS server</a>
+    </div>
+  </div>
+</div> 
 
-<nav role="navigation">
-  <ul>
-    
-    <li><a href="#" class=one>Articles</a>
-      <ul class="dropdown">
-        <li><a href="#AzureLogons" class=two>Reporting on successful Azure logons</a></li>
-        <li><a href="#2" class=two>Secure Office365 reports with a certifificate</a></li>
-        <li><a href="#3" class=two>Using Graph to send emails with inline images</a></li>
-        <li><a href="#4" class=two>Visualizing Graph data with Google Charts</a></li>
-        <li><a href="#5" class=two>Keeping a log of NetScaler AlwaysON connections</a></li>
-        <li><a href="#6" class=two>Cleaning up your Windows DNS server</a></li>
-      </ul>
-    </li>
-    <li><a href=about.html class=one>About</a></li>
-    <li><a href=links.html class=one>Links</a></li>
-  </ul>
-</nav>
+ 
+        
+      </td>
  </tr>
     <tr>
       <td></td>
