@@ -51,76 +51,59 @@ a.one:hover {color: #e09738;}
    text-align:center;
    margin: auto;
 } 
-      
-       /* Dropdown Button */
-.dropbtn {
-  padding: 10px;
-  color:#e09738;
-  background-color:#c9c7c7;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
- background-color:#c9c7c7;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 280px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
+      li {
+  color: #fff;
+  background: darkorange;
   display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+  
+li a {
+  color: #fff;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;} 
-    </style>
-    
-    <script>
-      /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+li:hover,
+li:focus-within {
+  background: red;
+  cursor: pointer;
 }
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} 
-      
-    </script>
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+  background: orange;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+
     
     
   </head>
@@ -131,13 +114,28 @@ window.onclick = function(event) {
       
     </tr>
     <tr>
-      <td style='color:#e09738;padding30px;font-size:15px;height:30px;' class=one><b> <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Articles ˅</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#AzureLogons" class=one>Reporting on successful Azure logons</a>
+      <td style='color:#e09738;padding30px;font-size:15px;height:30px;' class=one>
+      
+
+<nav role="navigation">
+  <ul>
+    <li><a href=about.html class=one>About</a></li>
+    <li><a href="#">Two</a>
+      <ul class="dropdown">
+        <li><a href="#AzureLogons" class=one>Reporting on successful Azure logons</a></li>
+        <li><a href="#">Sub-2</a></li>
+        <li><a href="#">Sub-3</a></li>
+      </ul>
+    </li>
+    <li><a href=links.html class=one>Links</a></li>
+  </ul>
+</nav>
+
+
+      
+    
    
-  </div>
-</div> | <a href=about.html class=one>About</a> | <a href=links.html class=one>Links</a></b></td>
+ | <a href=about.html class=one>About</a> | <a href=links.html class=one>Links</a></b></td>
     </tr>
     <tr>
       <td></td>
