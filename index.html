@@ -181,6 +181,20 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
           <div class=ImageCaption>Alert email to show logons from certain countries.</div>
                   <br>
                   <br>
+          For IPv6 lookups we can use IP-API.com to get their location:<br>
+          <div class=code>
+          $iplookup = Invoke-RestMethod -Method Get -Uri "http://ip-api.com/json/$r_ip"<br>
+					$countryname = $iplookup.country<br>
+					$city = $iplookup.city<br>
+          </div>
+          <br>
+          For the country's flag you can download all of them through <ahref='https://hampusborgos.github.io/country-flags/'>GitHub</a> and then reference them via their 2 letter country code (ISO 3166-1).<br>
+          <br>
+          Finally we can keep track of successful and failed logons per day by outputting to a log file which can then be read by the PowerShell script and displayed in a HTML page. Each bar links to an Excel report listing all the logons.<br>
+          <br>
+          <img src=image02.png alt="Table of all logons">
+          <div class=ImageCaption>Table of all logons per day.</div>
+          <br>
                   <div class=tags>Tags: IPv4 Graph PowerShell</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
