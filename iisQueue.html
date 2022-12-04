@@ -152,7 +152,7 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-	      <a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a>
+	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a>
         <a href="o365cert.html" class=two>Secure Office365 reports with a certifificate</a>
         <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a>
         <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a>
@@ -170,14 +170,20 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
  </tr>
     <tr>
     
-      <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><br><b>Links</b></div>
-        <div class=articleContent>A collection of various links.<br><br>
-           <table>
-		<tr><td><td style='width:370px; font-size 12px; align:left'><a href='https://www.michev.info/'>Michev Blog</a></td><td style='font-size 12px;'></td></tr>
-		<tr><td><td style='width:370px; font-size 12px;'><a href='https://tech.nicolonsky.ch/'>nicolonsky tech</a></td><td style='font-size 12px;'></td></tr>
-	</table>
+      <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><br><b>IIS Mapi Queue full with NetScale</b></div>
+        <div class=articleContent>A recent issue I came across appeared to happen at random times during the working week. Outlook cleints would be disconnected for up to 30 minutes before returning to normal. 
+		As the issue seemed to only occur after a patching cycle the focus at first was on what was in the those patches and was there an incompatibility with Outlook. 
+		Evenetually I narrowed down the issue with the help of the HTTP_Err logs (c:\windows\logs\HTTP_Err\) which are never deleted, qhich helps with investigations. 
+		<br><br>
+		Within these logs we could see a 400.2 error, which translates to queue full. So it appeared that after 4 years of running Exchange 2016 we were hitting a new limit for the system. With the help of this <a href=>blog</a> I was able to setup a PowerShell script to monitor the number of MAPI connections we were receiving. 
+		It soon became clear that when the connections were hitting 4,000 plus that the queue limit would be reached and as a result the health monitor on the NetScaler would also fail. 
+		This would result in the failover of client connections to the other active node which would also eventually hit 4,000 connections and also fail. 
+		My question to the NetScaler admin was if the connection is supposed to be load balanced then why were all the connections hitting one server with less than 10 connections hitting the other server? 
+		We opened a support call with Citrix and eventually got speaking to the right engineer, he expolained that we had to choose 'Round Robin' and not xxxxx as shown on some blogs for setting up NetScaler. 
+		<br><br>
+		After we made the change we now see the connections evenly distributed and we no longer see the queue full error messages on IIS.<br>
           <br><br> 
-                  <div class=tags>Tags: Links</div><br>
+                  <div class=tags>Tags: IIS, NetScaler, MAPI</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
                   <br>
