@@ -25,6 +25,11 @@ a.one:hover {color: #e09738;}
 a.two:link {color: #646d8c; text-decoration: none; font-size:14px;}
 a.two:visited {color: #646d8c;  text-decoration: none; font-size:14px;}
 a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
+	    
+a.title:link {color: #000000; text-decoration: none;}
+a.title:visited {color: #000000;  text-decoration: none;}
+a.title:hover {color: #000000; text-decoration: none;}
+
       
 .headerTable
 {
@@ -136,8 +141,9 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
 <body>
   <table class=headerTable>
     <tr>
-      <td style='font-size:50px;padding:30px;color:black;width:120px;vertical-align:top;' rowspan=2>PowerShell<br> & Graph<br>Blog</td>
+      <td style='font-size:50px;padding:30px;color:black;width:120px;vertical-align:top;' rowspan=2><a href=index.html class=title>PowerShell<br> & Graph<br>Blog</a></td>
       
+
 
     <td style='width:100%;'>
 	    <table style='width:100%;'>
@@ -152,6 +158,7 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
       <i class="fa fa-caret-down"></i>
     </button> 
     <div class="dropdown-content">
+	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a>
 	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a>
         <a href="o365cert.html" class=two>Secure Office365 reports with a certifificate</a>
         <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a>
