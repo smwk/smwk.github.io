@@ -6,13 +6,13 @@
       body { margin: 0; padding: 0; background-color:#c9c7c7; }
 a:link {
   color: #646d8c;
-} 
-
+}
+         
 /* visited link */
 a:visited {
   color: #646d8c;
-}
-
+}   
+ 
 /* mouse over link */
 a:hover {
   color: #646d8c;
@@ -21,6 +21,10 @@ a:hover {
 a.one:link {color: #e09738; text-decoration: none;}
 a.one:visited {color: #e09738;  text-decoration: none;}
 a.one:hover {color: #e09738;}
+	    
+a.title:link {color: #000000; text-decoration: none;}
+a.title:visited {color: #000000;  text-decoration: none;}
+a.title:hover {color: #000000; text-decoration: none;}
       
 a.two:link {color: #646d8c; text-decoration: none; font-size:14px;}
 a.two:visited {color: #646d8c;  text-decoration: none; font-size:14px;}
@@ -136,29 +140,33 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
 <body>
   <table class=headerTable>
     <tr>
-      <td style='font-size:50px;padding:30px;color:black;width:120px;vertical-align:top;' rowspan=2>PowerShell<br> & Graph<br>Blog</td>
+      <td style='font-size:50px;padding:30px;color:black;width:120px;vertical-align:top;' rowspan=2><a href=index.html class=title>PowerShell<br> & Graph<br>Blog</a></td>
       
-    </tr>
-    <tr>
-      <td style='color:#e09738;padding30px;font-size:15px;height:30px;' class=one>
+
+    <td style='width:100%;'>
+	    <table style='width:100%;'>
+		<tr>
+	
+	      <td style='color:#e09738;padding30px;font-size:15px;height:30px;width:100%;' class=one><br><br>
       
  <div class="navbar">
  
   <div class="dropdown">
     <button class="dropbtn">Articles
       <i class="fa fa-caret-down"></i>
-    </button>
+    </button> 
     <div class="dropdown-content">
- <a href="#AzureLogons" class=two>Reporting on successful Azure logons</a>
-        <a href="#Office365Cert" class=two>Secure Office365 reports with a certifificate</a>
-        <a href="#InlineImages" class=two>Using Graph to send emails with inline images</a>
-        <a href="#GoogleCharts" class=two>Visualizing Graph data with Google Charts</a>
-        <a href="#5" class=two>Keeping a log of NetScaler AlwaysON connections</a>
-        <a href="#6" class=two>Cleaning up your Windows DNS server</a>
+	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a>
+	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a>
+        <a href="o365cert.html" class=two>Secure Office365 reports with a certifificate</a>
+        <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a>
+        <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a>
+        <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a>
+        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a>
     </div>
   </div>
     <a href="about.html">About</a>
-  <a href="#news">Links</a>
+  <a href="links.html">Links</a>
 </div> 
 
  
@@ -166,9 +174,9 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
       </td>
  </tr>
     <tr>
-      <td></td>
-      <td style='padding-right:200px;'><div class=headline id="AzureLogons"><b>Reporting on successful Azure logons</b></div><br>
-        <div class=articleContent>The best way to protect users in Azure is to enable 2 factor authentication, but this can take time to setup and enforce for all users. One of the extra checks you can perform is to look at the Azure sign-in logs using MS Graph. This will give you a list of logons to all Azure services, showing the username, country and IP. Using this information Microsoft provide <a href='https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection'>alerts</a> for suspicious logons, for example where a logon was detected from a country not normally seen.<br>
+    
+      <td style='padding-right:200px; width:100%;'><br><div class=headline id="AzureLogons"><b>Reporting on successful Azure logons</b></div><br>
+         <div class=articleContent>The best way to protect users in Azure is to enable 2 factor authentication, but this can take time to setup and enforce for all users. One of the extra checks you can perform is to look at the Azure sign-in logs using MS Graph. This will give you a list of logons to all Azure services, showing the username, country and IP. Using this information Microsoft provide <a href='https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection'>alerts</a> for suspicious logons, for example where a logon was detected from a country not normally seen.<br>
         <br>
         These alerts can be very useful but oddly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
          <br>
@@ -208,37 +216,21 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
 		      <br>
 		         <br><br>
                   <div class=tags>Tags: Office365 Reporting API</div><br>
+          <br><br>
+                  <div class=tags>Tags: O365, Azure, PowerShell</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
                   <br>
         </div>
 	      
-	      
-	      	    <div class=headline id="InlineImages"><b>Using Graph to send emails with inline images</b></div><br>  
-	      <div class=articleContent>TBC.<br>
-		      <br>
-		         <br><br>
-                  <div class=tags>Tags: Graph</div><br>
-                  <br>
-                  <div class="horizontal_dotted_line"></div><br>
-                  <br>
-        </div>
-	      
-	      
-	      	      	    <div class=headline id="GoogleCharts"><b>Visualizing Graph data with Google Charts</b></div><br>  
-	      <div class=articleContent>TBC.<br>
-		      <br>
-		         <br><br>
-                  <div class=tags>Tags: Graph</div><br>
-                  <br>
-                  <div class="horizontal_dotted_line"></div><br>
-                  <br>
-        </div>
-	
-	      
+	  
+	    </td>
+	</tr>
+	</table>
 	      
       </td>
     </tr>
   </table>
 </body>
 </html>
+
