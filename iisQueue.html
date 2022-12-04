@@ -191,7 +191,7 @@ a.title:hover {color: #000000; text-decoration: none;}
 		<br><br>
 		We now had an understanding of the problem but one question remained, with 2 active servers in the AD site why were all the client connections going to 1 server and not load balanced as they were meant to be. 
 		The NetScaler had been setup using <a href='https://citrixguyblog.com/2017/07/22/citrix-netscaler-loadbalancing-exchange-20132016-walkthrough-guide/'>best practices</a> but still we could see that 99% of the MAPI connections were going to once server.
-		We opened a support call with Citrix and eventually got speaking to the right engineer, he explained that we had to choose 'Round Robin' and not 'Least Connection' as shown on some guides for setting up NetScaler. 
+		We opened a support call with Citrix and eventually got speaking to the right engineer, he explained that we had to choose 'Round Robin' and not 'Least Connection' as shown on some guides for setting up NetScaler.<br> 
 		<img src='iisQueue05.png'>
 		<div class=ImageCaption>Guides say to use 'Least Connection' but actually we need 'Round Robin' here to distribute the traffic.</div>
 		<br><br>
