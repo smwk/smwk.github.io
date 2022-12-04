@@ -170,15 +170,35 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
  </tr>
     <tr>
     
-      <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><br><b>IIS Mapi Queue full with NetScaler</b></div>
-        <div class=articleContent>
-          
-          
-          
-          
-          
-          <br><br> 
-                  <div class=tags>Tags: IIS, NetScaler, MAPI</div><br>
+      <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><b>Reporting on successful Azure logons</b></div><br>
+        <div class=articleContent>The best way to protect users in Azure is to enable 2 factor authentication, but this can take time to setup and enforce for all users. One of the extra checks you can perform is to look at the Azure sign-in logs using MS Graph. This will give you a list of logons to all Azure services, showing the username, country and IP. Using this information Microsoft provide <a href='https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection'>alerts</a> for suspicious logons, for example where a logon was detected from a country not normally seen.<br>
+        <br>
+        These alerts can be very useful but oddly this only works where the records shows an IPv4 address, if the user logged on using an IPv6 address it will not detect the country. So using a PowerShell script we can do the following:<br>
+         <br>
+          &#8226;  Report on all users logged in successfully in a 24 hour period.<br>
+          &#8226;  Do IPv6 country lookups, something Microsoft does not currently do.<br>
+          &#8226;  Exclude certain countries from the report, eg you might not be interested in logons from your home country.<br>
+          &#8226;  Send an alert email if suspicious logons are detected.<br>
+          <br>
+          <img src=image01.png alt="Image of logons detected">
+          <div class=ImageCaption>Alert email to show logons from certain countries.</div>
+                  <br>
+           
+          For IPv6 lookups we can use IP-API.com to get their location:<br>
+          <div class=code>
+          $iplookup = Invoke-RestMethod -Method Get -Uri "http://ip-api.com/json/$r_ip"<br>
+					$countryname = $iplookup.country<br>
+					$city = $iplookup.city<br>
+          </div>
+          <br>
+          For the country's flag you can download all of them through <a href='https://hampusborgos.github.io/country-flags/'>GitHub</a> and then reference them via their 2 letter country code (ISO 3166-1).<br>
+          <br>
+          Finally we can keep track of successful and failed logons per day by outputting to a log file which can then be read by the PowerShell script and displayed in a HTML page. Each bar links to an Excel report listing all the logons.<br>
+          <br>
+          <img src=image02.PNG alt="Table of all logons">
+          <div class=ImageCaption>Table of all logons per day.</div>
+          <br><br>
+                  <div class=tags>Tags: IPv4 Graph PowerShell</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
                   <br>
