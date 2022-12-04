@@ -180,7 +180,7 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
 		This would result in the failover of client connections to the other active node which would also eventually hit 4,000 connections and also fail. 
 		<br><br>
 		My question to the NetScaler admin was if the connection is supposed to be load balanced then why were all the connections hitting one server with less than 10 connections hitting the other server? 
-		We opened a support call with Citrix and eventually got speaking to the right engineer, he expolained that we had to choose 'Round Robin' and not xxxxx as shown on some blogs for setting up NetScaler. 
+		We opened a support call with Citrix and eventually got speaking to the right engineer, he explained that we had to choose 'Round Robin' and not xxxxx as shown on some blogs for setting up NetScaler. 
 		<br><br>
 		After we made the change we now see the connections evenly distributed and we no longer see the queue full error messages on IIS.<br>
           <br><br> 
