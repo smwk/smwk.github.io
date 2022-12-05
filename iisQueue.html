@@ -179,7 +179,7 @@ a.title:hover {color: #000000; text-decoration: none;}
       <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><b>IIS Mapi Queue full with NetScaler Load Balancer</b></div>
         <div class=articleContent>A recent issue I came across appeared to happen at random times during the working week where Outlook clients would be disconnected for up to 30 minutes before returning to normal. 
 		As the issue seemed to only occur after a patching cycle the focus at first was on what was in the those patches and was there an incompatibility with Outlook. 
-		After chasing a few <a href='https://oddytee.wordpress.com/2015/03/21/this-page-cant-be-displayed-when-accessing-protocolhealthcheck-htm-in-exchange-2013/'>leads</a> I eventually narrowed down the issue with the help of the HTTP_Err logs (c:\Windows\System32\LogFiles\HTTPERR) that are never truncated.
+		After chasing a few <a href='https://oddytee.wordpress.com/2015/03/21/this-page-cant-be-displayed-when-accessing-protocolhealthcheck-htm-in-exchange-2013/'>leads</a>, I eventually narrowed down the issue with the help of the HTTP_Err logs (c:\Windows\System32\LogFiles\HTTPERR) that are never truncated.
 		<br><br>
 		Within these logs we could see a 400.2 error, which translates to queue full. So it appeared that after 4 years of running Exchange 2016 we were hitting a new limit on the system. 
 		With the help of a <a href='https://ingogegenwarth.wordpress.com/2016/05/09/get-activeexchangeusers-2-0/'>script</a> I was able to setup my own PowerShell script to monitor the number of MAPI connections we were receiving and it soon became clear that when the connections were hitting 4,000 that the queue limit would be reached. 
