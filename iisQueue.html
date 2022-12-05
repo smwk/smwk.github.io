@@ -193,7 +193,7 @@ a.title:hover {color: #000000; text-decoration: none;}
 		The connections would now all go to the other active node, and after a while this server in turn would get overloaded with connections.<br>
 		<br>
 		<img src='iisQueue04.png'>
-		<div class=ImageCaption>Mapi connections nearly all go to one of the two active nodes.</div>
+		<div class=ImageCaption>Mapi connections nearly all go to one of the two active nodes. When connections get to around 4,000 the queue is full and the Netscaler will fail-over.</div>
 		<br>
 		We now had an understanding of the problem but one question remained, with 2 active servers in the AD site why were all the client connections going to 1 server and not load balanced as they were meant to be. 
 		The NetScaler had been setup using <a href='https://citrixguyblog.com/2017/07/22/citrix-netscaler-loadbalancing-exchange-20132016-walkthrough-guide/'>best practices</a>, but still we could see that 99% of the MAPI connections were going to once server.
