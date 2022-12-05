@@ -181,7 +181,7 @@ a.title:hover {color: #000000; text-decoration: none;}
 		As the issue seemed to only occur after a patching cycle the focus at first was on what was in the those patches and was there an incompatibility with Outlook. 
 		After chasing a few <a href='https://oddytee.wordpress.com/2015/03/21/this-page-cant-be-displayed-when-accessing-protocolhealthcheck-htm-in-exchange-2013/'>leads</a>, I eventually narrowed down the issue with the help of the HTTP_Err logs (c:\Windows\System32\LogFiles\HTTPERR) that are never truncated.
 		<br><br>
-		Within these logs we could see a 400.2 error, which translates to queue full. So it appeared that after 4 years of running Exchange 2016 we were hitting a new limit on the system. 
+		Within these logs we could see a 400.2 error, which translates to queue full. So it appeared that after four years of running Exchange 2016 we were hitting a new limit on the system. 
 		With the help of a <a href='https://ingogegenwarth.wordpress.com/2016/05/09/get-activeexchangeusers-2-0/'>script</a> I was able to setup my own PowerShell script to monitor the number of MAPI connections we were receiving and it soon became clear that when the connections were hitting 4,000 that the queue limit would be reached. 
 		The app pool limit is set to 1,000 by default, so I looked into see if this could be increased, but as per this <a href='https://technet440.rssing.com/chan-6827930/article14521.html'>article</a> increasing the queue size is unlikely to fix the issue.<br>
 		<br>
@@ -195,8 +195,8 @@ a.title:hover {color: #000000; text-decoration: none;}
 		<img src='iisQueue04.png'>
 		<div class=ImageCaption>Mapi connections nearly all go to one of the two active nodes. When connections get to around 4,000 the queue is full and the Netscaler will fail-over.</div>
 		<br>
-		We now had an understanding of the problem but one question remained, with 2 active servers in the AD site why were all the client connections going to 1 server and not load balanced as they were meant to be. 
-		The NetScaler had been setup using <a href='https://citrixguyblog.com/2017/07/22/citrix-netscaler-loadbalancing-exchange-20132016-walkthrough-guide/'>best practices</a>, but still we could see that 99% of the MAPI connections were going to once server.
+		We now had an understanding of the problem but one question remained, with two active servers in the AD Site why were all the client connections going to one server and not load balanced as they were meant to be. 
+		The NetScaler had been setup using <a href='https://citrixguyblog.com/2017/07/22/citrix-netscaler-loadbalancing-exchange-20132016-walkthrough-guide/'>best practices</a>, but still we could see that 99% of the MAPI connections were going to one server.
 		We opened a support call with Citrix and eventually got speaking to the right engineer, he explained that we had to choose 'Round Robin' and not 'Least Connection' as shown on some guides for setting up NetScaler.<br> 
 		<br>
 		<img src='iisQueue05.png'>
