@@ -177,9 +177,20 @@ a.title:hover {color: #000000; text-decoration: none;}
     <tr>
     
       <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><b>Visualizing Graph data with Google Charts</b></div>
-        <div class=articleContent>TBC<br>
+        <div class=articleContent>Visualising data via a bar chart can be an effective way to report on monthly totals. The most basic way of doing this is to create a chart with basic HTML. 
+		But if you have an outlier in your dataset then the chart can become distorted and hard to read.<br>
+		<br>
+		With this in mind I looked for a simple solution without spending a lot time learning Javascript. I finally settled on <a href='https://developers.google.com/chart'>Google Charts</a>, in part because the Javascript package should still be around in 10 years time.
+		 There are a number of different charts, some even with annimations, but for my puposes I just needed basic bar charts and pie charts.<br>
+		<br>
+		First we take in the data, you might want to limit it to the last 180 results so the chart fits on the page. We create the chart basics, then in the PowerShell for loop we add the records.
+		 You can add extra data to a hover over option on each record too, which keeps the chart simple.<br>
+		<br>
+		Finally we output the chart onto the page.
+		<br>
           <br><br> 
                   <div class=tags>Tags: Graph, Google Charts</div><br>
+		    <div class=tags>Posted: 20-May-22</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
                   <br>
