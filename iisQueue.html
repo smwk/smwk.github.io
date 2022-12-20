@@ -205,9 +205,13 @@ a.title:hover {color: #000000; text-decoration: none;}
 		After we made the change we now see the connections evenly distributed and we no longer see the queue full error messages on IIS.<br>
 		<br>
 		<img src='iisQueue06.png'>
-		<div class=ImageCaption>Mapi connections spread evenly across both servers.</div>
+		<div class=ImageCaption>Mapi connections spread evenly across both servers.</div><br>
+			<br>
+	Update: despite balancing the NetScaler the Outlook disconnects still occurred. After a support call with Microsoft we decided to remove the NetScaler and instead use DNS round robin for load balancing. 
+		After this the issue was finally resolved.
           <br><br> 
                   <div class=tags>Tags: IIS, NetScaler, MAPI</div><br>
+		    <div class=tags>Posted: 19-Dec-22</div><br>
                   <br>
                   <div class="horizontal_dotted_line"></div><br>
                   <br>
