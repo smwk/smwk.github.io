@@ -186,6 +186,10 @@ a.title:hover {color: #000000; text-decoration: none;}
 		 We now knew who was connected, but we needed to find out what user was logged in to the server. For stability we enabled remote PowerShell as the older commands can fail without timing out. 
 		Running the script every 15 minutes we could see what clients were connecting and disconnecting and log this.<br>
 		<br>
+		<img src=alwaysOn02.png>
+		<div class=ImageCaption>Using stored credentials we can get a list of sessions from the NetScaler.</div>
+		<br>
+		<br>
 		<img src=alwaysOn01.png>
 		<div class=ImageCaption>We can check what ISP the users connect with and if they have MFA enabled.</div>
 		<br>
@@ -193,8 +197,8 @@ a.title:hover {color: #000000; text-decoration: none;}
 		<li>Mass disconnects of all clients</li>
 		<li>DNS not updating on clients</li>
 		<br>
-		For the first issue I was not involved in troubleshooting the issue but I could report to the Citrix admin of a mass disconenction event within a time range of 15 minutes. This helped the admin isolte the issue more quickly. 
-		The DNS issue where the VPN clients could not update their A record wefound that the fix from Citrix took so long that we had to implement our own temporary fix. We had the IP's that were connected via Nitro, so this allowed us to use remote PowerShell to query the registry and find the real hostname of the computer connected to the VPN. 
+		For the first issue I was not involved in troubleshooting the issue but I could report to the Citrix admin of a mass disconnection event within a time range of 15 minutes. This helped the admin isolte the issue more quickly. 
+		The DNS issue where the VPN clients could not update their A record we found that the fix from Citrix took so long that we had to implement our own temporary fix. We had the IP's that were connected via Nitro, so this allowed us to use remote PowerShell to query the registry and find the real hostname of the computer connected to the VPN. 
 		 With this information we could then update the DNS servers, again with PowerShell. After a few tweaks the script worked as designed and no issues were reported until we got our final fix from Citrix.<br>
 		
 		<br>
