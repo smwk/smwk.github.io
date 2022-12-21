@@ -181,14 +181,17 @@ a.title:hover {color: #000000; text-decoration: none;}
       <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><b>Cleaning up your Windows DNS server</b></div>
         <div class=articleContent>Having contracted at a number of companies over the years I've seen my fair share of horror shows with regards DNS. For something so simple it really does have a lot of importance and should be regularly reviewed.<br>
 		<br>
-		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date. So what to check?<br>
+		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date.<br>
+		<img src=DNScleanup01.png>
+		
+		So what to check?<br>
 		<li>Static records, do they still ping?</li>
 		<li>Cross reference records with AD.</li>
 		<li>Cross reference records with DMZ servers, hosted on VMware so we can use PowerCLI to check.</li>
 		<li>Check if A record has reverse lookup record (PTR) set?</li>
 		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
 		<br>
-		So what did we find? A few hundred records were wrong:<br>
+		What did we find? A few hundred records were wrong:<br>
 		<li>About 50 A records could be deleted</li>
 		<li>A number of subnets were missing for reverse DNS lookup zones.</li>
 		<li>Some DMZ servers had been removed from VMware but the DNS record remained.</li>
