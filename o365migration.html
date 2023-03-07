@@ -180,15 +180,15 @@ a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
          <div class=articleContent>Some tips that can help when migrating mailboxes to O365<br>
            <br><br><b>Shared Mailboxes</b><br>
           &#8226;  Shared mailboxes need a license to be migrated, you can apply for 25 free Office365 licenses for 2 months.<br>
-          &#8226;  Delegated permssions need to be enabled - <a href='https://learn.microsoft.com/en-us/exchange/hybrid-deployment/set-up-delegated-mailbox-permissions'>Set-OrganizationConfig -ACLableSyncedObjectEnabled $True</a> .<br>
           &#8226;  Max shared mailbox size is 50GB.<br>
           &#8226;  MessageCopyForSentAsEnabled and MessageCopyForSendOnBehalfEnabled need to be set on the O365 mailbox even if set on-prem.<br>
-          &#8226;  MessageCopyForSentAsEnabled and MessageCopyForSendOnBehalfEnabled <a href='https://docs.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/sent-mail-is-not-saved'>will not work</a> if shared mailbox is on-premise and user mailbox is in O365.<br>
+          &#8226;  MessageCopyForSentAsEnabled and MessageCopyForSendOnBehalfEnabled <a href='https://docs.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/sent-mail-is-not-saved'>will not work</a> if shared mailbox is on-premise and user mailbox is in O365 and vice-versa.<br>
           <br>
           <br><b>User Mailboxes</b><br>
+	  &#8226;  Delegated permssions need to be enabled - <a href='https://learn.microsoft.com/en-us/exchange/hybrid-deployment/set-up-delegated-mailbox-permissions'>Set-OrganizationConfig -ACLableSyncedObjectEnabled $True</a> .<br>
           &#8226;  Any additional addresses must be removed - eg user@domain.local.<br>
           &#8226;  User mailboxes should be assigned a retention policy and an auto-expanding archive.<br>
-	  
+	  &#8226;  Set the mailbox language after the migration.<br>
 	    </td>
 	</tr>
 	</table>
