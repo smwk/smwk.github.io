@@ -30,8 +30,37 @@ h1 {
       <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
       <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
      
-        <div style='font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left;'>Article Headline</div>
-        <div style='font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left;'>Content...</td></div>
+        <div style='font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left;'>Cleaning up your Windows DNS server</div>
+        <div style='font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left;'>
+          Having contracted at a number of companies over the years I've seen my fair share of horror shows with regards DNS. For something so simple it really does have a lot of importance and should be regularly reviewed.<br>
+		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date.<br><br>
+		<img src=DNScleanup01.png>
+		<div class=ImageCaption>Scavenging set correctly for the main AD domain zone.</div>
+		<br>
+		So what to check?<br>
+		<li>Static records, do they still ping?</li>
+		<li>Cross reference records with AD.</li>
+		<li>Cross reference records with DMZ servers, hosted on VMware so we can use PowerCLI to check.</li>
+		<li>Check if A record has reverse lookup record (PTR) set?</li>
+		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
+		<br>
+		<img src=DNScleanup02.png>
+		<div class=ImageCaption>Here we use PowerShell to pull the PTR reverse records.</div>
+		<br>
+		What did we find? A few hundred records were wrong:<br>
+		<li>About 50 A records could be deleted</li>
+		<li>A number of subnets were missing for reverse DNS lookup zones.</li>
+		<li>Some DMZ servers had been removed from VMware but the DNS record remained.</li>
+		<li>We found that our Fortinet Site-to-Site VPN did not have rights to update the PTR record.</li>
+		<li>In our split DNS zone we added an MX record, it didn't fix an issue but some of the Microsoft health scripts we ran were a lot happier with it present.</li>
+		<br>
+		While some of the fixes may sound trivial, when an issue occurs and you need to track down a client you will be happy to have a correct DNS setup.<br>
+          <br><br> 
+          
+          
+          
+          
+          </td></div>
          
         </td></tr>
     </table> 
