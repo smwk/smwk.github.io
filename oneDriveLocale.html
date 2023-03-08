@@ -111,7 +111,7 @@ Invoke-PnPQuery <br>
 		<br>
 		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after:<br>
 		<div class=code>
-		Connect-PnPOnline -url https://mydomain.sharepoint.com/ -interactive<br>
+		Connect-PnPOnline -url https://tenant.sharepoint.com/ -interactive<br>
 <br>
 $adminAcctToAdd = "MrAdmin@domain.com" #Admin account we want to add<br>
 #Get OneDrive sites<br>
