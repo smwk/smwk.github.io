@@ -86,27 +86,6 @@ a.two:hover {color: #447EAE; text-decoration: none;}
       <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
       <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
 	      
-	      
-	         <td style='padding-right:200px; width:100%;'><br><div class=headline id="AzureLogons"><b></b></div><br>
-         <div class=articleContent>By default all Sharepoint sites in Office365 will default to the en-US locale. This means things like dates and timestamps will be displayed in mm/dd/yyyy format and can cause confusion with users.
-           While Sharepoint sites for Teams can be set with a new default template it seems that this is not possible for user's of OneDrive for Business, with the template instead being read-only.<br>
-           <br>
-           So it seems you can only do this in one large batch every few months to be workable. To enable this we use PnP PowerShell and assign it the correct Azure AD app permissions needed. The code was as follows:
-   <br>        
-Connect-PnPOnline https://tenant.sharepoint.com/sites/yoursite<br>
-$LocaleId = 6153 # en-ie<br>
-$TimeZoneId = 2 # Dublin<br>
-$LocaleId = 6153 # en-ie<br>
-<br>
-$web = Get-PnPWeb -Includes RegionalSettings,RegionalSettings.TimeZones<br>
-$timeZone = $web.RegionalSettings.TimeZones | Where-Object {$_.Id -eq $TimeZoneId}<br>
-$web.RegionalSettings.LocaleId = $LocaleId<br>
-$web.RegionalSettings.TimeZone = $timeZone<br>
-$web.Update()<br>
-Invoke-PnPQuery <br>
-      <br>     
-           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after. In order to set the timzone e had to run a different command.<br>
-	   
      
         <div class=headline>Set OneDrive for Business Locale</div>
 	      <div class=datestamp>08-Mar-23</div>
@@ -129,7 +108,7 @@ $web.RegionalSettings.TimeZone = $timeZone<br>
 $web.Update()<br>
 Invoke-PnPQuery <br>
 		</div>
-		
+		<br>
 		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after. In order to set the timzone e had to run a different command.<br>
 	   
 	
