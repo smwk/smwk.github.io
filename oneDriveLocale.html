@@ -109,8 +109,36 @@ $web.Update()<br>
 Invoke-PnPQuery <br>
 		</div>
 		<br>
-		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after. In order to set the timzone e had to run a different command.<br>
-	   
+		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after:<br>
+		<div class=code>
+		Connect-PnPOnline -url https://mydomain.sharepoint.com/ -interactive
+
+$adminAcctToAdd = "MrAdmin@domain.com" #Admin account we want to add
+#Get OneDrive sites
+$sites=Get-PnPTenantSite -IncludeOneDriveSites -Filter "Url -like '-my.sharepoint.com/personal/'"
+foreach($site in $sites)
+{
+	$s_url = $site.url
+
+	if ($s_url -like "*") 
+	{ 
+   	 	#Add Admin account as an additional site collection adminstrator
+		Set-PnPTenantSite $site.url -Owners $adminAcctToAdd
+			
+		Connect-PnPOnline $site.Url -interactive
+		$web = Get-PnPWeb -Includes RegionalSettings,RegionalSettings.TimeZones
+		$timeZone = $web.RegionalSettings.TimeZones | Where-Object {$_.Id -eq $TimeZoneId}
+		$web.RegionalSettings.LocaleId = $LocaleId
+		$web.RegionalSettings.TimeZone = $timeZone
+		$web.Update()
+		Invoke-PnPQuery
+
+		#Later we can remove the added admin
+		Remove-PnPSiteCollectionAdmin -Owners $adminAcctToAdd
+	}
+}			
+		</div>
+		
 	
           <br><br> 
            
