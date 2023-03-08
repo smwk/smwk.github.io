@@ -46,7 +46,10 @@ a.dropbtn:hover {color: #564c4d; text-decoration: none;}
 a.two:link {color: #564c4d; text-decoration: none;}
 a.two:visited {color: #564c4d; text-decoration: none;}
 a.two:hover {color: #447EAE; text-decoration: none;}
-	    
+
+	    .content { font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left; }
+	    .headline { font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left; }
+	    .datestamp { font-family:verdana; font-size:10px; color:#564c4d; width:850px; text-align:left; }
 	    
       </style>
     
@@ -76,14 +79,13 @@ a.two:hover {color: #447EAE; text-decoration: none;}
   </div>
 </div>	
 		
-		| <a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
+	<a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
       <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
       <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
 	      
-	          <div style='font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left;'>Some tips that can help when migrating mailboxes to O365</div>
-	      <div style='font-family:verdana; font-size:10px; color:#564c4d; width:850px; text-align:left;'>08-Mar-23</div
-		      
-      <div style='font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left;'><br>
+	<div class=headline>Some tips that can help when migrating mailboxes to O365</div>
+	<div class=datestamp>08-Mar-23</div>      
+	<div class=content><br>
            <b>Shared Mailboxes</b><br>
           &#8226;  Shared mailboxes need a license to be migrated, you can apply for 25 free Office365 licenses for 2 months.<br>
 	  &#8226;  To migrate a shared mailbox you must set the password then enable the account before migration. After the migration the AD account should be disabled again.<br>	 
@@ -100,6 +102,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	  &#8226;  Set the mailbox language after the migration.<br>
 	  &#8226;  After migration they should be assigned to the ExchangeOnline feature in O365 licensing.<br>
       
+	  </div>
           </td>
          
         </td></tr>
