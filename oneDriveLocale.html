@@ -93,7 +93,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
            While Sharepoint sites for Teams can be set with a new default template it seems that this is not possible for user's of OneDrive for Business, with the template instead being read-only.<br>
            <br>
            So it seems you can only do this in one large batch every few months to be workable. To enable this we use PnP PowerShell and assign it the correct Azure AD app permissions needed. The code was as follows:
-   <br>        
+   <br>        <br>
 		<div class=code>
 		Connect-PnPOnline https://tenant.sharepoint.com/sites/yoursite<br>
 $LocaleId = 6153 # en-ie<br>
@@ -109,6 +109,7 @@ Invoke-PnPQuery <br>
 		</div>
 		<br>
 		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after:<br>
+		<br>
 		<div class=code>
 		Connect-PnPOnline -url https://tenant.sharepoint.com/ -interactive<br>
 <br>
