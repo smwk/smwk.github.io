@@ -80,7 +80,10 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a><br>
   </div>
 </div>	
-		     
+		
+		| <a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
+      <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
+      <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
 	      
         <div class=headline>Keeping a log of NetScaler AlwaysON connections</div>
 	      <div class=datestamp>02-Mar-23</div>
@@ -92,12 +95,12 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		 We now knew who was connected, but we needed to find out what user was logged in to the server. For stability we enabled remote PowerShell as the older commands can fail without timing out. 
 		Running the script every 15 minutes we could see what clients were connecting and disconnecting and log this.<br>
 		<br>
-		<img src=alwaysOn02.png>
-		<div class=ImageCaption>Using stored credentials we can get a list of sessions from the NetScaler.</div>
+		<img src=alwaysOn02.png class=imageMain>
+		<div class=ImageCaption>↑ Using stored credentials we can get a list of sessions from the NetScaler.</div>
 		<br>
 		<br>
-		<img src=alwaysOn01.png>
-		<div class=ImageCaption>We can check what ISP the users connect with and if they have MFA enabled.</div>
+		<img src=alwaysOn01.png class=imageMain>
+		<div class=ImageCaption>↑ We can check what ISP the users connect with and if they have MFA enabled.</div>
 		<br>
 		During the course of the script there were 2 issues:
 		<li>Mass disconnects of all clients</li>
