@@ -93,7 +93,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
        When using Graph or the new ExchangeOnlineManagement module we can easily connect to to the Azure AD App using a self-signed client certificate. For the Office365 O365 Management API however there are only examples connecting using a shared secret, but if you need to use a cert then the following code is used:
 	<div class=code>
-$ClientID = "f660cc06-7bde-4af5-892c-4599a17a6d38"<br>
+$ClientID = "xxxxx"<br>
 $TenantName = "tenant.onmicrosoft.com"<br>
 $AppId = "xxxxx"<br>
 $Certificate = Get-ChildItem -Path cert:\Currentuser\My | Where {$_.Thumbprint -eq $thumbprint}<br>
