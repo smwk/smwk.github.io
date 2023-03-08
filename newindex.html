@@ -87,7 +87,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<br>
 		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date.<br><br>
 		<img src=DNScleanup01.png style='border: 5px solid #564c4d;'>
-		<div class=ImageCaption>Scavenging set correctly for the main AD domain zone.</div>
+		<div class=ImageCaption>↑ Scavenging set correctly for the main AD domain zone.</div>
 		<br>
 		So what to check?<br>
 		<li>Static records, do they still ping?</li>
@@ -97,7 +97,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
 		<br>
 		<img src=DNScleanup02.png style='border: 5px solid #564c4d;'>
-		<div class=ImageCaption>Here we use PowerShell to pull the PTR reverse records.</div>
+		<div class=ImageCaption>↑ Here we use PowerShell to pull the PTR reverse records.</div>
 		<br>
 		What did we find? A few hundred records were wrong:<br>
 		<li>About 50 A records could be deleted</li>
