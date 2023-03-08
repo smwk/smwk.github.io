@@ -121,19 +121,19 @@ foreach($site in $sites)<br>
 <br>
 	if ($s_url -like "*") <br>
 	{ <br>
-   	 	#Add Admin account as an additional site collection adminstrator<br>
-		Set-PnPTenantSite $site.url -Owners $adminAcctToAdd<br>
+   	 	&nbsp;#Add Admin account as an additional site collection adminstrator<br>
+		&nbsp;Set-PnPTenantSite $site.url -Owners $adminAcctToAdd<br>
 			<br>
-		Connect-PnPOnline $site.Url -interactive<br>
-		$web = Get-PnPWeb -Includes RegionalSettings,RegionalSettings.TimeZones<br>
-		$timeZone = $web.RegionalSettings.TimeZones | Where-Object {$_.Id -eq $TimeZoneId}<br>
-		$web.RegionalSettings.LocaleId = $LocaleId<br>
-		$web.RegionalSettings.TimeZone = $timeZone<br>
-		$web.Update()<br>
-		Invoke-PnPQuery<br>
+		&nbsp;Connect-PnPOnline $site.Url -interactive<br>
+		&nbsp;$web = Get-PnPWeb -Includes RegionalSettings,RegionalSettings.TimeZones<br>
+		&nbsp;$timeZone = $web.RegionalSettings.TimeZones | Where-Object {$_.Id -eq $TimeZoneId}<br>
+		&nbsp;$web.RegionalSettings.LocaleId = $LocaleId<br>
+		&nbsp;$web.RegionalSettings.TimeZone = $timeZone<br>
+		&nbsp;$web.Update()<br>
+		&nbsp;Invoke-PnPQuery<br>
 <br>
-		#Later we can remove the added admin<br>
-		Remove-PnPSiteCollectionAdmin -Owners $adminAcctToAdd<br>
+		&nbsp;#Later we can remove the added admin<br>
+		&nbsp;Remove-PnPSiteCollectionAdmin -Owners $adminAcctToAdd<br>
 	}<br>
 }	<br>		
 		</div>
