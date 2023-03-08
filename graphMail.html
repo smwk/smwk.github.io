@@ -155,12 +155,12 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 <br>
 		$addimg = "cid" + ":" + "ie"<br>
 <br>
-		$contentMG += "<table><th>Flag></th></tr>"<br>
+		$contentMG += "<-table><-th>Flag><-/th><-/tr>"<br>
 		foreach ($lc in $logCollection)<br>
 		{<br>
 			$l_flag = $lc.flag<br>
 			$l_location = $lc.location<br>
-			$contentMG += "<tr><td><img src=cid`:$l_flag></td></tr>"<br>
+			$contentMG += "<-tr><-td><img src=cid`:$l_flag><-/td><-/tr>"<br>
 		}<br>
 <br>
 		$body  = @{<br>
