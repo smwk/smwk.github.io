@@ -1,188 +1,98 @@
-
 <html>
   <head>
-  <title>PowerShell & Graph Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Graph and PowerShell Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    
     <style>
-      body { margin: 0; padding: 0; background-color:#c9c7c7; }
-a:link {
-  color: #646d8c;
-}
-        
-/* visited link */
-a:visited {
-  color: #646d8c;
-}   
-  
-/* mouse over link */
-a:hover {
-  color: #646d8c;
-}
-      
-a.one:link {color: #e09738; text-decoration: none;}
-a.one:visited {color: #e09738;  text-decoration: none;}
-a.one:hover {color: #e09738;}
-      
-a.two:link {color: #646d8c; text-decoration: none; font-size:14px;}
-a.two:visited {color: #646d8c;  text-decoration: none; font-size:14px;}
-a.two:hover {color: #646d8c; text-decoration: none; font-size:14px;}
+      body{
+        margin: 0px;
+        padding: 0px;
+    }
+
+h1 {
+        margin-top: 0px;
+    }
 	    
-	    a.title:link {color: #000000; text-decoration: none;}
-a.title:visited {color: #000000;  text-decoration: none;}
-a.title:hover {color: #000000; text-decoration: none;}
-      
-.headerTable
-{
-    width:100%;
-    color:#e09738;
-    font-family: arial;
-    font-size:12px;
-}
-      .headline
-      {
-       font-family:arial;
-        font-size:20px;
-        color:black; 
-      }
-      .articleContent
-      {
-       font-family:arial;
-        font-size:13px;
-        color:black;
-      }
-      .imageCaption
-      {
-       color:#1c1c1c;
-       font-style: italic;
-        font-siz:12px;
-      }
- .horizontal_dotted_line{
-  border-bottom: 4px dotted;
-  width: 95%;
-   text-align:center;
-   margin: auto;
-} 
-
-       /* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
+	  
+      .dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: orange;
-}
-
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  text-align:left;
+  background-color: #ffffff;
+  font-family:Montserrat, sans-serif;
+  font-size:13px;
+  min-width: 340px;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+  padding: 6px 6px;
   z-index: 1;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
-} 
-
-
-    </style>
-    
+}
+      
+	    
+a.dropbtn:link {color: #564c4d; text-decoration: none;}
+a.dropbtn:visited {color: #564c4d; text-decoration: none;}
+a.dropbtn:hover {color: #564c4d; text-decoration: none;}
+	    
+a.two:link {color: #564c4d; text-decoration: none;}
+a.two:visited {color: #564c4d; text-decoration: none;}
+a.two:hover {color: #447EAE; text-decoration: none;}
+	    
+	.content { font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left; }
+	.headline { font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left; }
+	.datestamp { font-family:verdana; font-size:10px; color:#564c4d; width:850px; text-align:left; }
+	.imagecaption { font-style: italic; }
+	.imageMain { border: 5px solid #564c4d; }
+	    
+      </style>
     
   </head>
-<body>
-  <table class=headerTable>
-    <tr>
-      <td style='font-size:50px;padding:30px;color:black;width:120px;vertical-align:top;' rowspan=2><a href=index.html class=title>PowerShell<br> & Graph<br>Blog</a></td>
-      
-
-
-
-    <td style='width:100%;'>
-	    <table style='width:100%;'>
-		<tr>
-	
-	      <td style='color:#e09738;padding30px;font-size:15px;height:30px;width:100%;' class=one><br><br>
-      
- <div class="navbar">
- 
-  <div class="dropdown">
-    <button class="dropbtn">Articles
-      <i class="fa fa-caret-down"></i>
-    </button> 
-    <div class="dropdown-content">
-	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a>
-	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a>
-        <a href="o365cert.html" class=two>Secure Office365 reports with a certifificate</a>
-        <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a>
-        <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a>
-        <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a>
-        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a>
-    </div>
-  </div>
-    <a href="about.html">About</a>
-  <a href="links.html">Links</a>
-</div> 
-
- 
-        
-      </td>
- </tr>
-    <tr>
+  
+  <body>
     
-      <td style='padding-right:200px; width:100%;'><div class=headline id="AzureLogons"><br><b>Cleaning up your Windows DNS server</b></div>
-        <div class=articleContent>Having contracted at a number of companies over the years I've seen my fair share of horror shows with regards DNS. For something so simple it really does have a lot of importance and should be regularly reviewed.<br>
+    <table style='width:100%; padding:0px; border-collapse: collapse;'>
+      <tr><td style='height:25px; color:#564c4d; width:50%; font-size:25px; font-family:Montserrat, sans-serif; text-align:left;'><img src='giraffe3.png' style='height:55px; padding:10px; vertical-align:middle;'><a href='index.html' class=dropbtn>Graph and PowerShell Blog</a></td>
+        
+        <td style='width:50%; color:#564c4d; font-size:15px; font-family:Montserrat, sans-serif; text-align:right; padding-right:300px;'>
+		
+		 
+	<div class="dropdown">
+		<a href='' class="dropbtn">Articles</a>
+  <div class="dropdown-content" style='line-height: 1.6;'>
+    <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a><br>
+   <a href="oneDriveLocale.html" class=two>Set OneDrive for Business Locale</a><br>
+	<a href="o365migration.html" class=two>O365 Migration Tips</a><br>
+	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a><br>
+	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a><br>
+        <a href="o365cert.html" class=two>Secure Office365 reports with a certifificate</a><br>
+        <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a><br>
+        <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a><br>
+        <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a><br>
+        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a><br>
+  </div>
+</div>	
+		
+		| <a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
+      <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
+      <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
+     
+        <div class=headline>Cleaning up your Windows DNS server</div>
+	      <div class=datestamp>07-Mar-23</div>
+        <div class=headline><br>
+          Having contracted at a number of companies over the years I've seen my fair share of horror shows with regards DNS. For something so simple it really does have a lot of importance and should be regularly reviewed.<br>
+		<br>
 		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date.<br><br>
-		<img src=DNScleanup01.png>
-		<div class=ImageCaption>Scavenging set correctly for the main AD domain zone.</div>
+		<img src=DNScleanup01.png class=ImageMain>
+		<div class=ImageCaption>↑ Scavenging set correctly for the main AD domain zone.</div>
 		<br>
 		So what to check?<br>
 		<li>Static records, do they still ping?</li>
@@ -191,8 +101,8 @@ a.title:hover {color: #000000; text-decoration: none;}
 		<li>Check if A record has reverse lookup record (PTR) set?</li>
 		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
 		<br>
-		<img src=DNScleanup02.png>
-		<div class=ImageCaption>Here we use PowerShell to pull the PTR reverse records.</div>
+		<img src=DNScleanup02.png style='border: 5px solid #564c4d;'>
+		<div class=ImageCaption>↑ Here we use PowerShell to pull the PTR reverse records.</div>
 		<br>
 		What did we find? A few hundred records were wrong:<br>
 		<li>About 50 A records could be deleted</li>
@@ -203,22 +113,21 @@ a.title:hover {color: #000000; text-decoration: none;}
 		<br>
 		While some of the fixes may sound trivial, when an issue occurs and you need to track down a client you will be happy to have a correct DNS setup.<br>
           <br><br> 
-                  <div class=tags>Tags: Windows, DNS, PowerShell</div><br>
-		<div class=tags>Posted: 13-Feb-22</div><br>
-                  <br>
-                  <div class="horizontal_dotted_line"></div><br>
-                  <br>
-        </div>
-	      
-	  
-	    </td>
-	</tr>
-	</table>
-	      
-      </td>
-    </tr>
-  </table>
-</body>
+           
+           
+          </div>
+          
+          </td>
+         
+        </td></tr>
+    </table> 
+    
+
+    
+    
+    
+  </body>
+  
+  
+  
 </html>
-
-
