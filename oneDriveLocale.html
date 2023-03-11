@@ -107,7 +107,7 @@ $web.Update()<br>
 Invoke-PnPQuery <br>
 		</div>
 		<br>
-		           But when we ran this we got an access denied error. The workaround was to temporarily give the admin access to each OneDrive site and then remove the access after:<br>
+		But when we ran this we got an access denied error. The <a href='https://stackoverflow.com/questions/66669848/add-a-secondary-admin-to-sp-sites-including-onedrive-sites-change-sites-locale'>workaround</a> was to temporarily give the admin access to each OneDrive site and then remove the access after:<br>
 		<br>
 		<div class=code>
 		Connect-PnPOnline -url https://tenant.sharepoint.com/ -interactive<br>
