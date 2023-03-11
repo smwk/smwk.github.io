@@ -93,7 +93,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           Company A - Has an on-prem Exchange environment in Hybrid mode, but chooses '<a href='https://learn.microsoft.com/en-us/exchange/transport-options'>Centralized Mail-flow</a>' so that all mails are sent via the on-prem Exchnage servers. 
           As a result of this setup they do not add the Microsoft addresses to their SPF record.<br>
           <br>
-          Company B - Also has a hybrid setup but mail-flow is set to all go through O365. In addition to this they also have O365 mai; filters enabled. Both companies are based in the same country.<br>
+          Company B - Also has a hybrid setup but mail-flow is set to all go through O365. In addition to this they also have O365 mail filters enabled. Both companies are based in the same country.<br>
           <br>
           <b>Problem</b><br>
           When Company A sends mails to Company B they always end up in O365 Quarantine. When reviewing the Internet headers we see that the SPF record has failed despite 'centralized mail-flow' being enabled.<br>
