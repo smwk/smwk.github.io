@@ -96,6 +96,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           You give a user the 'Send As' permission to another user's mailbox and then enable the '<a href='https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-user-mailboxes/automatically-save-sent-items-in-delegator-s-mailbox'>Automatically save sent items in delegator's mailbox in Exchange Online</a>'. 
           The sent items appear in both mailboxes as expected. However you also forward all mails from this mailbox to an external mailbox not under your control. The user notices that the sent item also appears in this external mailbox.<br>
           <br>
+	<img src='delegateSentItems01.png' class=class=ImageMain>	
+		<div class=ImageCaption>↑ Mails are forwarded to an external mailbox.</div>
+	<br>	
           <b>Cause</b><br>
           This 'functionality' has been <a href='https://www.michev.info/Blog/Post/1947/messagecopy-settings-and-forwarding'> described before</a> where sent items would appear for members of a distribution group if the delegee automatically forwarded to that group. But even then it was still a big surprise to learn this would work across domains. The forwarded exrternal mailbox also resides in O365, and possibly in the same datacenter, so that may explain why it occurred, though I never got an opportunity to test all scenarios. Assuming Microsoft classify it as a bug then it doesn't look like it will be patched anytime soon.<br>
           <br>
