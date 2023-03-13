@@ -104,12 +104,18 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <b>Cause</b><br>
           While in theory the emails coming from Company A should exit via the on-prem Exchange servers, instead if the two tennants in O365 reside in the <a href='https://www.enowsoftware.com/solutions-engine/exchange-center/the-curious-logic-behind-some-eop-routing-decisions '>same datacenter</a> then the mail is routed via O365. 
           So the SPF record will fail and the mail will go to Quarantine, but only if the recipient domain has legacy mail filters enabled.<br>
+	 <br>
+	<img src='centralizedMail01.png' class=ImageMain>
+		<div class=ImageCaption>↑ SPF fails because spf.protection.outlook.com is not present.</div>
           <br>
           <b>Resolution</b><br>
           While both companies had issues with the setup, Microsoft Support sided with company A, saying that if the <a href='https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-spoofing-protection-faq?view=o365-worldwide'>legacy mail filters</a> (in particular the MarkAsSpamSpfRecordHardFail filter) were disabled then the mails would not go to quarantine. 
           This is technically correct but with a couple of caveats, first the Internet headers still show an error, with Microsoft adding an extra authentication field to bypass the error. 
           Secondly the Microsoft documentation for Hybrid setup says to add the Microsoft addresses to your <a href='https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-spf-configure?view=o365-worldwide'>SPF file</a>, it does not mention anything about exceptions for centralized mail-flow.<br>
           <br>
+	<img src='centralizedMail02.png' class=ImageMain>
+		<div class=ImageCaption>↑ Added field, X-MS-Exchange-Authentication-Results, shows the SPF record passing.</div>
+          <br>		
           This was a long running case with Microsoft Support but out of it at least came information on no longer using legacy mail filters. 
           I kinda think if a feature is no longer to be used then really it should also be removed from the GUI and not hidden deep in the documentation, but in the end the issue did at least get resolved. 
 	  I recommend running the <a href='https://github.com/cammurray/orca'>ORCA</a> PowerShell report to keep track of all best practices for O365 mail-flow.<br>
