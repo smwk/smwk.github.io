@@ -103,7 +103,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           <img src=teamsRoom02.png class=imageMain><div class=imageCaption>↑ Unable to add an O365 Room mailbox from on-prem Exchange PowerShell.</div><br>
           <br>
-          <b>Troubleshooting:</b> when a mailbox (or Room) is migrated to O365 then the object on-prem becomes a remote mail with a class of mail user. So this would explain why there is an error but so far I've found no resolution to adding the object to the room list.<br>
+          <b>Troubleshooting:</b> when a mailbox (or Room) is migrated to O365 then the recipientTypeDetails property is set to <a href='https://community.spiceworks.com/topic/2243230-hybrid-exchange-room-snafu'>MailUser</a>. So this would explain why there is an error but so far I've found no resolution to adding the object to the room list other than adding them to the list before migration.<br>
 		<br>
 		For the issue with the rooms not displaying in the Location field in Teams I have tried adding <a href='https://learn.microsoft.com/en-us/powershell/module/exchange/set-place?view=exchange-ps'>additional information</a> to the mailbox using on-prem commands that will sync to O365 fully after about 24 hours. Despite this the rooms still do not appear.<br>
 		<br>
