@@ -101,6 +101,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           &#8226;  MessageCopyForSentAsEnabled and MessageCopyForSendOnBehalfEnabled need to be set on the O365 mailbox even if set on-prem.<br>
           &#8226;  MessageCopyForSentAsEnabled and MessageCopyForSendOnBehalfEnabled <a href='https://docs.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/sent-mail-is-not-saved'>will not work</a> if shared mailbox is on-premise and user mailbox is in O365 and vice-versa.<br>
           <br>
+	  <b>O365/M365 Groups</b><br>
+	  &#8226;  Although writeback is enabled to on-prem AD this does not mean that O365 groups are Exchange aware. So all addresses should be user@domain.onmicrosoft.com and not your main external domain.<br>
+	  &#8226;  Where the group is not used for email (ie most Teams) then you should not map the group to Outlook: Set-UnifiedGroup groupname -HiddenFromExchangeClientsEnabled:$true<br>
+	  &#8226;  If you do plan to use mail functionality then you should enable <a href='https://learn.microsoft.com/en-us/microsoft-365/enterprise/manage-folders-and-rules-feature?view=o365-worldwide'>subfolder creation and rules</a><br>
+	  <br>
           <b>User Mailboxes</b><br>
 	  &#8226;  Delegated permssions need to be enabled - <a href='https://learn.microsoft.com/en-us/exchange/hybrid-deployment/set-up-delegated-mailbox-permissions'>Set-OrganizationConfig -ACLableSyncedObjectEnabled $True</a> .<br>
           &#8226;  Any additional addresses must be removed - eg user@domain.local.<br>
