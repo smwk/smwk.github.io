@@ -105,7 +105,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	<br>
 	<img src=teamsRoom03.png class=imageMain><div class=imageCaption>↑ Here we see the Room mailbox is actually set as a User mailbox.</div><br>
 	To fix this we need to use some PowerShell:<br>
-		<div class=code>set-remoteMailbox -type Room</div><br>	
+		<div class=code>set-remoteMailbox room1 -type Room</div><br>	
           <br>
 	<img src=teamsRoom04.png class=imageMain><div class=imageCaption>↑ Now we see the mailbox is the correct type - Room. We can now add the room to the Room List without error.</div><br>
 	<br>
