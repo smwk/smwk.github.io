@@ -95,20 +95,26 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=headline>Teams not showing Rooms</div>
 	      <div class=datestamp>25-Mar-23</div>
         <div class=content><br>
-          <b>Issue:</b> when we go to make a new meeting within the Teams client we find that no rooms are visible. Additionally we can only add a Room as an attendee by entering the full email address, there is no address suggestion displayed.<br>
+	<b>Problem 1:</b> when we try to add an O365 Room to a Room List we get an error: Only room mailbox or room list can be added into room list.<br>
           <br>
-          <img src=teamsRoom01.png class=imageMain><div class=imageCaption>↑ Error message: No rooms found. Try another name or room list.</div><br>
+ 	<img src=teamsRoom02.png class=imageMain><div class=imageCaption>↑ Unable to add an O365 Room mailbox from on-prem Exchange PowerShell.</div><br>
           <br>
-          The Rooms List, which works fine in Outlook, also shows no rooms within Teams. If we try to add a migrated room to a Rooms List we get an error: Only room mailbox or room list can be added into room list.<br>
+        After researching this error it seems that some room mailboxes can get get migrated as user mailboxes, all the more likely when the Room was setup for a Crestron device. To check if this is the case we run the get-remotemailbox command.<br>
+	<br>
+	<img src=teamsRoom03.png class=imageMain><div class=imageCaption>↑ Here we see the Room mailbox is actually set as a User mailbox.</div><br>
+	To fix this we need to use some PowerShell:<br>
+		<div class=>set-remoteMailbox -type Room</div><br>	
           <br>
-          <img src=teamsRoom02.png class=imageMain><div class=imageCaption>↑ Unable to add an O365 Room mailbox from on-prem Exchange PowerShell.</div><br>
-          <br>
-          <b>Troubleshooting:</b> when a mailbox (or Room) is migrated to O365 then the recipientTypeDetails property is set to <a href='https://community.spiceworks.com/topic/2243230-hybrid-exchange-room-snafu'>MailUser</a>. So this would explain why there is an error but so far I've found no resolution to adding the object to the room list other than adding them to the list before migration.<br>
-		<br>
-		For the issue with the rooms not displaying in the Location field in Teams I have tried adding <a href='https://learn.microsoft.com/en-us/powershell/module/exchange/set-place?view=exchange-ps'>additional information</a> to the mailbox using on-prem commands that will sync to O365 fully after about 24 hours. Despite this the rooms still do not appear.<br>
-		<br>
-		While researching this issue I did not find anyone with the same problems, so decided to open a support call with Microsoft, which is currently ongoing.<br>
-		<br>
+	<img src=teamsRoom04.png class=imageMain><div class=imageCaption>↑ Now we see the mailbox is the correct type - Room.</div><br>
+	<br>
+	If like me you have a number of rooms to check then you should create a script that returns the mailbox type for all room mailboxes.<br>
+	<br>
+          <b>Problem 2:</b> when we go to make a new meeting within the Teams client we find that no rooms are visible. Additionally we can only add a Room as an attendee by entering the full email address, there is no address suggestion displayed.<br>
+	<img src=teamsRoom01.png class=imageMain><div class=imageCaption>↑ Error message: No rooms found. Try another name or room list.</div><br>
+	<br>
+	For the issue with the rooms not displaying in the Location field in Teams I have tried adding <a href='https://learn.microsoft.com/en-us/powershell/module/exchange/set-place?view=exchange-ps'>additional information</a> to the mailbox using on-prem commands that will sync to O365 fully after about 24 hours. Despite this the rooms still do not appear.<br>
+	I am still working on a resolution to this problem.<br>
+	<br>
           <br><br> 
            
            
