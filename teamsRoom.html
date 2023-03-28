@@ -108,7 +108,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<b>Resolution:</b> after researching this error it seems that some room mailboxes can get get migrated as user mailboxes, all the more likely when the Room was setup for a Crestron device. To check if this is the case we run the get-remotemailbox command.<br>
 	<br>
 	<img src=teamsRoom03.png class=imageMain><div class=imageCaption>↑ Here we see the Room mailbox is actually set as a User mailbox.</div><br>
-	To fix this we need to use some PowerShell:<br>
+	To fix this we need to use some on-prem Exchange PowerShell:<br>
 		<div class=code>set-remoteMailbox room1 -type Room</div><br>	
           <br>
 	<img src=teamsRoom04.png class=imageMain><div class=imageCaption>↑ Now we see the mailbox is the correct type - Room. We can now add the room to the Room List without error.</div><br>
