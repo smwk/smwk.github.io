@@ -103,8 +103,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
  	<img src=roomFinderError01.png class=imageMain><div class=imageCaption>↑ Room Finder error with Outlook365 Version 2208 semi-annual.</div><br>
           <br>
 	<b>Solution:</b> after research it appeared the error was linked to WebView2. I checked and this was already installed with the latest version, 111.0.1661.54. When I tried to install the <a href='https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section'>standalone package</a> I got an error saying it was already installed.<br>
+		<br>
 		Based on a <a href='https://www.reddit.com/r/Office365/comments/qfobxk/deleted_by_user/'>Reddit post</a> I tried a reinstall via an admin Command Prompt:<br>
-		<div class=code>"C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /install appguid="{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}&appname=Microsoft%20Edge%20WebView&needsadmin=true&repairtype=windowsonlinerepair" /installsource taggedmi /silent</div><br>
+		<div class=code>"C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /install appguid="{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}&appname=Microsoft%20Edge%20WebView&needsadmin=true&repairtype=windowsonlinerepair" /installsource taggedmi /silent</div>
 	<br>
 	The command runs for about 10 seconds, without needing a reboot I restarted Outlook and could now see Room Finder in the Outlook client.<br>
 	<img src=roomFinderError02.png class=imageMain><div class=imageCaption>↑ Room Finder visible after WebView2 reinstall.</div><br>
