@@ -70,6 +70,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	<div class="dropdown">
 		<a href='' class="dropbtn">Articles</a>
   <div class="dropdown-content" style='line-height: 1.6;'>
+	<a href="compliancePowershell.html" class=two>How to connect to Compliance PowerShell behind a Proxy</a><br>
    <a href="sensitivityLabelError.html" class=two>Sensitivity Label not shown in Outlook Client</a><br>
 	<a href="roomFinderError.html" class=two>Room Finder Error in Outlook</a><br>
 	<a href="teamsRoom.html" class=two>Teams not showing Rooms</a><br>
@@ -100,6 +101,8 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
 	Having to use a proxy can cause a lot extra issues when connecting to PowerShell. For the Compliance PowerShell there is at least a workaround:<br>
           <div class=code>$ProxyOptions = New-PSSessionOption -ProxyAccessType ieconfig<br>Connect-IPPSSession -PSSessionOption $proxyoptions</div>
+		<br>
+		This is <a href='https://github.com/MicrosoftDocs/office-docs-powershell/blob/main/exchange/docs-conceptual/connect-to-scc-powershell.md'>documented</a> on GitHub.
          <br><br>
            
           </div>
