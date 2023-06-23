@@ -102,13 +102,14 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Renewing an Exchange 2016 certificate</div>
 	      <div class=datestamp>23-Jun-23</div>
         <div class=content><br>
-       Renewing a 3rd party Exchange certificate really shouldn't be a big deal but thanks to SSL comapnies and Microsoft there are a number of problems that can occur.
+       Renewing a 3rd party Exchange certificate really shouldn't be a big deal but thanks to SSL comapnies and Microsoft there are a number of problems that can occur.<br>
+		<br>
 
-		<li>1. The cert comes as a text file along with a root cert and two intermediary certs, all of which must be installed. The guides showing to use ECP are not valid as you can now only do this via Exchange PowerShell</li>
-		<li>2. The private key is missing when you import the certificate (rename .txt file to .cer). This is where the cert key is 'lost' and you must get the serial to find the key again using certutil.</li>
-		<li>3. Now that the cert is installed you have to copy the installed cert to each Exchange server.</li>
-		<li>4. After this you must rerun the Exchange Hybrid Wizard, which now requiquires the credentials of a Cloud admin.</li>
-		<li>5. With the HCW run you now go to delete the old cert that is about to expire, but an error message comes up to say it is still in use. This is because the HCW goes oon the cert names and not the thumbprint. To get around this delete the old cert via the Certificates.mmc snap-in.</li>
+		<li>1. The cert comes as a text file along with a root cert and two intermediary certs, all of which must be installed. The guides showing to use ECP are not valid as you can now only do this via Exchange PowerShell.<Br></li>
+		<li>2. The private key is missing when you import the certificate (rename .txt file to .cer). This is where the cert key is 'lost' and you must get the serial to find the key again using certutil.<br></li>
+		<li>3. Now that the cert is installed you have to copy the installed cert to each Exchange server.<br></li>
+		<li>4. After this you must rerun the Exchange Hybrid Wizard, which now requiquires the credentials of a Cloud admin.<br></li>
+		<li>5. With the HCW run you now go to delete the old cert that is about to expire, but an error message comes up to say it is still in use. This is because the HCW goes oon the cert names and not the thumbprint. To get around this delete the old cert via the Certificates.mmc snap-in.<br></li>
            
            
           </div>
