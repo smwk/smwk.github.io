@@ -109,11 +109,16 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<br>
 		<ol>
 		<li> The cert comes as a text file along with a root cert and two intermediary certs, all of which must be installed. The guides showing to use ECP are not valid as you can now only do this via Exchange PowerShell.<Br></li>
-		<li> The private key is missing when you import the certificate (rename .txt file to .cer). This is where the cert key is 'lost' and you must get the serial to find the key again using certutil.<br></li>
-		<li> Now that the cert is installed you have to copy the installed cert to each Exchange server.<br></li>
-		<li> After this you must rerun the Exchange Hybrid Wizard, which now requires the credentials of a Cloud Admin.<br></li>
-		<li> With the HCW run you now go to delete the old cert that is about to expire, but an error message comes up to say it is still in use. This is because the HCW goes oon the cert names and not the thumbprint. To get around this delete the old cert via the Certificates.mmc snap-in.<br></li>
-                <li> When you reboot the Exchange server at a later date the Exchange Management Shell will fail to connect. This is because the back-end website no longer has a certificate selected under 'Bindings'.</li>
+		<br>
+			<li> The private key is missing when you import the certificate (rename .txt file to .cer). This is where the cert key is 'lost' and you must get the serial to find the key again using certutil.<br></li>
+		<br>
+			<li> Now that the cert is installed you have to copy the installed cert to each Exchange server.<br></li>
+		<br>
+			<li> After this you must rerun the Exchange Hybrid Wizard, which now requires the credentials of a Cloud Admin.<br></li>
+		<br>
+			<li> With the HCW run you now go to delete the old cert that is about to expire, but an error message comes up to say it is still in use. This is because the HCW goes oon the cert names and not the thumbprint. To get around this delete the old cert via the Certificates.mmc snap-in.<br></li>
+                <br>
+			<li> When you reboot the Exchange server at a later date the Exchange Management Shell will fail to connect. This is because the back-end website no longer has a certificate selected under 'Bindings'.</li>
        		</ol>   
           </div>
           
