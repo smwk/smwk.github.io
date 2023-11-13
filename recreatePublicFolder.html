@@ -112,8 +112,8 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		after doing this the primary PF mailbox was LockedForMigration.<br>
 	<br>
 	The resolution was to run the following:<br>
-	<div class='code'>
-	EXO<br>
+	<div class=code>
+	<b>EXO</b>b><br>
 	Get-Mailbox -PublicFolder $(Get-OrganizationConfig).RootPublicFoilderMailbox.HierarchyMailboxGuid.ToString() | Remove-Mailbox -PublicFolder -Confirm:$False -Force:$True<br>
 	<br>
 		Set-OrganizationConfig -PublicFoldersEnabled:local<br>
