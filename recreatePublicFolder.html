@@ -113,12 +113,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	<br>
 	The resolution was to run the following:<br>
 	<div class=code>
-	<b>EXO</b>b><br>
+	<b>EXO</b><br>
 	Get-Mailbox -PublicFolder $(Get-OrganizationConfig).RootPublicFoilderMailbox.HierarchyMailboxGuid.ToString() | Remove-Mailbox -PublicFolder -Confirm:$False -Force:$True<br>
 	<br>
 		Set-OrganizationConfig -PublicFoldersEnabled:local<br>
 		Set-OrganizationConfig -RemotePublicFolderMailboxes $null<br>
-	<br>
 	</div>
 <br>
 	After this we could create a Public Folder mailbox under the O365 admin console. Newly created public folders had no issues with client permissions and I was able to import the old data from my own mailbox.<br>
