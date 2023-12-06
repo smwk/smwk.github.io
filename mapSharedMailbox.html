@@ -113,20 +113,22 @@ a.two:hover {color: #447EAE; text-decoration: none;}
     All good and working, following Microsoft's best practices until a user compained that the mailbox was not auto-mapped in their Outlook. So to troubleshoot I checked first if the mailbox opened in OWA - it did. Next, based on this <a href='https://techcommunity.microsoft.com/t5/exchange/what-would-make-a-shared-mailbox-not-show-up-in-outlook-2016/m-p/44201'>forum thread</a> I checked AutoDiscover,
           the mailbox was listed as an AlternativeMailbox.<br>
           <br>
-          <img src='mapSharedMailbox01.png'><br>
+	<img src=mapSharedMailbox01.png style='border: 5px solid #564c4d;'>
+	<div class=ImageCaption>↑ Our Shared Mailbox is correctly listed as an AlternativeMailbox.</div>
           <br>
          So why wouldn't Outlook map the mailbox? A common issue after moving to O365 is that you need to recreate the Outlook profile before all mailboxes map, but in this case it still didn't help. So next to check was the AutoDiscover record for the shared mailbox itself.
            You enter the shared mailbox address in the Wizard and leave the password blank, when you are challenged for credentials use your own credentials which should have full access to the mailbox.<br>
           <br>
           So what did we find? We found that mailboxes migrated from Exchange on-prem could eventually get their AutoDiscover settings after entering credentials 3 times, but for shared mailboxes created via new-remotemailbox the AutoDiscover would fail.<br>
-          <img src='mapSharedMailbox02.png'><br>
+	<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
+	<div class=ImageCaption>↑ AutoDiscover for our Shared Mailbox fails.</div>
           At this point I don't have a fix and have contacted Microsoft Support. The obvious thing might be that our AutoDiscover record still points to on-prem, but this is based on Microsoft's recommendation for people in <a href='https://learn.microsoft.com/en-us/exchange/decommission-on-premises-exchange'>Scenario 3</a>.<br>
                <br>
           Additional Articles:<br>
           https://learn.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/cannot-access-hidden-mailbox-in-outlook-after-migration<br>
 <br>
 		<div class=code>
-		<b>Exchange 2016</b><br>
+		<b>Exchange Online</b><br>
 
 		<b>EXO</b><br>
 		
