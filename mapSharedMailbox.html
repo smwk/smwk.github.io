@@ -120,8 +120,10 @@ a.two:hover {color: #447EAE; text-decoration: none;}
            You enter the shared mailbox address in the Wizard and leave the password blank, when you are challenged for credentials use your own credentials which should have full access to the mailbox.<br>
           <br>
           So what did we find? We found that mailboxes migrated from Exchange on-prem could eventually get their AutoDiscover settings after entering credentials 3 times, but for shared mailboxes created via new-remotemailbox the AutoDiscover would fail.<br>
-	<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
+	<br>
+		<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
 	<div class=ImageCaption>↑ AutoDiscover for our Shared Mailbox fails.</div>
+		<br>
           At this point I don't have a fix and have contacted Microsoft Support. The obvious thing might be that our AutoDiscover record still points to on-prem, but this is based on Microsoft's recommendation for people in <a href='https://learn.microsoft.com/en-us/exchange/decommission-on-premises-exchange'>Scenario 3</a>.<br>
                <br>
           Additional Articles:<br>
