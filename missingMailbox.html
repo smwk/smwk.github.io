@@ -111,12 +111,17 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 <br>
 		<div class=code>
 		<b>Exchange 2016</b><br>
-
+		Enable-RemoteMailbox 'SoapJ' -RemoteRoutingAddress 'SoapJ@contoso.mail.onmicrosoft.com'<br>
+		<br>
 		<b>EXO</b><br>
-		
+		Get-Mailbox "Joe.Soap@contoso.com" | fl *ExchangeGUID*<br>
+		<br>
+		<b>Exchange 2016</b><br>
+		Set-RemoteMailbox 'SoapJ' -ExchangeGuid 'Exchange guid value of Exchange Online mailbox'<br>
 		</div>
        		  <br>
-		
+		<br>
+		Reference: <a href='https://learn.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/mailbox-exists-exo-onpremises'>https://learn.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/mailbox-exists-exo-onpremises</a><br>
           </div>
           
           </td>
