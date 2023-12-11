@@ -119,7 +119,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          So why wouldn't Outlook map the mailbox? A common issue after moving to O365 is that you need to recreate the Outlook profile before all mailboxes map, but in this case it still didn't help. So next to check was the AutoDiscover record for the shared mailbox itself.
            You enter the shared mailbox address in the Wizard and leave the password blank, when you are challenged for credentials use your own credentials which should have full access to the mailbox.<br>
           <br>
-          So what did we find? We found that mailboxes migrated from Exchange on-prem could eventually get their AutoDiscover settings after entering credentials 3 times, but for shared mailboxes created via new-remotemailbox the AutoDiscover would fail.<br>
+          We found that mailboxes migrated from Exchange on-prem could eventually get their AutoDiscover settings after entering credentials 3 times, but for shared mailboxes created via new-remotemailbox the AutoDiscover would fail.<br>
 	<br>
 		<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
 	<div class=ImageCaption>↑ AutoDiscover for our Shared Mailbox fails.</div>
