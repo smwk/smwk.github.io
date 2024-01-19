@@ -105,29 +105,16 @@ a.two:hover {color: #447EAE; text-decoration: none;}
      
 	      
 
-         <div class=headline>Cannot map new Shared Mailboxes in O365</div>
-	      <div class=datestamp>06-Dec-23</div>
+         <div class=headline>Teams PowerShell module cannot run CS commands as App</div>
+	      <div class=datestamp>19-Jan-24</div>
         <div class=content><br>
-   After migrating all useers and shared mailboxes to O365, I updated my creation scripts so that any new shared mailboxes would be created on-prem using the new-remotemailbox command. This means the mailbox has an AD object on-prem but the mailbox is already migrated to O365.<br>
+   A request from our Telecoms team asked if we could sync the phone number of newly ported users from Teams to AD as part of a scheduled task. The command worked without issue with the Teams Admin role enabled but when running the command Get-CsOnlineUser as an Azure app we got the following error.
 <br>
-    All good and working, following Microsoft's best practices until a user compained that the mailbox was not auto-mapped in their Outlook. So to troubleshoot I checked first if the mailbox opened in OWA - it did. Next, based on this <a href='https://techcommunity.microsoft.com/t5/exchange/what-would-make-a-shared-mailbox-not-show-up-in-outlook-2016/m-p/44201'>forum thread</a> I checked AutoDiscover,
-          the mailbox was listed as an AlternativeMailbox.<br>
-          <br>
-	<img src=mapSharedMailbox01.png style='border: 5px solid #564c4d;'>
-	<div class=ImageCaption>↑ Our Shared Mailbox is correctly listed as an AlternativeMailbox.</div>
-          <br>
-         So why wouldn't Outlook map the mailbox? A common issue after moving to O365 is that you need to recreate the Outlook profile before all mailboxes map, but in this case it still didn't help. So next to check was the AutoDiscover record for the shared mailbox itself.
-           You enter the shared mailbox address in the Wizard and leave the password blank, when you are challenged for credentials use your own credentials which should have full access to the mailbox.<br>
-          <br>
-          We found that mailboxes migrated from Exchange on-prem could eventually get their AutoDiscover settings after entering credentials 3 times, but for shared mailboxes created via new-remotemailbox the AutoDiscover would fail.<br>
-	<br>
-		<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
-	<div class=ImageCaption>↑ AutoDiscover for our Shared Mailbox fails.</div>
+		<div class=code>Get-CsOnlineUser: Access Denied.</div>
 		<br>
-          In the end the fix for this was straight forward, run Outlook in safe mode once and after that the mailboxes remain mapped. I didn't get the root cause of this but the fix was manageable even for a large amount of users.<br>
-               <br>
-          Additional Articles:<br>
-          https://learn.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/cannot-access-hidden-mailbox-in-outlook-after-migration<br>
+Going by the Microsoft <a href='https://learn.microsoft.com/en-us/microsoftteams/teams-powershell-application-authentication#cmdlets-supported'>documentation</a>a> the app should work as long as the API permission <b>Organization.Read.All</b> is added.<br>
+		<br>
+		I'm currently looking for a fix to this issue.<br>
 <br>
        		  <br>
 		
