@@ -124,7 +124,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<img src=mapSharedMailbox02.png style='border: 5px solid #564c4d;'>
 	<div class=ImageCaption>↑ AutoDiscover for our Shared Mailbox fails.</div>
 		<br>
-          At this point I don't have a fix and have contacted Microsoft Support. The obvious thing might be that our AutoDiscover record still points to on-prem, but this is based on Microsoft's recommendation for people in <a href='https://learn.microsoft.com/en-us/exchange/decommission-on-premises-exchange'>Scenario 3</a>.<br>
+          In the end the fix for this was straight forward, run Outlook in safe mode once and after that the mailboxes remain mapped. I didn't get the root cause of this but the fix was manageable even for a large amount of users.<br>
                <br>
           Additional Articles:<br>
           https://learn.microsoft.com/en-us/exchange/troubleshoot/user-and-shared-mailboxes/cannot-access-hidden-mailbox-in-outlook-after-migration<br>
