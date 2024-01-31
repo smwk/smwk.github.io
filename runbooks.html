@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <title>Graph and PowerShell Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+      
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+    }
+
+h1 {
+        margin-top: 0px;
+    }
+
+	    ul {
+  list-style-position: outside;
+}
+	  
+      .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  text-align:left;
+  background-color: #ffffff;
+  font-family:Montserrat, sans-serif;
+  font-size:13px;
+  min-width: 380px;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+  padding: 6px 6px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+      
+	    
+a.dropbtn:link {color: #564c4d; text-decoration: none;}
+a.dropbtn:visited {color: #564c4d; text-decoration: none;}
+a.dropbtn:hover {color: #564c4d; text-decoration: none;}
+	    
+a.two:link {color: #564c4d; text-decoration: none;}
+a.two:visited {color: #564c4d; text-decoration: none;}
+a.two:hover {color: #447EAE; text-decoration: none;}
+	    
+	.content { font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left; }
+	.headline { font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left; }
+	.datestamp { font-family:verdana; font-size:10px; color:#564c4d; width:850px; text-align:left; }
+	.imagecaption { font-style: italic; }
+	.imageMain { border: 5px solid #564c4d; }
+	.indexTable td { font-family:verdana; font-size:12px; color:#564c4d; }
+	.code { font-family: 'Source Code Pro', monospace; font-size:12px; color:#000; border: 2px solid #000; background-color:#cecece; padding:6px; }
+	    
+	    
+      </style>
+    
+  </head>
+  
+  <body>
+    
+    <table style='width:100%; padding:0px; border-collapse: collapse;'>
+      <tr><td style='height:25px; color:#564c4d; width:50%; font-size:25px; font-family:Montserrat, sans-serif; text-align:left;'><a href='index.html' class=dropbtn><img src='giraffe3.png' style='height:55px; padding:10px; vertical-align:middle; border:0px;'>Graph and PowerShell Blog</a></td>
+        
+        <td style='width:50%; color:#564c4d; font-size:15px; font-family:Montserrat, sans-serif; text-align:right; padding-right:300px;'>
+		
+		 
+	<div class="dropdown">
+		<a href='' class="dropbtn">Articles</a>
+  <div class="dropdown-content" style='line-height: 1.6;'>
+	  <b>2024</b><br>
+    <a href="runbooks.html" class=two>Creating a Teams report uploading to SharePoint with Runbooks</a><br>
+	  <a href="teamsApplication.html" class=two>Teams PowerShell module can't run CS cmd as App</a><br>
+	  <b>2023</b><br>
+  <a href="mapSharedMailbox.html" class=two>Cannot map new Shared Mailboxes in O365</a><br>
+	<a href="exchangeCertRenew.html" class=two>Renewing an Exchange 2016 certificate</a><br>
+	<a href="compliancePowershell.html" class=two>Connect to Compliance PowerShell behind a Proxy</a><br>
+	<a href="sensitivityLabelError.html" class=two>Sensitivity Label not shown in Outlook Client</a><br>
+	<a href="roomFinderError.html" class=two>Room Finder Error in Outlook</a><br>
+	<a href="teamsRoom.html" class=two>Teams not showing Rooms</a><br>
+	<a href="teamsFile.html" class=two>Teams unable to open file</a><br>
+	<a href="reviewQuarantine.html" class=two>Unable to review quarantined mails for shared mailbox</a><br>
+	<a href="setLocale.html" class=two>Set Locale for various Apps</a><br>
+	<a href="delegateSentItems.html" class=two>Delegate Sent Items placed into external Tenant</a><br>
+	<a href="microsoftSupport.html" class=two>Overview of Microsoft Support cases</a><br>
+	<a href="centralizedMail.html" class=two>When centralized mail sends via O365</a><br>
+        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a><br>
+        <a href="oneDriveLocale.html" class=two>Set OneDrive for Business Locale</a><br>
+	<a href="o365migration.html" class=two>O365 Migration Tips</a><br>
+	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a><br>
+	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a><br>
+        <a href="o365cert.html" class=two>Secure Office365 reports with a certificate</a><br>
+        <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a><br>
+        <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a><br>
+        <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a><br>
+        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a><br>
+  </div>
+</div>	
+		
+		| <a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
+      <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
+      <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
+     
+	      
+
+         <div class=headline>Creating a Teams report uploading to SharePoint with Runbooks</div>
+	      <div class=datestamp>31-Jan-24</div>
+        <div class=content><br>
+   Another request came in from the Telecoms team, this time they wanted to pull phone numbers from Teams, then create a file and upload this to SharePoint Online, all within Azure Automation using a runbook.<br>
+          <br>
+          This was actually my first time looking at runbooks, I've avoided it in the past as there is better support for on-prem PowerShell and also there is a cost of running each runbook. But it will have a big future and there is no point ignoring it, so off I went to figure out how to create the runspace.<br>
+          <br>
+          The first thing to do is to setup the Automation Account, my cloud admin kindly gave me the <a href='https://learn.microsoft.com/en-us/azure/automation/automation-role-based-access-control'>Automation Contributor</a> role, and fixed an issue where the view of listed Automation Accounts does not show all the available accounts.<br>
+          <br>
+          Once that was fixed it was time to add the modules to the runspace. The requirement was for Microsoft Teams and SharePoint to be used, so we searched the PowerShell Gallery for PNP.PowerShell and Microsoft Teams and added them. PNP PowerShell for SharePoint requires PowerShell 7, so we used runtime version 7.2, which is recomended anyway.<br>
+          <br>
+          <img src=runbooks01.png class=ImageMain>
+		      <div class=ImageCaption>↑ We added the PNP.PowerShell module in order to upload files to SharePoint Online. This module requires PowerShell 7.</div>
+          <br>
+          That took care of the modules, but next we needed to address how the Automation Account would be able to connect to these modules and have the rights needed to create the report. First the Automation Account needs to run as a managed identity, this can be found under Account Settings > Identity.<br>
+          <br>
+          <img src=runbooks02.png class=ImageMain>
+		      <div class=ImageCaption>↑ Our Automation Account is setup as a managed identity.</div>
+          <br>
+          The managed identity will need to collect phone numbers, so as in my previous article we need to add the Object ID to the Skype for Business admin role. For Sharepoint we need to be able to upload files, currently the only way to do this is to give read/write access to all SharePoint sites via an API permission.<br>
+          Adding the permission must be done by a Cloud Admin connected to PNP PowerShell, who runs the following command:<br>
+          <br>
+        <div class=code>Connect-PnPOnline -Interactive -Url https://<my site>.sharepoint.com/ # must be Cloud Admin that connects<br><br>Add-PnPAzureADServicePrincipalAppRole -Principal "<object ID of managed identity>" -AppRole "Sites.ReadWrite.All" -BuiltInType SharePointOnline</div>
+          <br>
+          Now we have the modules loaded, and needed permissions added, but how do we connect to these modules within the runspace? Teams did not support this until recently but it worked first time with the correct switch:<br>
+          <div class=code>Connect-MicrosoftTeams -Identity<br>Connect-PnPOnline -ManagedIdentity -Url $siteUrl</div>
+          <br>
+          The only other issue I came across was where do you store a temporary file before it is uploaded into SharePoint? The runbooks run in a VM, and can randomly switch to another VM so it's best just to write all the information down in one go. You can use the location: $StorageFolder = "$env:temp".<br>
+<br>
+       		  <br>
+		
+          </div>
+          
+          </td>
+         
+        </td></tr>
+    </table> 
+    
+
+    
+    
+    
+  </body>
+  
+  
+  
+</html>
