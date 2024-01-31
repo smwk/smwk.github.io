@@ -131,7 +131,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           The managed identity will need to collect phone numbers, so as in my previous article we need to add the Object ID to the Skype for Business admin role. For Sharepoint we need to be able to upload files, currently the only way to do this is to give read/write access to all SharePoint sites via an API permission.<br>
           Adding the permission must be done by a Cloud Admin connected to PNP PowerShell, who runs the following command:<br>
           <br>
-        <div class=code>Connect-PnPOnline -Interactive -Url https://<my site>.sharepoint.com/ # must be Cloud Admin that connects<br><br>Add-PnPAzureADServicePrincipalAppRole -Principal "<object ID of managed identity>" -AppRole "Sites.ReadWrite.All" -BuiltInType SharePointOnline</div>
+        <div class=code>Connect-PnPOnline -Interactive -Url https://-my site-.sharepoint.com/ # must be Cloud Admin that connects<br><br>Add-PnPAzureADServicePrincipalAppRole -Principal "-object ID of managed identity-" -AppRole "Sites.ReadWrite.All" -BuiltInType SharePointOnline</div>
           <br>
           Now we have the modules loaded, and needed permissions added, but how do we connect to these modules within the runspace? Teams did not support this until recently but it worked first time with the correct switch:<br>
           <div class=code>Connect-MicrosoftTeams -Identity<br>Connect-PnPOnline -ManagedIdentity -Url $siteUrl</div>
