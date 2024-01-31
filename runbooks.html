@@ -134,7 +134,8 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=code>Connect-PnPOnline -Interactive -Url https://-my site-.sharepoint.com/ # must be Cloud Admin that connects<br><br>Add-PnPAzureADServicePrincipalAppRole -Principal "-object ID of managed identity-" -AppRole "Sites.ReadWrite.All" -BuiltInType SharePointOnline</div>
           <br>
           Now we have the modules loaded, and needed permissions added, but how do we connect to these modules within the runspace? Teams did not support this until recently but it worked first time with the correct switch:<br>
-          <div class=code>Connect-MicrosoftTeams -Identity<br>Connect-PnPOnline -ManagedIdentity -Url $siteUrl</div>
+         <br>
+		<div class=code>Connect-MicrosoftTeams -Identity<br>Connect-PnPOnline -ManagedIdentity -Url $siteUrl</div>
           <br>
           The only other issue I came across was where do you store a temporary file before it is uploaded into SharePoint? The runbooks run in a VM, and can randomly switch to another VM so it's best just to write all the information down in one go. You can use the location: $StorageFolder = "$env:temp".<br>
 <br>
