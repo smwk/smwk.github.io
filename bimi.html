@@ -121,48 +121,26 @@ a.two:hover {color: #447EAE; text-decoration: none;}
      
 	      
 
-         <div class=headline>Orbea Occam SL H30</div>
+         <div class=headline>Getting BIMI certified</div>
 	      <div class=datestamp>19-Feb-24</div>
         <div class=content><br>
-After 8 years with my Giant Talon 0 2016 it was finally time to upgrade my mountain bike. My budget was under €3,000 which is probably the lower end of a good full suspension trail bike.<br>
-          <br>
-          Value wise the <a href='https://www.canyon.com/en-ie/mountain-bikes/trail-bikes/neuron/al/neuron-6/3166.html?dwvar_3166_pv_rahmenfarbe=WH%2FBK'>Canyon Neuron 6</a> came out best. In the end though I went for a better frame with the <a href='https://www.orbea.com/ie-en/bicycles/mountain/occam-sl/cat/occam-sl-h30-2024'>Orbea Occam SL H30</a>.<br>
-          <br>
-		
-          <img src=occam01.png class=ImageMain>
-          <div class=ImageCaption>↑ 2024 Orbea Occam SL H30.</div>
+Over the last few years DMARC has been <a href='https://dmarc.org/stats/dmarc/'>adopted</a> by more and more domains. It has helped reduce spam significantly and to secure mail domains. But if you ask your average mail user how to identify an authenticated email it's not something they are interested in or know about.<br>
+<br>
+This is where an extension of DMARC can help: <a href='https://en.wikipedia.org/wiki/Brand_Indicators_for_Message_Identification'>Brand Indicators for Message Identification</a> or BIMI for short. This allows a company's logo to be displayed beside a received email.<br>
 		<br>
-          So how does my new bike match up against the old one?<br>
-          <br>
-          <table style="font-family:verdana; font-size:12px; color:#564c4d;" class=table1>
-           <tr><th></th><th>Giant Talon 0 2016</th><th>Orbea Occam SL H30 2024</th></tr> 
-            <tr><td>Cost</td><td>€1,550 (€1,840 adjusted to inflation)</td><td>€2,460</td></tr> 
-           <tr><td>Wheels</td><td>27.5"</td><td>29"</td></tr> 
-            <tr><td>Tyres Front</td><td>Maxxis Icon 27.5x2.2"</td><td>Maxxis Dissector 2.40" 60 TPI 3CMaxxTerra Exo TLR</td></tr> 
-            <tr><td>Tyres Back</td><td>Maxxis Icon 27.5x2.2"</td><td>Maxxis Rekon 2.40" FB 60 TPI Dual Exo TR </td></tr> 
-           <tr><td>Fork</td><td>Fox 32 Float Performance 100mm Fit4</td><td>Marzocchi Bomber Z2 140mm</td></tr> 
-            <tr><td>Shock</td><td>-</td><td>Fox Float Performance</td></tr> 
-           <tr><td>Groupset</td><td>Deore and XT</td><td>Deore and OEM</td></tr> 
-            <tr><td>Shifters</td><td>Shimano Deore</td><td>Shimano Deore M6100</td></tr> 
-            <tr><td>Brakes</td><td>Shimano 447 160mm</td><td>Shimano MT201</td></tr> 
-            <tr><td>Cassette</td><td>Shimano HG50 (11-36t) 10 ring</td><td>Shimano CS-M6100 (10-51t) 12-Speed</td></tr> 
-            <tr><td>Rear Derailleur</td><td>Shimano XT Shadow</td><td>Shimano Deore M6100 SGS Shadow Plus</td></tr> 
-            <tr><td>Cranks</td><td>Shimano Double (24t and 38t)</td><td>Orbea Single (32t)</td></tr> 
-            <tr><td>Handlebars</td><td>690mm</td><td>800mm</td></tr> 
-            <tr><td>Dropper</td><td>-</td><td>Orbea OEM 31.6mm</td></tr> 
-            <tr><td>Saddle</td><td>Giant OEM</td><td>Selle Royal 2058 DRN</td></tr> 
-            <tr><td>Weight</td><td>12.9KG</td><td>14.8KG (without pedals)</td></tr> 
-          </table>
+          <img src=bimim01.png class=ImageMain>
+          <div class=ImageCaption>↑ In Gmail for Android we can see some companies have adopted this while others have not.</div>
+		<br>
+	As with DMARC the BIMI specification utilises DNS to allow mail admins to upload a SVG image to a we URL. Just getting the SVG can be difficult as programs like Photoshop will save the image as a JPEG within an SVG, where as the BIMI standard is looking for the image described in XML format.<br>
+		<br>
+	Once you have your BIMI DNS record and SVG image in place you can test to see if this works in Yahoo Mail. If you check the email in Gmail you will see that there is no image, this is because Google also require that your company logo is certified with a <a href='https://support.google.com/a/answer/10911028?hl=en'>Verified Mark Certificate (VMC)</a>.<br>
+	<br>
+	These certs cost around €1,200 per year and you must have your company logo already trademarked before you can get certified. On the one hand this can be both expensive for a medium sized company and yet another step to overcome, on the other hand it does make the BIMI specification stronger and less likely to be spoofed.<br>
+	<br>
+	Currently I'm waiting to find out if the company I work for wants to commit to this. We use Office 365 and Exchange Online for email and as per usual Microsoft came up with their <a href='https://www.microsoft.com/en-us/bing/bing-pages-overview'>own version</a> of BIMI that nobody will ever use. So we probably need to wait a few years before it's finally added to Office 365.<br>
 
-          <br>
-          The bike retails for €2,800 but with a promo I managed to get it delivered for €2,460. Although I couldn't customise the bike via the Orbea website it does give me the budget to upgrade the brakes to <a href='https://www.bike-discount.de/en/shimano-xt-br-m8120-disc-brake-set'>Shimano XT BR-M8120</a>.<br>
-          <br>
-         The main upgrades over the previous bike for me are:<br>
-          - Full suspension makes for a much smoother ride.<br>
-	  - Larger fork travel, 100mm to 140mm.<br>
-          - Dropper post with remote lock.<br>
-          - Upgrade from wheel skewer to thru axle. This might not sound like a big upgrade but if you transport your bike by taking off the front wheel it is.<br>
-          
+		
+
           <br>
           
 	<br>
