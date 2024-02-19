@@ -128,12 +128,12 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
 Over the last few years DMARC has been <a href='https://dmarc.org/stats/dmarc/'>adopted</a> by more and more domains. It has helped reduce spam significantly and to secure mail domains. But if you ask your average mail user how to identify an authenticated email it's not something they are interested in or know about.<br>
 <br>
-This is where an extension of DMARC can help: <a href='https://en.wikipedia.org/wiki/Brand_Indicators_for_Message_Identification'>Brand Indicators for Message Identification</a> or BIMI for short. This allows a company's logo to be displayed beside a received email.<br>
+This is where an extension of DMARC can help: <a href='https://en.wikipedia.org/wiki/Brand_Indicators_for_Message_Identification'>Brand Indicators for Message Identification</a> or BIMI for short. It allows a company's logo to be displayed beside a received email.<br>
 		<br>
           <img src=bimi01.png class=ImageMain>
           <div class=ImageCaption>↑ In Gmail for Android we can see some companies have adopted this while others have not.</div>
 		<br>
-	As with DMARC the BIMI specification utilises DNS to allow mail admins to upload a SVG image to a we URL. Just getting the SVG can be difficult as programs like Photoshop will save the image as a JPEG within an SVG, where as the BIMI standard is looking for the image described in XML format.<br>
+	As with DMARC the BIMI specification utilises DNS to allow mail admins to upload a SVG image to a web URL. Just getting the SVG can be difficult as programs like Photoshop will save the image as a JPEG within an SVG, where as the BIMI standard is looking for the image described in XML format.<br>
 		<br>
 	Once you have your BIMI DNS record and SVG image in place you can test to see if this works in Yahoo Mail. If you check the email in Gmail you will see that there is no image, this is because Google also require that your company logo is certified with a <a href='https://support.google.com/a/answer/10911028?hl=en'>Verified Mark Certificate (VMC)</a>.<br>
 	<br>
