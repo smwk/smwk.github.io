@@ -97,11 +97,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=headline>Keeping a log of NetScaler AlwaysON connections</div>
 	      <div class=datestamp>02-Mar-23</div>
         <div class=content><br>
-        While there is an option to buy an Citrix reporting add-on my customer did not want the expense of a subscription but still wanted to keep a track on connected clients. 
+        While there is an option to buy a Citrix reporting add-on my customer did not want the expense of a subscription but still wanted to keep track on connected clients. 
 		After Covid19 struck the AlwaysOn VPN solution became even more important than before.<br>
 		<br>
-		How to report on the usage with PowerShell? Thankfully there is the Nitro API which interacts well with PowerShell. Originally I was pinging a whole subnet to find connected clients, but with Nitro I could skip this step and see who was connected at a point in time.
-		 We now knew who was connected, but we needed to find out what user was logged in to the server. For stability we enabled remote PowerShell as the older commands can fail without timing out. 
+		How to report on the usage with PowerShell? Thankfully there is the Nitro API which interacts well with PowerShell. Originally I was pinging a whole subnet to find connected clients, but with Nitro, I could skip this step and see who was connected at a point in time.
+		 We now knew who was connected, but we needed to find out what user was logged in to the server. For stability, we enabled remote PowerShell as the older commands can fail without timing out. 
 		Running the script every 15 minutes we could see what clients were connecting and disconnecting and log this.<br>
 		<br>
 		<img src=alwaysOn02.png class=imageMain>
@@ -115,9 +115,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<li>Mass disconnects of all clients</li>
 		<li>DNS not updating on clients</li>
 		<br>
-		For the first issue I was not involved in troubleshooting but I could report to the Citrix admin of a mass disconnection event within a time range of 15 minutes. This helped the admin isolate the issue more quickly. 
+		For the first issue, I was not involved in troubleshooting but I could report to the Citrix admin of a mass disconnection event within a time range of 15 minutes. This helped the admin isolate the issue more quickly. 
 		For the DNS issue where the VPN clients could not update their A record we found that the fix from Citrix took so long that we had to implement our own temporary fix. We had the IP's that were connected via Nitro, so this allowed us to use remote PowerShell to query the registry and find the real hostname of the computer connected to the VPN. 
-		 With this information we could then update the DNS servers, again with PowerShell. After a few tweaks the script worked as designed and no issues were reported until we got our final fix from Citrix.<br>
+		 With this information, we could then update the DNS servers, again with PowerShell. After a few tweaks, the script worked as designed and no issues were reported until we got our final fix from Citrix.<br>
 		
           <br><br> 
            
