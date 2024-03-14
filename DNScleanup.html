@@ -104,7 +104,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=headline>Cleaning up your Windows DNS server</div>
 	      <div class=datestamp>01-Mar-23</div>
         <div class=content><br>
-          Having contracted at a number of companies over the years I've seen my fair share of horror shows with regards DNS. For something so simple it really does have a lot of importance and should be regularly reviewed.<br>
+          Having contracted at a number of companies over the years I've seen my fair share of horror shows with regard DNS. For something so simple it does have a lot of importance and should be regularly reviewed.<br>
 		<br>
 		In my latest role the DNS setup was quite simple and I'm happy to report DNS scavaging was enabled, so the majority of records were correct and up-to-date.<br><br>
 		<img src=DNScleanup01.png class=ImageMain>
@@ -122,9 +122,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<br>
 		What did we find? A few hundred records were wrong:<br>
 		<li>About 50 A records could be deleted</li>
-		<li>A number of subnets were missing for reverse DNS lookup zones.</li>
+		<li>Several subnets were missing for reverse DNS lookup zones.</li>
 		<li>Some DMZ servers had been removed from VMware but the DNS record remained.</li>
-		<li>We found that our Fortinet Site-to-Site VPN did not have rights to update the PTR record.</li>
+		<li>We found that our Fortinet Site-to-Site VPN did not have the rights to update the PTR record.</li>
 		<li>In our split DNS zone we added an MX record, it didn't fix an issue but some of the Microsoft health scripts we ran were a lot happier with it present.</li>
 		<br>
 		While some of the fixes may sound trivial, when an issue occurs and you need to track down a client you will be happy to have a correct DNS setup.<br>
