@@ -115,10 +115,20 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<li>Mass disconnects of all clients</li>
 		<li>DNS not updating on clients</li>
 		<br>
-		For the first issue, I was not involved in troubleshooting but I could report to the Citrix admin of a mass disconnection event within a time range of 15 minutes. This helped the admin isolate the issue more quickly. 
-		For the DNS issue where the VPN clients could not update their A record we found that the fix from Citrix took so long that we had to implement our own temporary fix. We had the IP's that were connected via Nitro, so this allowed us to use remote PowerShell to query the registry and find the real hostname of the computer connected to the VPN. 
+		For the first issue, I was not involved in troubleshooting but I could report to the Citrix admin of a mass disconnection event within a time range of 15 minutes. This helped the admin isolate the issue more quickly. <br>
+		<br>
+		For the DNS issue where the VPN clients could not update their A record we found that the fix from Citrix took so long that we had to implement our own temporary fix.<br>
+		<br>
+		We had the IP's that were connected via Nitro, so this allowed us to use remote PowerShell to query the registry and find the real hostname of the computer connected to the VPN. 
 		 With this information, we could then update the DNS servers, again with PowerShell. After a few tweaks, the script worked as designed and no issues were reported until we got our final fix from Citrix.<br>
-		
+		<br>
+		<b>Update May 2024</b><br>
+		After a Citrix update we could no longer connect to a single namespace. So if you connected to the passive node you would not get certain details back, like external IP.<br>
+		<br>
+		The fix for this was to find the MasterServer by querying the management server:<br>
+		<div class=code>$uri = "https://adminserver/nitro/v2/config/ns"<br><br>$i_state = $in.ha_master_state</div>
+		<br>
+		While the passive and active nodes would not move around that often it does allow for unexpected issues.<br>
           <br><br> 
            
            
