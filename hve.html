@@ -141,9 +141,9 @@ With all this in mind, I decided to take an inventory of existing applications r
           With this setup it was time to test with a PowerShell script, but an error came back:<br>
           <br>
           <img src="hve01.png" class="ImageMain">
-          <div class="ImageCaption">↑ Authentication error.</div>
+          <div class="ImageCaption">↑ Authentication error - Error: 535 5.7.139</div>
           <br>
-This is because basic authentication is turned off for all accounts by default. The solution was to apply a policy that allows for Basic Authentication:<br>
+This is because basic authentication is turned off for all accounts by default. The solution was to apply a policy that allows for Basic Authentication with ExchangeOnline PowerShell:<br>
           <br>
           <div class=code>set-user hve@domain.com -AuthenticationPolicy "Allow SMTP Basic Auth"</div>
           <br>
