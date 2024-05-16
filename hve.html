@@ -155,7 +155,7 @@ Trying the script again, we seem to get the same error:<br>
 Slight difference in the error message, and if you look up the error code it gives a hint as to where the problem lies:<br>
                  <br>
           <img src="hve03.png" class="ImageMain">
-          <div class="ImageCaption">↑ Error points to Conditional Access.</div>
+          <div class="ImageCaption">↑ Error Code 53003 points to Conditional Access.</div>
           <br>  
 It's best to check the account activity in Azure to find what Conditional Access rules were blocking this. In our case, two rules blocked the access, MFA and Block Basic Auth.<br>
 <br>
