@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <title>Graph and PowerShell Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+       
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+    }
+ 
+h1 {
+        margin-top: 0px;
+    }
+
+	    ul {
+  list-style-position: outside;
+}
+	  
+      .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  text-align:left;
+  background-color: #ffffff;
+  font-family:Montserrat, sans-serif;
+  font-size:13px;
+  min-width: 380px;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+  padding: 6px 6px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+      
+	    
+a.dropbtn:link {color: #564c4d; text-decoration: none;}
+a.dropbtn:visited {color: #564c4d; text-decoration: none;}
+a.dropbtn:hover {color: #564c4d; text-decoration: none;}
+	    
+a.two:link {color: #564c4d; text-decoration: none;}
+a.two:visited {color: #564c4d; text-decoration: none;}
+a.two:hover {color: #447EAE; text-decoration: none;}
+	    
+	.content { font-family:verdana; font-size:12px; color:#564c4d; width:850px; text-align:left; }
+	.headline { font-family:verdana; font-size:22px; color:#564c4d; width:850px; text-align:left; }
+	.datestamp { font-family:verdana; font-size:10px; color:#564c4d; width:850px; text-align:left; }
+	.imagecaption { font-style: italic; }
+	.imageMain { border: 5px solid #564c4d; }
+	.indexTable td { font-family:verdana; font-size:12px; color:#564c4d; }
+	.code { font-family: 'Source Code Pro', monospace; font-size:12px; color:#000; border: 2px solid #000; background-color:#cecece; padding:6px; }
+
+	   .table1 td:first-child {
+  font-weight: bold;
+}
+	    
+      </style>
+    
+  </head>
+  
+  <body>
+    
+    <table style='width:100%; padding:0px; border-collapse: collapse;'>
+      <tr><td style='height:25px; color:#564c4d; width:50%; font-size:25px; font-family:Montserrat, sans-serif; text-align:left;'><a href='index.html' class=dropbtn><img src='giraffe3.png' style='height:55px; padding:10px; vertical-align:middle; border:0px;'>Graph and PowerShell Blog</a></td>
+        
+        <td style='width:50%; color:#564c4d; font-size:15px; font-family:Montserrat, sans-serif; text-align:right; padding-right:300px;'>
+		
+		 
+	<div class="dropdown">
+		<a href='' class="dropbtn">Articles</a>
+  <div class="dropdown-content" style='line-height: 1.6;'>
+	  <b>2024</b><br>
+    <a href="hve.html" class=two>Setting up Mail Relay with HVE</a><br>
+	      <a href="bimi.html" class=two>Getting BIMI certified</a><br>
+    <a href="occam.html" class=two>Orbea Occam SL H30</a><br>
+     <a href="freesat.html" class=two>Installing FreeSat and Saorview</a><br>
+    <a href="broadband.html" class=two>Changing broadband provider</a><br>
+    <a href="DINtimer.html" class=two>Replacing a DIN timer on fuseboard</a><br>
+    <a href="desktopNotifications.html" class=two>Outlook Desktop Notifications stop working</a><br>
+    <a href="outlookFolders.html" class=two>Outlook folders keep moving sort order</a><br>
+    <a href="runbooks.html" class=two>Teams report uploading to SharePoint with Runbooks</a><br>
+	  <a href="teamsApplication.html" class=two>Teams PowerShell module can't run CS cmd as App</a><br>
+	  
+	  <details>
+
+    <summary><b>2023</b><br></summary>
+<a href="mapSharedMailbox.html" class=two>Cannot map new Shared Mailboxes in O365</a><br>
+	<a href="exchangeCertRenew.html" class=two>Renewing an Exchange 2016 certificate</a><br>
+	<a href="compliancePowershell.html" class=two>Connect to Compliance PowerShell behind a Proxy</a><br>
+	<a href="sensitivityLabelError.html" class=two>Sensitivity Label not shown in Outlook Client</a><br>
+	<a href="roomFinderError.html" class=two>Room Finder Error in Outlook</a><br>
+	<a href="teamsRoom.html" class=two>Teams not showing Rooms</a><br>
+	<a href="teamsFile.html" class=two>Teams unable to open file</a><br>
+	<a href="reviewQuarantine.html" class=two>Unable to review quarantined mails for shared mailbox</a><br>
+	<a href="setLocale.html" class=two>Set Locale for various Apps</a><br>
+	<a href="delegateSentItems.html" class=two>Delegate Sent Items placed into external Tenant</a><br>
+	<a href="microsoftSupport.html" class=two>Overview of Microsoft Support cases</a><br>
+	<a href="centralizedMail.html" class=two>When centralized mail sends via O365</a><br>
+        <a href="DNScleanup.html" class=two>Cleaning up your Windows DNS server</a><br>
+        <a href="oneDriveLocale.html" class=two>Set OneDrive for Business Locale</a><br>
+	<a href="o365migration.html" class=two>O365 Migration Tips</a><br>
+	<a href="o365reporting.html" class=two>Reporting on successful Azure logons</a><br>
+	<a href="iisQueue.html" class=two>IIS Mapi Queue full with NetScaler</a><br>
+        <a href="o365cert.html" class=two>Secure Office365 reports with a certificate</a><br>
+        <a href="graphMail.html" class=two>Using Graph to send emails with inline images</a><br>
+        <a href="charts.html" class=two>Visualizing Graph data with Google Charts</a><br>
+        <a href="alwaysOn.html" class=two>Keeping a log of NetScaler AlwaysON connections</a><br>
+</details>
+  
+  </div>
+</div>	
+		
+		| <a href='about.html' class=two>About</a> | <a href='links.html' class=two>Links</a></td></tr> 
+      <tr><td style='height:1px; color:#564c4d; width:100%; border-bottom: 1px solid;' colspan=2></td></tr>
+      <tr><td style='text-align:center; width:100%; padding-top:30px; padding-left:30px;' colspan=2>
+     
+	      
+
+         <div class=headline>Setting up Mail Relay with HVE</div>
+	      <div class=datestamp>16-May-24</div>
+        <div class=content><br>
+Microsoft has documentation for removing the last Exchange server in a Hybrid setup but until now never really addressed how mail relay for applications would be replaced. Some admins have installed a Linux mail server on-prem with a routing group connector to O365, but that still leaves you with at least one on-prem server.<br>
+          <br>
+Finally, we have a solution, High Volume Email (HVE) which allows for 20 accounts that can relay email using basic authentication. SMTP basic authentication will be turned off for regular accounts in 2025, but these HVE accounts will be allowed to use basic auth after this by relaying to a different address: smtp-hve.office365.com.<br>
+        <br>
+Currently, this is in general preview, so we won't know the final details until September 2024. Microsoft has not said if there will be a cost for this service, but if I had to guess I would say it would remain free with 20 accounts. There is also a limit on how many external mails can be sent, which could be a problem with scanned documents sent via mail.<br>
+          <br>
+With all this in mind, I decided to take an inventory of existing applications relaying mail. First I found we had over 40 apps relaying, so with only 20 addresses to choose from this means some apps will need to share.<br>
+          Second I checked what apps would support client submissions for relay, nearly all of them did just a couple of legacy apps would only support simple SMTP relay<br>
+          Finally, I checked what apps could use OAuth or Graph, again this was a small number, one app supported Graph, and two apps supported Client Submission with OAuth.<br>
+          <br>
+          After taking the inventory it was time to setup an account and create a firewall rule for access, both for the LAN and the New World Landing Zone in Azure. The firewall rules were quite straightforward, port 587 allowed out to smtp-hve.office365.com.<br>
+          With this setup it was time to test with a PowerShell script, but an error came back:<br>
+          <br>
+          <img src="hve01.png" class="ImageMain">
+          <div class="ImageCaption">↑ Authentication error.</div>
+          <br>
+This is because basic authentication is turned off for all accounts by default. The solution was to apply a policy that allows for Basic Authentication:<br>
+          <br>
+          <div class=code>set-user hve@domain.com -AuthenticationPolicy "Allow SMTP Basic Auth"</div>
+          <br>
+Trying the script again, we seem to get the same error:<br>
+            <br>
+          <img src="hve02.png" class="ImageMain">
+          <div class="ImageCaption">↑ Another authentication error.</div>
+          <br>        
+Slight difference in the error message, and if you look up the error code it gives a hint as to where the problem lies:<br>
+                 <br>
+          <img src="hve03.png" class="ImageMain">
+          <div class="ImageCaption">↑ Error points to Conditional Access.</div>
+          <br>  
+It's best to check the account activity in Azure to find what Conditional Access rules were blocking this. In our case, two rules blocked the access, MFA and Block Basic Auth.<br>
+<br>
+          After allowing an exception the mail was sent via HVE.<br>
+
+          
+          <br>
+          
+	<br>
+	
+          </div>
+          
+          </td>
+         
+        </td></tr>
+    </table> 
+    
+
+    
+    
+    
+  </body>
+  
+  
+  
+</html>
