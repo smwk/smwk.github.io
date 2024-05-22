@@ -150,22 +150,22 @@ It's 2024 so you are probably wondering why I would write an article on delegati
           </div>
 
         <br>
-          To start off save yourself some hassle down the road, do not delegate permissions to one user, create a group instead. Even if you are told there will only ever be one user needing access, circumstances can change. If the user leaves then you'll be left with a SID in the permissions of AD.<br>
+          To start off, save yourself some hassle down the road, do not delegate permissions to one user, create a group instead. Even if you are told there will only ever be one user needing access, circumstances can change. If the user leaves then you'll be left with a SID in the permissions of AD.<br>
           <br>
-          Next, if the user only needs to access information of users then find the root OU for your users and delegate control from there, no point giving access to more than they need.<br>
+          Next, if the user only needs to access information of users then find the root OU for your users and delegate control from there, no point in giving access to more than they need.<br>
           <br>
-          After selecting the OU, right click on it to bring up 'Delegate Control'. Limit the access to user objects, even if there are no other object types in the OU it's still good practice.<br>
+          After selecting the OU, right-click on it to bring up 'Delegate Control'. Limit the access to user objects, even if there are no other object types in the OU it's still good practice.<br>
           <br>
-          When you get to 'Permissions' in the wizaard you want to select 'Property-specific', this will give us the most granular permissions. You'll find there's a lot of permssions and scrolling through them to find the right one can take time.<br>
+          When you get to 'Permissions' in the wizard you want to select 'Property-specific', this will give us the most granular permissions. You'll find there are a lot of permissions and scrolling through them to find the right one can take time.<br>
           <br>
-          But what if you can't find the permission you are looking for? Well some are not actually visibale unless you make changes to the c:\windows\system32\dssec.dat file. Open with Notepad, search for '[User]' then make the following changes:<br>
+          But what if you can't find the permission you are looking for? Well, some are not visible unless you make changes to the c:\windows\system32\dssec.dat file. Open with Notepad, search for '[User]' then make the following changes:<br>
           <br>
           <div class=code>
           physicalDeliveryOfficeName=0<br>
           sn=0<br>
           </div>
           <br>
-          Remember that when you delegate control to a group that already was given some access that the permissions are cumulative. It's not easy to determine what permissions the group may already have so in some cases it makes sense to remove the permission in the OU properties and then start again if you made a mistake.<br>
+          Remember that when you delegate control to a group that already was given some access, the permissions are cumulative. It's not easy to determine what permissions the group may already have so in some cases it makes sense to remove the permission in the OU properties and then start again if you made a mistake.<br>
           <br>
           
 	<br>
