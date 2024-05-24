@@ -163,7 +163,17 @@ On the server itself, you also need to make sure that port 587 is not blocked by
           <div class="ImageCaption">↑ All apps should have a 'Send Test Email' button, but many don't.</div>
 <br>     
           <br>
-          
+          With scripts, it is possible to send to HVE but there are a few things to check. PowerShell by default will not use TLS 1.2 so you will need to add the following to your script.<br>
+		<br>
+		<div class=code>
+		[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+		</div>
+		<br>
+		A working example using PowerShell, with HTML body and an attachment:<br>
+		<br>
+		<div class=code>
+		TBC
+		</div>
 	<br>
 	
           </div>
