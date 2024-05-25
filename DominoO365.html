@@ -131,21 +131,23 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	      <div class=datestamp>25-May-24</div>
         <div class=content><br>
 
-  Over the last few years I've been migrating Domino/Notes mailboxes first to Exchange 2016 and then to O365. Despite all the mailboxes being migrated there are numerous Domino applications still in use.<br>
+  Over the last few years, I've been migrating Domino/Notes mailboxes first to Exchange 2016 and then to O365. Despite all the mailboxes being migrated there are numerous Domino applications still in use.<br>
           <br>
-  Currently the co-existence works between the on-prem Exchange 2016 servers and Domino, with all mail-flow via the Exchange servers. The routing addresses used are user@domino.domain.local and user@exchange.domain.local, which are not compatible with O365.<br>
+  Currently, the co-existence works between the on-prem Exchange 2016 servers and Domino, with all mail flow via the Exchange servers. The routing addresses used are user@domino.domain.local and user@exchange.domain.local, which are not compatible with O365.<br>
           <br>
-  With the aim to remove shut down the legacy Exchange servers I need to route traffic directly between the Domino servers and O365. While mail-flow is almost entierly one-way from Domino to O365, i still need to keep both directions working.<br>
+  To remove and shut down the legacy Exchange servers, I need to route traffic directly between the Domino servers and O365. While mail flow is almost entirely one-way from Domino to O365, I still need to keep both directions working.<br>
           <br>
   When I looked into this there wasn't much information specifically mentioning Domino, but there is information on routing connectors in O365. The steps are:<br>
           <br>
-          <li>Get an external fixed IP for Domino. This will be hosted in the New World Landing Zone so it will be load balanced in Azure for redundancy.</li>
+          <li>Get an external fixed IP for Domino. This will be hosted in the New World Landing Zone so it will be load-balanced in Azure for redundancy.</li>
           <li>Create a send and receive connector in O365, secure them by use of a 3rd party certificate - domino.domain.com .</li>
           <li>Add a DNS record for domino.domain.com and point it to the external IP.</li>
           <li>While a <a href='https://learn.microsoft.com/en-us/powershell/module/exchange/set-accepteddomain?view=exchange-ps'>shared namespace</a> is a possibility, for sending I decided to go for a child domain, so from O365 to Domino will have addresses of user@domino.domian.com .</li>
           <li>Received mails from Domino can still use the user@domain.com address.</li>
           <br>
-          Once in place all this really requires is for the 3rd party cert to be renewed anually.<br> 
+          Once in place, all this requires is for the 3rd party cert to be renewed annually.<br> 
+		<br>
+		So far this is the plan, though there may be changes in practice.<br>
           
 	<br>
 	
