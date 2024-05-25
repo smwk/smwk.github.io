@@ -139,9 +139,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
   When I looked into this there wasn't much information specifically mentioning Domino, but there is information on routing connectors in O365. The steps are:<br>
           <br>
-          <li>Get an external fixed IP for Domino. This will be hosted in the New World Landing Zone so it will be load-balanced in Azure for redundancy.</li>
-          <li>Create a send and receive connector in O365, secure them by use of a 3rd party certificate - domino.domain.com .</li>
-          <li>Add a DNS record for domino.domain.com and point it to the external IP.</li>
+          <li>Get an external fixed IP for Domino. This will be hosted in the <a href='https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/'>Landing Zone</a> so it will be <a href='https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-routing-methods#priority-traffic-routing-method'>load-balanced</a> in Azure for redundancy.</li>
+          <li>Create a send and receive <a href='https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/set-up-connectors-to-route-mail'>connector</a> in O365, secure them by use of a 3rd party certificate - domino.domain.com .</li>
+          <li>Add a DNS record for domino.domain.com and point it to the external IP from Azure.</li>
           <li>While a <a href='https://learn.microsoft.com/en-us/powershell/module/exchange/set-accepteddomain?view=exchange-ps'>shared namespace</a> is a possibility, for sending I decided to go for a child domain, so from O365 to Domino will have addresses of user@domino.domian.com .</li>
           <li>Received mails from Domino can still use the user@domain.com address.</li>
           <br>
