@@ -133,7 +133,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 
   Over the last few years, I've been migrating Domino/Notes mailboxes first to Exchange 2016 and then to O365. Despite all the mailboxes being migrated there are numerous Domino applications still in use.<br>
           <br>
-  Currently, the co-existence works between the on-prem Exchange 2016 servers and Domino, with all mail flow via the Exchange servers. The routing addresses used are user@domino.domain.local and user@exchange.domain.local, which are not compatible with O365.<br>
+  Currently, the co-existence works between the on-prem Exchange 2016 servers and Domino, with all mail flow to and from O365 via the Exchange servers. The routing addresses used are user@domino.domain.local and user@exchange.domain.local, which are not compatible with O365.<br>
           <br>
   To remove and shut down the legacy Exchange servers, I need to route traffic directly between the Domino servers and O365. While mail flow is almost entirely one-way from Domino to O365, I still need to keep both directions working.<br>
           <br>
