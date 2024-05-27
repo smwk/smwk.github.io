@@ -171,7 +171,22 @@ On the server itself, you also need to make sure that port 587 is not blocked by
 		A working example using PowerShell, with HTML body and an attachment:<br>
 		<br>
 		<div class=code>
-		TBC
+		$EmailTo = "user@domain.com"<br>
+$EmailFrom = "relay@domain.com"<br>
+$Subject = "Test" <br>
+$body = "<em>HTML mail</em>"<br>
+$SMTPServer = "smtp-hve.office365.com"<br>
+$file = "c:\scripts\hvetest.txt"<br>
+$att = new-object Net.Mail.Attachment($file)<br>
+<br>
+$SMTPMessage = New-Object System.Net.Mail.MailMessage($EmailFrom,$EmailTo,$Subject,$Body)<br>
+$SMTPMessage.IsBodyHtml = $true<br>
+$SMTPMessage.Attachments.Add($att)<br>
+<br>
+$SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)<br>
+$SMTPClient.EnableSsl = $true<br>
+$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("relay@domain.com", "password");<br>
+$SMTPClient.Send($SMTPMessage)<br>
 		</div>
 	<br>
 		While I could ask the script owners to use <a href='https://smwk.github.io/graphMail.html'>Graph instead</a>, the above code is easier to edit.<br>
