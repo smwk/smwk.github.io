@@ -136,15 +136,24 @@ This is where an extension of DMARC can help: <a href='https://en.wikipedia.org/
           <img src=bimi01.png class=ImageMain>
           <div class=ImageCaption>↑ In Gmail for Android we can see some companies have adopted this while others have not.</div>
 		<br>
-	As with DMARC, the BIMI specification utilises DNS to allow mail admins to upload an SVG image to a web URL. Just getting the SVG can be difficult as programs like Photoshop will save the image as a JPEG within an SVG, whereas the BIMI standard is looking for the image described in XML format.<br>
+	As with DMARC, the BIMI specification utilizes DNS to allow mail admins to upload an SVG image to a web URL. Just getting the SVG can be difficult as programs like Photoshop will save the image as a JPEG within an SVG, whereas the BIMI standard is looking for the image described in XML format.<br>
 		<br>
 	Once you have your BIMI DNS record and SVG image in place you can test to see if this works in Yahoo Mail. If you check the email in Gmail you will see that there is no image, this is because Google also requires that your company logo be certified with a <a href='https://support.google.com/a/answer/10911028?hl=en'>Verified Mark Certificate (VMC)</a>.<br>
 	<br>
 	These certs cost around €1,200 per year and you must have your company logo already trademarked before you can get certified. On the one hand, this can be both expensive for a medium-sized company and yet another step to overcome, on the other hand, it does make the BIMI specification stronger and less likely to be spoofed.<br>
 	<br>
 	Currently, I'm waiting to find out if the company I work for wants to commit to this. We use Office 365 and Exchange Online for email and as per usual Microsoft came up with their <a href='https://www.microsoft.com/en-us/bing/bing-pages-overview'>own version</a> of BIMI that nobody will ever use. So we probably need to wait a few years before it's finally added to Office 365.<br>
-
-		
+<br>
+		<b>Update - 06-Jun-24:</b><br>
+		It took a few months, but we finally got the Verified Mark Certificate (VMC) from DigiCert, apparently the rollout is still in beta. The .pem file is created out of 3 certs in DER encoding, so copy the text into Notepad and rename with a .pem extension.<br>
+		<br>
+		Then upload the file to your website and update the BIMI DNS record to the URL where the file is stored.<br>
+		<br>
+		After this it took a couple of hours before Gmail would start showing the logo, really quite simple once you get the actual cert.<br>
+		<br>
+		<img src=bimi02.png class=ImageMain>
+          <div class=ImageCaption>↑ .pem file is basically 3 certs in DER format.</div>
+		<br>
 
           <br>
           
