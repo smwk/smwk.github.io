@@ -134,7 +134,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
 After coming to understand that apps that offer a username and password doesn't mean they necessarily support client submission on port 587, I needed another way to move apps away from Exchange 2016 on-prem for mail relay to Office365.<br>
           <br>
-The most common choice is to set up an Ubuntu server with Postfix and then have Postfix submit the email with an account. However, that has the major drawback of only allowing one email from an address to be used. I have many apps to support and some that are important enough to require their own address.<br>
+The most common choice is to set up an Ubuntu server with Postfix and then have Postfix submit the email with an O365 account. However, that has the major drawback of only allowing one email 'from address' to be used. I have many apps to support and some that are important enough to require their own address.<br>
           <br>
           A better option is to use Postfix and connector to an O365 receive connector (aka Inbound Connector), which allows for server-to-server communication over port 25. The recommended way to secure the connection is with a 3rd part cert, but for testing, you can use an external IP address.<br>
           <br>
