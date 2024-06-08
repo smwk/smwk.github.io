@@ -136,7 +136,7 @@ After coming to understand that apps that offer a username and password doesn't 
           <br>
 The most common choice is to set up an Ubuntu server with Postfix and then have Postfix submit the email with an O365 account. However, that has the major drawback of only allowing one email 'from address' to be used. I have many apps to support and some that are important enough to require their own address.<br>
           <br>
-          A better option is to use Postfix and connector to an O365 receive connector (aka Inbound Connector), which allows for server-to-server communication over port 25. The recommended way to secure the connection is with a 3rd part cert, but for testing, you can use an external IP address.<br>
+          A better option is to use Postfix and connect to an O365 receive connector (aka Inbound Connector), which allows for server-to-server communication over port 25. The recommended way to secure the connection is with a 3rd part cert, but for testing, you can use an external IP address.<br>
           <br>
           Having limited Linux experience over the years I was a little surprised at how bad certain things were:<br>
           <li>Keyboard support would always default back to US after a reboot no matter how many settings I had.</li>
