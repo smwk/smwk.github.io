@@ -149,11 +149,20 @@ The most common choice is to set up an Ubuntu server with Postfix and then have 
           The config is simple enough, you want to set the smart host so it points to O365 for all received mail:<br>
           <br>
           <div class=code>
-            TBC
+            /etc/postfix/main.cf<br>
+		===================<br>
+		relayhost = [domain-com.mail.protection.outlook.com]:25<br>
           </div>
         <br>
           What apps can relay via the server can be restricted by IP, this is important because the connector to O365 is an open relay, with some filtering in place.<br>
-          <br>
+                   <br>
+          <div class=code>
+            /etc/postfix/main.cf<br>
+		===================<br>
+		mynetworks = 192.168.1.2 <br>
+        <br><br>
+          </div>
+        <br>
           At this point, I'm waiting on the firewall admin to put the rule in place for testing and the 3rd party certificate to be purchased. Once these are in place I will add a new hostname that apps can connect to for testing.<br>
           <br>
           After that, I plan to install PowerShell and report daily on the emails relayed via the server. As far as I know, there is no separate reporting for connectors in O365, but I need to research this further.<br>
