@@ -171,7 +171,7 @@ smtp_tls_cert_file = /etc/ssl/relay_cert.cer<br>
 smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
         <br>	
-          After setting this up we restarted the Postfix service and set the O365 receive connector to validate by matching the cert to the domain name.<br>
+          Next, we restarted the Postfix service and set the O365 receive connector to validate by matching the cert to the domain name.<br>
 		<br>
 		<img src=postfixRelay04.png style='border: 5px solid #564c4d;'>
 		<div class=ImageCaption>↑ Connector validates against the cert name, this is the recommended setup.</div>
