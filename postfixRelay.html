@@ -199,7 +199,7 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 	I have to admit I tested this with Powershell's send-mailmessage and got an obscure cert error message. But I also tested with OpenSSL on the Ubuntu server and with another app and they both worked without issue.<br>
 		<br>
 		 <div class=code>
-		Send-MailMessage -To joe.soap@gmail.com -from  "Test Account <relay@domain.com>" -Subject 'test'-SmtpServer server.domain.local -UseSsl -Port 465<br>
+		Send-MailMessage -To joe.soap@gmail.com -from  "relay@domain.com" -Subject 'test' -SmtpServer server.domain.local -UseSsl -Port 465<br>
 		Send-MailMessage : The remote certificate is invalid according to the validation procedure.<br>
           </div>
 		<br>
