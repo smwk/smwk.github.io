@@ -137,7 +137,7 @@ After coming to understand that apps that offer a username and password doesn't 
           <br>
 The most common choice is to set up an Ubuntu server with Postfix and then have Postfix submit the email with an O365 account. However, that has the major drawback of only allowing one email 'from address' to be used. I have many apps to support and some that are important enough to require their own address.<br>
           <br>
-          A better option is to use Postfix and connect to an O365 receive connector (aka Inbound Connector), which allows for server-to-server communication over port 25. The recommended way to secure the connection is with a 3rd part cert, but for testing, you can use an external IP address.<br>
+          A better option is to use Postfix and connect to an O365 receive connector (aka Inbound Connector), which allows for server-to-server communication over port 25. The recommended way to secure the connection is with a 3rd party cert, but for testing, you can use an external IP address.<br>
           <br>
           Having limited Linux experience over the years I was a little surprised at how bad certain things were:<br>
           <li>Keyboard support would always default back to US after a reboot no matter how many settings I had.</li>
@@ -154,13 +154,13 @@ The most common choice is to set up an Ubuntu server with Postfix and then have 
 		relayhost = [domain-com.mail.protection.outlook.com]:25<br>
           </div>
         <br>
-          What apps can relay via the server can be restricted by IP, this is important because the connector to O365 is an open relay, with some filtering in place.<br>
+          What apps can relay via the server can be restricted by IP, this is important because the connector to O365 is an open relay, with only some filtering in place.<br>
                    <br>
           <div class=code>
 		mynetworks = 192.168.1.2 <br>
           </div>
         <br>
-          We need the Postfix server to relay to O365 using encryption so we set the following:<br>
+          We need the Postfix server to relay to O365 using encryption, so having purchased and installed a 3rd party cert we set the following config:<br>
 	               <br>
           <div class=code>
 		smtp_tls_security_level = encrypt<br>
@@ -171,7 +171,7 @@ smtp_tls_cert_file = /etc/ssl/relay_cert.cer<br>
 smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
         <br>	
-          After setting this up we restart the Postfix service and set the O365 connector to validate by matching the cert to the domain name.<br>
+          After setting this up we restarted the Postfix service and set the O365 receive connector to validate by matching the cert to the domain name.<br>
 		<br>
 		<img src=postfixRelay04.png style='border: 5px solid #564c4d;'>
 		<div class=ImageCaption>↑ Connector validates against the cert name, this is the recommended setup.</div>
