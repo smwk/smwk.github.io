@@ -157,20 +157,66 @@ The most common choice is to set up an Ubuntu server with Postfix and then have 
           What apps can relay via the server can be restricted by IP, this is important because the connector to O365 is an open relay, with some filtering in place.<br>
                    <br>
           <div class=code>
-            /etc/postfix/main.cf<br>
-		===================<br>
 		mynetworks = 192.168.1.2 <br>
           </div>
         <br>
-          At this point, I'm waiting on the firewall admin to put the rule in place for testing and the 3rd party certificate to be purchased. Once these are in place I will add a new hostname that apps can connect to for testing.<br>
-          <br>
-          After that, I plan to install PowerShell and report daily on the emails relayed via the server. As far as I know, there is no separate reporting for connectors in O365, but I need to research this further.<br>
-          
-          
-	<br>
-	
+          We need the Postfix server to relay to O365 using encryption so we set the following:<br>
+	               <br>
+          <div class=code>
+		smtp_tls_security_level = encrypt<br>
+smtp_use_tls = yes<br>
+smtp_tls_note_starttls_offer=yes<br>
+smtp_tls_key_file = /etc/ssl/private.key<br>
+smtp_tls_cert_file = /etc/ssl/relay_cert.cer<br>
+smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
-          
+        <br>	
+          After setting this up we restart the Postfix service and set the O365 connector to validate by matching the cert to the domain name.<br>
+		<br>
+		<img src=postfixRelay04.png style='border: 5px solid #564c4d;'>
+		<div class=ImageCaption>↑ Connector validates against the cert name, this is the recommended setup.</div>
+		<br>
+          With that in-pace I sent a test mail, not expecting it to work the first time, but there was a nice surprise.<br>
+		<br>
+		<img src=postfixRelay02.png style='border: 5px solid #564c4d;'>
+		<div class=ImageCaption>↑ Email received and sent to O365 using TLS 1.3. The time delay turned out to be NTP not being setup on Ubuntu.</div>
+		<br>	
+	One thing to note is you will probably need to update your SPF record to include the external IP address that the relay server uses. The messages that arrive via the O365 connector are still subject to spam filtering.<br>
+		<br>
+	The next test was to send to an external recipient, eg relay@domain.com to joe.soap@gmail.com. This worked without issue and the email was authenticated in Gmail, so no spam issues to deal with there. O365 will add its own DKIM mark to the outgoing mail.<br>
+		<br>
+	At this point, all of the functionality that was in my old Exchange server was now present in the Postfix server. But what if you want to provide a better service? Most apps will relay in clear text on port 25 to the relay server but some support implicit SSL on port 465. To support this we add the following to the main.cf file:<br>
+		<br>
+	          <div class=code>
+	smtpd_tls_key_file = /etc/ssl/private.key
+smtpd_tls_cert_file = /etc/ssl/relay_cert.cer
+smtpd_tls_CAfile = /etc/ssl/inter_cert.cer
+smtpd_use_tls=yes
+smtpd_tls_security_level=may
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+          </div>	
+	<br>
+	I have to admit I tested this with Powershell's send-mailmessage and got an obscure cert error message. But I also tested with OpenSSL on the Ubuntu server and with another app and they both worked without issue.<br>
+		<br>
+		 <div class=code>
+		Send-MailMessage -To joe.soap@gmail.com -from  "Test Account <relay@domain.com>" -Subject 'test'-SmtpServer server.domain.local -UseSsl -Port 465<br>
+		Send-MailMessage : The remote certificate is invalid according to the validation procedure.<br>
+          </div>
+	PowerShell will not be used to send these emails anyway, so there wasn't a whole lot of point in troubleshooting further. Maybe I'll come back to it someday.<br>
+		<br>
+	With the OpenSSL test I was able to send a test mail, the only difference in the headers is that we see ESMTPS instead of ESMTP.<br>
+		<br>
+			<br>
+		<img src=postfixRelay04.png style='border: 5px solid #564c4d;'>
+		<div class=ImageCaption>↑ ESMTPS means the email was encrypted from the app server to Postfix.</div>
+		<br>	
+		Some commands that help administering Ubuntu and Postfix:<br>
+			 <div class=code>
+		postfix reload  # restart the Postfix service<br>
+		postfix logrotate  # saves off the existing postfix.log and creates a new log<br>
+		sudo reboot  # reboot the server, needed after some config changes<br>
+		setxkbmap gb  # set keyboard to UK, unfortunately doesn't stick after reboot<br>
+          </div>
           </td>
          
         </td></tr>
