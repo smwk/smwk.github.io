@@ -202,6 +202,7 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 		Send-MailMessage -To joe.soap@gmail.com -from  "Test Account <relay@domain.com>" -Subject 'test'-SmtpServer server.domain.local -UseSsl -Port 465<br>
 		Send-MailMessage : The remote certificate is invalid according to the validation procedure.<br>
           </div>
+		<br>
 	PowerShell will not be used to send these emails anyway, so there wasn't a whole lot of point in troubleshooting further. Maybe I'll come back to it someday.<br>
 		<br>
 	With the OpenSSL test I was able to send a test mail, the only difference in the headers is that we see ESMTPS instead of ESMTP.<br>
