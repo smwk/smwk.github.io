@@ -188,12 +188,12 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 	At this point, all of the functionality that was in my old Exchange server was now present in the Postfix server. But what if you want to provide a better service? Most apps will relay in clear text on port 25 to the relay server but some support implicit SSL on port 465. To support this we add the following to the main.cf file:<br>
 		<br>
 	          <div class=code>
-	smtpd_tls_key_file = /etc/ssl/private.key
-smtpd_tls_cert_file = /etc/ssl/relay_cert.cer
-smtpd_tls_CAfile = /etc/ssl/inter_cert.cer
-smtpd_use_tls=yes
-smtpd_tls_security_level=may
-smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+	smtpd_tls_key_file = /etc/ssl/private.key<br>
+smtpd_tls_cert_file = /etc/ssl/relay_cert.cer<br>
+smtpd_tls_CAfile = /etc/ssl/inter_cert.cer<br>
+smtpd_use_tls=yes<br>
+smtpd_tls_security_level=may<br>
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
           </div>	
 	<br>
 	I have to admit I tested this with Powershell's send-mailmessage and got an obscure cert error message. But I also tested with OpenSSL on the Ubuntu server and with another app and they both worked without issue.<br>
