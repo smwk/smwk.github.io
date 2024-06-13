@@ -196,16 +196,16 @@ smtpd_tls_security_level=may<br>
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
           </div>	
 	<br>
-	I have to admit I tested this with Powershell's send-mailmessage and got an obscure cert error message. But I also tested with OpenSSL on the Ubuntu server and with another app and they both worked without issue.<br>
+	I have to admit I tested this with Powershell's send-mailmessage and got an obscure cert error message.<br>
 		<br>
 		 <div class=code>
 		Send-MailMessage -To joe.soap@gmail.com -from  relay@domain.com -Subject 'test' -SmtpServer server.domain.local -UseSsl -Port 465<br>
 		Send-MailMessage : The remote certificate is invalid according to the validation procedure.<br>
           </div>
 		<br>
-	PowerShell will not be used to send these emails anyway, so there wasn't a whole lot of point in troubleshooting further. Maybe I'll come back to it someday.<br>
+	I eventually worked out that with PowerShell the specified SMTP server has to match the certificate name. So you may need to edit the hosts file to point relay.domain.com to your internal Postfix server. Most apps don't seem to be as fussy as PowerShell.
 		<br>
-	With the OpenSSL test I was able to send a test mail, the only difference in the headers is that we see ESMTPS instead of ESMTP.<br>
+	I also tested with OpenSSL and was able to send a test mail, the only difference in the headers is that we see ESMTPS instead of ESMTP.<br>
 		<br>
 			<br>
 		<img src=postfixRelay03.png style='border: 5px solid #564c4d;'>
