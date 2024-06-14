@@ -169,8 +169,17 @@ On the server itself, you also need to make sure that port 587 is not blocked by
 		</div>
 		<br>
 		A working example using PowerShell, with HTML body and an attachment:<br>
+<br>
+		<div class=code>
+		# Before starting you want to save your credentials encrypted<br>
+			<br>
+			$credential = Get-Credential<br>
+			$credential | Export-CliXml -Path 'C:\scripts\creds.xml'<br>
+		</div>
 		<br>
 		<div class=code>
+			$creds = Import-CliXml 'c:\scripts\creds.xml'<br>
+			<br>
 		$EmailTo = "user@domain.com"<br>
 $EmailFrom = "relay@domain.com"<br>
 $Subject = "Test" <br>
@@ -185,7 +194,7 @@ $SMTPMessage.Attachments.Add($att)<br>
 <br>
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)<br>
 $SMTPClient.EnableSsl = $true<br>
-$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("relay@domain.com", "password");<br>
+$SMTPClient.Credentials = $creds<br>
 $SMTPClient.Send($SMTPMessage)<br>
 		</div>
 	<br>
