@@ -219,6 +219,30 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 		setxkbmap gb  <i># set keyboard to UK, unfortunately doesn't stick after reboot</i><br>
           </div>
 		<br>
+		Further Postfix config explained:<br>
+		 <div class=code>
+		smtp_***  <i># server to server communication</i><br>
+		smtpd_***  <i># client to server communication</i><br>
+			 <br>
+		smtp_tls_key_file = /etc/ssl/private.key  <i># your private key</i><br>
+		smtp_tls_cert_file = /etc/ssl/relay_cert.cer  <i># your public key</i><br>
+		smtp_tls_CAfile = /etc/ssl/inter_cert.cer  <i># your intermediate key, O365 does not seem to require this but it's good practice to include it</i><br>
+			 <br>
+			smtp_use_tls = yes <i># opportunistic, use TLS when a remote SMTP server announces STARTTLS suppor</i><br>
+			smtp_tls_security_level = encrypt <i># enforces TLS to be used when sending mail</i><br>
+			smtp_tls_note_starttls_offer=yes <i># keeps a log of servers using TLS, not really sure if needed</i><br>
+			 <br>
+			smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache <i># used to cache TLS requests, needed for performance</i><br>
+			 <br>
+			 smtpd_tls_loglevel = 1<i># shows what TLS version is used by clients, adds line to log</i><br>
+			 <br>
+			 myhostname = relay.oireachtas.ie <i># hostname returned to telnet EHLO</i><br>
+			 <br>
+			 maillog_file = /var/log/postfix.log <i># where to place the Postfix log file</i><br>
+			 compatibility_level = 3.6 <i># backwards compatibility safety guard</i><br>
+			alias_maps = hash:/etc/aliases<i># mapping logons to addresses, only added to remove error in log</i><br>
+
+          </div>
 <br>
 		References: <a href='https://secopsmonkey.com/better-mail-relaying-postfix-through-office-365.html'>https://secopsmonkey.com/better-mail-relaying-postfix-through-office-365.html</a><br>
 		<br>
