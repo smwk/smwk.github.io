@@ -228,7 +228,7 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 		smtp_tls_cert_file = /etc/ssl/relay_cert.cer  <i># your public key</i><br>
 		smtp_tls_CAfile = /etc/ssl/inter_cert.cer  <i># your intermediate key, O365 does not seem to require this but it's good practice to include it</i><br>
 			 <br>
-			smtp_use_tls = yes <i># opportunistic, use TLS when a remote SMTP server announces STARTTLS suppor</i><br>
+			smtp_use_tls = yes <i># opportunistic, use TLS when a remote SMTP server announces STARTTLS support</i><br>
 			smtp_tls_security_level = encrypt <i># enforces TLS to be used when sending mail</i><br>
 			smtp_tls_note_starttls_offer=yes <i># keeps a log of servers using TLS, not really sure if needed</i><br>
 			 <br>
