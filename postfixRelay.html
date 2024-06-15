@@ -236,7 +236,7 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 			 <br>
 			 smtpd_tls_loglevel = 1<i># shows what TLS version is used by clients, adds line to log</i><br>
 			 <br>
-			 myhostname = relay.oireachtas.ie <i># hostname returned to telnet EHLO</i><br>
+			 myhostname = relay.domain.com <i># hostname returned to telnet EHLO</i><br>
 			 <br>
 			 maillog_file = /var/log/postfix.log <i># where to place the Postfix log file</i><br>
 			 compatibility_level = 3.6 <i># backwards compatibility safety guard</i><br>
@@ -244,6 +244,43 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
 
           </div>
 <br>
+		Full config file main.ch:<br>
+		<br>
+		<div class=code>
+# General<br>
+# =======<br>
+compatibility_level = 3.6<br>
+maillog_file = /var/log/postfix.log<br>
+alias_maps = hash:/etc/aliases<br>
+<br>
+<br>
+# Server to Server<br>
+# ================<br>
+smtp_tls_key_file = /etc/ssl/private.key<br>
+smtp_tls_cert_file = /etc/ssl/relay_cert.cer<br>
+smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
+smtp_use_tls = yes<br>
+smtp_tls_security_level = encrypt<br>
+smtp_tls_note_starttls_offer=yes<br>
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache<br>
+<br>
+relayhost = [domain-com.mail.protection.outlook.com]:25<br>
+myhostname = relay.domain.com<br>
+<br>
+<br>
+# Client to Server<br>
+# ================<br>
+smtpd_tls_key_file = /etc/ssl/private.key<br>
+smtpd_tls_cert_file = /etc/ssl/relay_cert.cer<br>
+smtpd_tls_CAfile = /etc/ssl/inter_cert.cer<br>
+smtpd_use_tls=yes<br>
+smtpd_tls_security_level=may<br>
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache<br>
+smtpd_tls_loglevel = 1<br>
+<br>
+mynetworks = 192.168.1.2 192.168.1.17<br>
+		</div>
+		<br>
 		References: <a href='https://secopsmonkey.com/better-mail-relaying-postfix-through-office-365.html'>https://secopsmonkey.com/better-mail-relaying-postfix-through-office-365.html</a><br>
 		<br>
           </td>
