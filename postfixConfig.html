@@ -199,8 +199,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		Selector                relay<br>
 		SOCKET                  inet:8891@localhost<br>
 		</div>
-		* There is some debate if SOCKET should be set under /etc/default/opendkim, but I only have it set under the opendkim.conf file.<br>
-				<br>
+		* There is some debate if SOCKET should be set under /etc/default/opendkim, but this seems to have been there for legacy reasons and is no longer needed.<br>
 		<br>
 		<div class=code>
 		/etc/postfix/main.cf<br>
