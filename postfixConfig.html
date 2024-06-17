@@ -182,8 +182,20 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<li>Set socket</li>
 		<li>Add to main.ch in Postfix</li>
 		<li>Create DKIM record</li>
-		<li>Troubleshoot with logs in controlctr</li>
+		<li>Troubleshoot with logs: journalctl -u opendkim -o short-iso</li>
 		<br>
+		<div class=code>
+		/etc/opendkim.config<br>
+		====================<br>
+		Domain                  domain.com<br>
+		KeyFile                 /etc/postfix/dkim.key<br>
+		Selector                relay<br>
+		SOCKET                  inet:8891@localhost<br>
+		</div>
+				<br>
+		<img src=postfixConfig01.png class=ImageMain>
+		<div class=ImageCaption>↑ Usually there are three lines of text in double quotes, remove the line breaks and quotes before adding the DNS TXT record. The t=y is for testing and can be removed.</div>
+        <br>
   <br>
 		<b>Allow Internet access through web proxy</b><br>
 		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
