@@ -235,7 +235,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 	<br>
 		<br>
 		<b>Set log file format</b><br>
-		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself.<br>
+		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself (systemd).<br>
 		<br>
 		In Ubuntu 24.04 the default logs are accessed via journalctl, and not the popular rsyslog. Via bash you can use '-output short-iso' to set the date format to ISO, but this will not change the settings for the postfix.log file. I'm still working on a fix for this.<br>
 		<br>
