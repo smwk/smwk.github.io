@@ -137,13 +137,14 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Advanced Postfix Config</div>
 	      <div class=datestamp>17-Jun-24</div>
         <div class=content><br>
-Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> recently I found the process very straightforward, with a lot of options for configuaration. Deciding to dig a bit deeper I looked at the following advanced settings:<br>
+Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> recently I found the process very straightforward, with a lot of options for configuration. Deciding to dig a bit deeper I looked at the following advanced settings:<br>
           <br>
           <li>Full certificate chain</li>
           <li>Adding DKIM to outgoing mails</li>
+		<li>Allow Internet access through web proxy</li>
           <br>
           <b>Full Certificate Chain</b><br>
-          Most article you see for setting up your certificate to encrypt emails you would point you to having the following config:<br>
+          Most articles you see for setting up your certificate to encrypt emails would point you to having the following config:<br>
           <br>
           <div class=code>
 smtp_tls_key_file = /etc/ssl/private.key<br>
@@ -151,9 +152,9 @@ smtp_tls_cert_file = /etc/ssl/relay_cert.cer<br>
 smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
           <br>
-          This has actually been deprecated by Postfix, and you should now use a certificate chain. This means you include your private key, cert, intermediate cert, and if needed your root cert all under one file.<br>
+          This has been deprecated by Postfix, and you should now use a certificate chain. This means you include your private key, cert, intermediate cert, and if needed your root cert all under one file.<br>
           <br>
-          While not difficult to setup, you need to be careful to get the certs/keys in the correct order, otherwise it simply won't work.<br>
+          While not difficult to setup, you need to be careful to get the certs/keys in the correct order, otherwise, it simply won't work.<br>
           <br>
           <div class=code>
         smtp_tls_chain_files = /etc/postfix/chain.pem<br>
@@ -166,7 +167,12 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
             Root Cert (if needed)<br>
           </div>
           <br>
-          <b>Adding DKIM to Outgoing Mails</b>
+          <b>Adding DKIM to Outgoing Mails</b><br>
+		When you relay mails into Office365 via a connector your mail is still subject to DMARC checks. So the first step will probably be to add the public IP of the relay server so that the SPF check will pass.<br>
+		<br>
+		Depending on how your DMARC record is setup, that may be enough. But what if your DMARC also requires DKIM to pass, or you just want the extra security of DKIM? OpenDKIM has this covered, the steps to install and configure are:<br>
+		<br>
+		<li></li>
   <br>
   
 
