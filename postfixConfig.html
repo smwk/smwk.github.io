@@ -189,10 +189,18 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
 		<br>
 		<div class=code>
-
+			General<br>
+			=======<br>
+		proxy_http=username:password@proxy-server-ip:port<br>
+			proxy_https=username:password@proxy-server-ip:port<br>
+			<br>
+			Proxy for APT /etc/apt/apt.conf<br>
+			===============================<br>
+			Acquire::http::Proxy "http://[username]:[password]@ [proxy-web-or-IP-address]:[port-number]";<br>
+			Acquire::https::Proxy "http://[username]:[password]@ [proxy-web-or-IP-address]:[port-number]";<br>
 		</div>
 		<br>
-		If you don't want to worry about password changes then I would suggest setting up a service account in Windows and setting the password to never expire.
+		If you don't want to worry about password changes then I would suggest setting up a service account in Windows and setting the password to never expire.<br>
 	<br>
 		<br>
 		<b>Set log file format</b><br>
