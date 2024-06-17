@@ -177,16 +177,19 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<br>
 		<li>Install via bash: apt-get install opendkim opendkim-tools</li>
 		<li>Generate private key: opendkim-genkey -t -s prelay -d domain.com</li>
-		<li>Copy private key to /etc/Postfix</li>
-		<li>Set conf file</li>
-		<li>Add to main.ch in Postfix</li>
-		<li>Create DKIM record in DNS</li>
-		<li>Check file permissions on key file: ls -la /etc/postfix/dkim.key</li>
+		<li>Copy private key to /etc/Postfix/dkim.key</li>
 		<li>Set opendkim as owner of key file: chown opendkim:opendkim /etc/postfix/dkim.key</li>
-		<li>Troubleshoot with logs: journalctl -u opendkim -o short-iso</li>
+		<li>Also copy the generated DNS record file to the Postfix directory for easy editing</li>
+		<li>Set /etc/opendkim.conf file (see below)</li>
+		<li>Add DKIM entries to /etc/Postfix/main.cf in Postfix (see below)</li>
+		<li>Create DKIM record in DNS</li>
+		<br>
+		<i>Troubleshooting</i><br>
+		<li>Check file permissions on key file: ls -la /etc/postfix/dkim.key</li>
+		<li>View log file: journalctl -u opendkim -o short-iso</li>
 		<li>Restart service: service opendkim reload</li>
 		<li>Install DNS tools: sudo apt-get install dnsutils</li>
-		<li>Check DNS record with DIG: dig -t txt prelay._domainkey.oireachtas.ie^C</li>
+		<li>Check DNS record with DIG: dig -t txt relay._domainkey.domain.com</li>
 		<br>
 		<div class=code>
 		/etc/opendkim.config<br>
@@ -211,6 +214,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<img src=postfixConfig01.png class=ImageMain>
 		<div class=ImageCaption>↑ Usually there are three lines of text in double quotes, remove the line breaks and quotes before adding the DNS TXT record. The t=y is for testing and can be removed.</div>
         <br>
+		If you have a transport rule in Exchange that adds a disclaimer to all external mails, then you will want to exclude the Postfix mails (exclude by IP) in order not to break the DKIM body.<br>
   <br>
 		<b>Allow Internet access through web proxy</b><br>
 		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
