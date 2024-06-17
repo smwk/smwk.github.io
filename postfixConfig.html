@@ -142,7 +142,9 @@ Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> rece
           <li>Full certificate chain</li>
           <li>Adding DKIM to outgoing mails</li>
 		<li>Allow Internet access through web proxy</li>
+		<li>Set log file format</li>
           <br>
+		<br>
           <b>Full Certificate Chain</b><br>
           Most articles you see for setting up your certificate to encrypt emails would point you to having the following config:<br>
           <br>
@@ -167,16 +169,37 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
             Root Cert (if needed)<br>
           </div>
           <br>
+		<br>
           <b>Adding DKIM to Outgoing Mails</b><br>
 		When you relay mails into Office365 via a connector your mail is still subject to DMARC checks. So the first step will probably be to add the public IP of the relay server so that the SPF check will pass.<br>
 		<br>
 		Depending on how your DMARC record is setup, that may be enough. But what if your DMARC also requires DKIM to pass, or you just want the extra security of DKIM? OpenDKIM has this covered, the steps to install and configure are:<br>
 		<br>
-		<li></li>
+		<li>Install via bash.</li>
+		<li>Generate private key.</li>
+		<li>Copy private key to /etc/Postfix</li>
+		<li>Set conf file</li>
+		<li>Set socket</li>
+		<li>Add to main.ch in Postfix</li>
+		<li>Create DKIM record</li>
+		<li>Troubleshoot with logs in controlctr</li>
+		<br>
   <br>
-  
+		<b>Allow Internet access through web proxy</b><br>
+		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
+		<br>
+		<div class=code>
 
+		</div>
+		<br>
+		If you don't want to worry about password changes then I would suggest setting up a service account in Windows and setting the password to never expire.
 	<br>
+		<br>
+		<b>Set log file format</b><br>
+		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself.<br>
+		<br>
+		In Ubuntu 24.04 the default logs are accessed via controlctr, and not the popular rsyslog. Via bash you can use -output to set the date format to ISO, but this will not change the settings for the postfix.log file. I'm still working on a fix for this.<br>
+		<br>
 	
           </div>
           
