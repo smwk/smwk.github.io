@@ -187,7 +187,7 @@ On the server itself, you also need to make sure that port 587 is not blocked by
 		<div class=code>
 			$creds = Import-CliXml 'c:\scripts\creds.xml'<br>
 			<br>
-		$EmailTo = "user@domain.com"<br>
+		$EmailTo = "user@domain.com,user2@domain.com"<br>
 $EmailFrom = "relay@domain.com"<br>
 $Subject = "Test" <br>
 $body = "<em>HTML mail</em>"<br>
@@ -196,6 +196,8 @@ $file = "c:\scripts\hvetest.txt"<br>
 $att = new-object Net.Mail.Attachment($file)<br>
 <br>
 $SMTPMessage = New-Object System.Net.Mail.MailMessage($EmailFrom,$EmailTo,$Subject,$Body)<br>
+#$SMTPMessage.cc.Add("user3@domain.com")<br>
+#$SMTPMessage.bcc.Add("user4domain.com")<br>
 $SMTPMessage.IsBodyHtml = $true<br>
 $SMTPMessage.Attachments.Add($att)<br>
 <br>
