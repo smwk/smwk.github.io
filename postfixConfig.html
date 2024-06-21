@@ -143,6 +143,7 @@ Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> rece
           <li>Adding DKIM to outgoing mails</li>
 		<li>Allow Internet access through web proxy</li>
 		<li>Setup remote access with PowerShell</li>
+		<li>Apps that can't relay off Postfix</li>
           <br>
 		<br>
           <b>Full Certificate Chain</b><br>
@@ -253,6 +254,27 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		</div>
 		<br>
 	<br>
+		<br>
+		<b>Apps that can't relay off Postfix</b><br>
+		When migrating the apps from Exchange to Postfix I didn't expect there to be any issues, despite some of the apps being nearly 20 years old. When moving an Alcatel Voicemail server I found the following error in the log:<br>
+		<br>
+		<div class=code>
+		postfix.log<br>
+		===========<br>
+		TBC<br>
+
+		</div>
+		<br>
+		While I can't be certain, the most likely cause is a recent vulnerability called <a href='https://www.postfix.org/smtp-smuggling.html'>SMTP Smuggling</a>. To allow the server to relay you could try the following setting:<br>
+		<br>
+		<div class=code>
+			TBC
+		</div>
+		<br>
+		But in my case, I didn't want to reduce the security of Postfix, and as the server will be retired in a few months, I decided to install <a href='https://learn.microsoft.com/en-us/biztalk/install-and-config-guides/appendix-d-create-the-smtp-server'>SMTP Server</a> on IIS.<br>
+		<br>
+		It's no longer officially supported by Microsoft, but it is easy to configure. Probably a little worrying that there is no protection against SMTP Smuggling, but it will only be used internally.<br>
+		<br>
           </div>
           
           </td>
