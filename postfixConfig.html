@@ -171,7 +171,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
           <br>
 		<br>
-          <b>Adding DKIM to Outgoing Mails</b><br>
+          <b><A name="anchor-two">Adding DKIM to Outgoing Mails</A></b><br>
 		When you relay mails into Office365 via a connector your mail is still subject to DMARC checks. So the first step will probably be to add the public IP of the relay server so that the SPF check will pass.<br>
 		<br>
 		Depending on how your DMARC record is setup, that may be enough. But what if your DMARC also requires DKIM to pass, or you just want the extra security of DKIM? OpenDKIM has this covered, the steps to install and configure are:<br>
@@ -217,7 +217,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		If you have a transport rule in Exchange that adds a disclaimer to all external mails, then you will want to exclude the Postfix mails (exclude by IP) in order not to break the DKIM body.<br>
   <br>
 		<br>
-		<b>Allow Internet access through web proxy</b><br>
+		<b><A name="anchor-three">Allow Internet access through web proxy</A></b><br>
 		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
 		<br>
 		<div class=code>
@@ -235,7 +235,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		If you don't want to worry about password changes then I would suggest setting up a service account in Active Directory and setting the password to never expire.<br>
 	<br>
 		<br>
-		<b>Setup remote access with PowerShell</b><br>
+		<b><A name="anchor-four">Setup remote access with PowerShell</A></b><br>
 		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself (systemd).<br>
 		<br>
 		In Ubuntu 24.04 the default logs are accessed via journalctl, and not the popular rsyslog. Via bash you can use '-output short-iso' to set the date format to ISO, but this will not change the settings for the postfix.log file.<br>
@@ -259,8 +259,8 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		When migrating the apps from Exchange to Postfix I didn't expect there to be any issues, despite some of the apps being nearly 20 years old. When moving an Alcatel Voicemail server I found the following error in the log:<br>
 		<br>
 		<div class=code>
-		postfix.log<br>
-		===========<br>
+		/var/logs/postfix.log<br>
+		=====================<br>
 		TBC<br>
 
 		</div>
@@ -268,8 +268,8 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		While I can't be certain, the most likely cause is a recent vulnerability called <a href='https://www.postfix.org/smtp-smuggling.html'>SMTP Smuggling</a>. To allow the server to relay you could try the following setting:<br>
 		<br>
 		<div class=code>
-			main.cf<br>
-			=======<br>		
+			etc/postfix/main.cf<br>
+			===================<br>		
 		smtpd_forbid_unauth_pipelining = no<br>
 		</div>
 		<br>
