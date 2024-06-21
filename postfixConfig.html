@@ -142,7 +142,7 @@ Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> rece
           <li>Full certificate chain</li>
           <li>Adding DKIM to outgoing mails</li>
 		<li>Allow Internet access through web proxy</li>
-		<li>Set log file format</li>
+		<li>Setup remote access with PowerShell</li>
           <br>
 		<br>
           <b>Full Certificate Chain</b><br>
@@ -234,10 +234,23 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		If you don't want to worry about password changes then I would suggest setting up a service account in Active Directory and setting the password to never expire.<br>
 	<br>
 		<br>
-		<b>Set log file format</b><br>
+		<b>Setup remote access with PowerShell</b><br>
 		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself (systemd).<br>
 		<br>
-		In Ubuntu 24.04 the default logs are accessed via journalctl, and not the popular rsyslog. Via bash you can use '-output short-iso' to set the date format to ISO, but this will not change the settings for the postfix.log file. I'm still working on a fix for this.<br>
+		In Ubuntu 24.04 the default logs are accessed via journalctl, and not the popular rsyslog. Via bash you can use '-output short-iso' to set the date format to ISO, but this will not change the settings for the postfix.log file.<br>
+		<br>
+		While I could have spent more time on this I decided to go with what I know and setup <a href='https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4'>remote PowerShell</a>. With this, I could archive the logs daily and parse the log with tools that I already know.<br>
+		<br>
+		I won't go into all of the details but having an auth key from the Windows server helps greatly with scripting. A combination of Bash command and PowerShell tools gives lots of options to work with.<br>
+		<br>
+		<div class=code>
+		PowerShell on Ubuntu<br>
+		====================<br>
+		sudo dpkg --install --ignore-depends=libicu72 powershell_7.4.2-1.deb_amd64.deb # currently there is a compatibility issue so install with this command<br>
+		<br>
+		
+
+		</div>
 		<br>
 	<br>
           </div>
