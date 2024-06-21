@@ -139,14 +139,14 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
 Having <a href='https://smwk.github.io/postfixRelay.html'>setup Postfix</a> recently I found the process very straightforward, with a lot of options for configuration. Deciding to dig a bit deeper I looked at the following advanced settings:<br>
           <br>
-          <li>Full certificate chain</li>
-          <li>Adding DKIM to outgoing mails</li>
-		<li>Allow Internet access through web proxy</li>
-		<li>Setup remote access with PowerShell</li>
-		<li>Apps that can't relay off Postfix</li>
+          <li><A href="#anchor-one">Full certificate chain</A></li>
+          <li><A href="#anchor-two">Adding DKIM to outgoing mails</A></li>
+		<li><A href="#anchor-three">Allow Internet access through web proxy</A></li>
+		<li><A href="#anchor-four">Setup remote access with PowerShell</A></li>
+		<li><A href="#anchor-five">Apps that can't relay off Postfix</A></li>
           <br>
 		<br>
-          <b>Full Certificate Chain</b><br>
+          <b><A name="anchor-one">Full Certificate Chain</a></b><br>
           Most articles you see for setting up your certificate to encrypt emails would point you to having the following config:<br>
           <br>
           <div class=code>
@@ -255,7 +255,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<br>
 	<br>
 		<br>
-		<b>Apps that can't relay off Postfix</b><br>
+		<b><A name="anchor-five">Apps that can't relay off Postfix</A></b><br>
 		When migrating the apps from Exchange to Postfix I didn't expect there to be any issues, despite some of the apps being nearly 20 years old. When moving an Alcatel Voicemail server I found the following error in the log:<br>
 		<br>
 		<div class=code>
@@ -268,7 +268,9 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		While I can't be certain, the most likely cause is a recent vulnerability called <a href='https://www.postfix.org/smtp-smuggling.html'>SMTP Smuggling</a>. To allow the server to relay you could try the following setting:<br>
 		<br>
 		<div class=code>
-			TBC
+			main.cf<br>
+			=======<br>		
+		smtpd_forbid_unauth_pipelining = no<br>
 		</div>
 		<br>
 		But in my case, I didn't want to reduce the security of Postfix, and as the server will be retired in a few months, I decided to install <a href='https://learn.microsoft.com/en-us/biztalk/install-and-config-guides/appendix-d-create-the-smtp-server'>SMTP Server</a> on IIS.<br>
