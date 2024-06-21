@@ -171,6 +171,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
           </div>
           <br>
 		<br>
+		<br>
           <b><A name="anchor-two">Adding DKIM to Outgoing Mails</A></b><br>
 		When you relay mails into Office365 via a connector your mail is still subject to DMARC checks. So the first step will probably be to add the public IP of the relay server so that the SPF check will pass.<br>
 		<br>
@@ -217,6 +218,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		If you have a transport rule in Exchange that adds a disclaimer to all external mails, then you will want to exclude the Postfix mails (exclude by IP) in order not to break the DKIM body.<br>
   <br>
 		<br>
+		<br>
 		<b><A name="anchor-three">Allow Internet access through web proxy</A></b><br>
 		If your internet access is via an authenticated proxy then you will need to add your credentials in 2 places:<br>
 		<br>
@@ -234,6 +236,7 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<br>
 		If you don't want to worry about password changes then I would suggest setting up a service account in Active Directory and setting the password to never expire.<br>
 	<br>
+		<br>
 		<br>
 		<b><A name="anchor-four">Setup remote access with PowerShell</A></b><br>
 		When setting up Postfix I decided to have a separate log file just from Postfix instead of going into the more general Mail.log. While this is set in the Postfix settings it doesn't control things like the date format, which still comes from the system itself (systemd).<br>
