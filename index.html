@@ -210,8 +210,20 @@ background: red
 		<li>Check if A record has reverse lookup record (PTR) set?</li>
 		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
 		<br>
-		<img src=DNScleanup02.png style='border: 5px solid #564c4d;'>
-		<div class=ImageCaption>↑ Here we use PowerShell to pull the PTR reverse records.</div>
+		<div class=code>
+		# Use PowerShell to pull the RPT reverse records<br>
+			<br>
+			$records = Get-DnsServerResourceRecord -ZoneName domain.locla -RRType A -ComputerName dnsServer.domain.local<br>
+<br>
+foreach ($rec in $records)<br>
+{<br>
+	$r_name = $rec.hostname<br>
+	$r_timestamp = $rec.timestamp<br>
+	$r_ttl = $red.timeToLive<br>
+	$r_date = $rec.recordData.IPv4Address.IPAddressToString<br>
+...<br>
+	
+		</div>
 		<br>
 		What did we find? A few hundred records were wrong:<br>
 		<li>About 50 A records could be deleted</li>
