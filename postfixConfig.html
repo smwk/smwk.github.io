@@ -250,10 +250,12 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 		<div class=code>
 		PowerShell on Ubuntu<br>
 		====================<br>
-		sudo dpkg --install --ignore-depends=libicu72 powershell_7.4.2-1.deb_amd64.deb # currently there is a compatibility issue so install with this command<br>
+		sudo dpkg --install --ignore-depends=libicu72 powershell_7.4.2-1.deb_amd64.deb <i># currently there is a compatibility issue so install with this command</i><br>
 		<br>
-		
-
+		/etc/ssh/sshd_config<br>
+		====================<br>
+		Subsystem       powershell      /opt/microsoft/powershell/7/pwsh -SSHS -NoProfile -NoLogo<br>
+		PasswordAuthentication yes<br>
 		</div>
 		<br>
 	<br>
