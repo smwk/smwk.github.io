@@ -210,7 +210,7 @@ background: red
 		<li>With our secondary domain we had spit DNS setup, checks to ensure all records were correct.</li>
 		<br>
 		<div class=code>
-		# Use PowerShell to pull the RPT reverse records<br>
+		# Use PowerShell to pull the PTR reverse records<br>
 			<br>
 			$records = Get-DnsServerResourceRecord -ZoneName domain.locla -RRType A -ComputerName dnsServer.domain.local<br>
 <br>
