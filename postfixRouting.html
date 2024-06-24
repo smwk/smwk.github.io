@@ -140,36 +140,52 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         <div class=content><br>
 When I initially setup Postfix I was aiming to get away from a common setup where all email is routed into one Office365 mailbox using a username and password. Having a connector in-place allows me to use any 'from' address, but with the drawback that emails could still be sent to the Quarantine.<br>
           <br>
-          I had assumed with Postfix it was either one or the other but while researching further I found out you can make routing decisions based on email addresses, and get the best from both methods. With Microsoft's High Volume Email (HVE) you currently get 20 free accounts to relay email via. I<br>
+          I had assumed with Postfix it was either one or the other but while researching further I found out you can make routing decisions based on email addresses, and get the best from both methods. With Microsoft's High Volume Email (HVE) you currently get 20 free accounts to relay email via.<br>
           <br>
           This means that for some important mails that I never want to get quarantined, I can route them using a HVE account with a username and password. To setup the filtering you must first edit your main.cf file:<br>
           <br>
           <div class=code>
             /etc/postfix/main.cf<br>
-            ======================<br>
-
+            ====================<br>
+smtp_sender_dependent_authentication = yes<br>
+sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay<br>
+		<br>  
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd<br>
+smtp_sasl_security_options = noanonymous<br>
+smtp_sasl_auth_enable = yes <i># this won't affect your smart-host config</i><br>
 
           </div>
 <br>
           Once this is done we need to create 2 files, one for the filter and one for the account(s) to be used when relaying via smtp-hve.office365.com.<br>
           <br>
                    <div class=code>
-            TBC<br>
-
-
+	/etc/postfix/sender_relay<br>
+	=========================<br>
+	userA@domain.com	[smtp-hve.office365.com]:587<br>
+<br>
+	/etc/postfix/sasl_passwd<br>
+	========================<br>
+	userA@domain.com	userA@domain.com:password123<br>
+<br>
+	* You should run the following to make sure the file permissions are correct:<br>
+	chmod 600 /etc/postfix/sasl_passwd<br>
           </div> 
   <br>
           After setting up the files you need to hash them with Postfix and then restart the service.<br>
                <br>
                    <div class=code>
-            TBC<br>
+            postmap /etc/postfix/sender_relay<br>
+		postmap /etc/postfix/sasl_passwd<br>
+		postfix reload<br>
+		<br>
+		* If you ever edit the 2 files you need to run postmap again.<br>
 
 
           </div> 
   <br>
       In the logs we can see that the relay works straight away:<br>
           <br>
-          TBC<br>
+          Jun 24 14:37:39 relay postfix/smtp[54490]: 19CxxxD: to=< sales@domain.com >, <b></b>relay=smtp-hve.office365.com[172.211.197.77]:587</b>, delay=1.9, delays=0.1/0/1.3/0.45, dsn=2.6.0, status=sent (250 2.6.0 < 36xxx45.x04.1719xxx050.JavaMail.vmuser@server.domain.local > Queued mail for delivery)<br>
           <br>
           One thing to keep in mind is the 'from' address has to match the HVE account. So if you have an app that limits what address you can use you might want to look at Postfix's address rewrite.<br>
           <br>
