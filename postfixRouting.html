@@ -191,7 +191,35 @@ smtp_sasl_auth_enable = yes <i># this won't affect your smart-host config</i><br
 		  <br>
           One thing to keep in mind is the 'from' address has to match the HVE account. So if you have an app that limits what address you can use you might want to look at Postfix's address rewrite.<br>
           <br>
-          TBC<br>
+          Using smtp_generic_mpas we can rewrite both from and to addresses. First, we set our main.cf file:<br>
+		  <br>
+		  <div class=code>
+		/etc/postfix/main.cf<br>
+		====================<br>
+		smtp_generic_maps = hash:/etc/postfix/generic<br>
+		<br>
+		  </div>
+		  <br>
+		  As before, we edit this new file:<br>
+		  <br>
+		  <div class=code>
+		/etc/postfix/generic<br>
+		====================<br>
+		test123@domain.com	userB@domain.com<br>
+		@exchange.domain.local	userC@domain.com<br>
+
+		  </div>
+		  <br>
+		Finally, we run post map and restart Postfix:<br>
+		    <br>
+		  <div class=code>
+		postmap /etc/postfix/generic<br>
+		postfix reload<br>
+
+		  </div>
+		  <br>
+
+		  </div>
           <br>
 
 
