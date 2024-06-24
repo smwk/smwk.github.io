@@ -138,11 +138,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Postfix Routing by Filtering</div>
 	      <div class=datestamp>24-Jun-24</div>
         <div class=content><br>
-When I initially setup Postfix I was aiming to get away from a common setup where all email is routed into one Office365 mailbox. Having a connector in-place allows me to use any 'from' address, but with the drawback that emails could still be sent to the Quarantine.<br>
+When I initially setup Postfix I was aiming to get away from a common setup where all email is routed into one Office365 mailbox using a username and password. Having a connector in-place allows me to use any 'from' address, but with the drawback that emails could still be sent to the Quarantine.<br>
           <br>
-          With Microsoft's High Volume Email (HVE) you currently get 20 free accounts to relay email via. I had assumed with Postfix it was either one or the other but  while researching further I found out you can make routing decisions via email addresses and get the best from methods.<br>
+          I had assumed with Postfix it was either one or the other but while researching further I found out you can make routing decisions based on email addresses, and get the best from both methods. With Microsoft's High Volume Email (HVE) you currently get 20 free accounts to relay email via. I<br>
           <br>
-          This means that for some important mails that I never want to get Quarantined I can route them using a HVE account with a username and password. To setup the filtering you must first edit your main.cf file:<br>
+          This means that for some important mails that I never want to get quarantined, I can route them using a HVE account with a username and password. To setup the filtering you must first edit your main.cf file:<br>
           <br>
           <div class=code>
             /etc/postfix/main.cf<br>
