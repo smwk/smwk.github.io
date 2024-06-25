@@ -139,11 +139,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Installing and configuring PHPMailer</div>
 	      <div class=datestamp>25-Jun-24</div>
         <div class=content><br>
- <a href='https://github.com/PHPMailer/PHPMailer'>PHPMailer</a> has a number of advantages over the built-in mail() function, most importantly for me is the ability to call attached images inline.<br>
+ <a href='https://github.com/PHPMailer/PHPMailer'>PHPMailer</a> has several advantages over the built-in mail() function, most importantly for me is the ability to call attached images inline in the mail body.<br>
           <br>
-          While I primarliy use PowerShell for mail sending scripts, it's always a good idea to have a backup and it's fun to learn new tricks.<br>
+          While I primarily use PowerShell for mail-sending scripts, it's always a good idea to have a backup and it's fun to learn new tricks.<br>
           <br>
-  The preffered method for installing is to use <a href=''>Composer</a>, but unfortunetly I couldn't use this as it doesn't support an authenticated web proxy. The other way to install is to download a Zip file. This should be unpacked to the PHP web root, so with IIS this is typcially c:\intersrv\wwwroot\.<br>
+  The preferred method for installing is to use <a href=''>Composer</a>, but unfortunately, I couldn't use this as it doesn't support an authenticated web proxy. The other way to install is to download a Zip file, which should be unpacked to the PHP web root, so with IIS this is typically c:\intersrv\wwwroot\.<br>
           <br>
           Rename the folder to PHPMailer if not already called that, then create a script that calls the function and sends a mail:
           <br>
@@ -152,7 +152,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 
           </div>
           <br>
-          You can either call the script from a web server request, or to test locally run from command prompt:<br>
+          You can either call the script from a web server request or test locally run from Command Prompt:<br>
           <br>
           <div class=code>
           php c:\inetsrv\wwwroot\mailscript.php -r<br>
