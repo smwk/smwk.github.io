@@ -144,12 +144,65 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           While I primarily use PowerShell for mail-sending scripts, it's always a good idea to have a backup and it's fun to learn new tricks.<br>
           <br>
-  The preferred method for installing is to use <a href=''>Composer</a>, but unfortunately, I couldn't use this as it doesn't support an authenticated web proxy. The other way to install is to download a Zip file, which should be unpacked to the PHP web root, so with IIS this is typically c:\intersrv\wwwroot\.<br>
+  The preferred method for installing is to use <a href='https://getcomposer.org/'>Composer</a>, but unfortunately, I couldn't use this as it doesn't support an authenticated web proxy. The other way to install is to download a Zip file, which should be unpacked to the PHP web root, so with IIS this is typically c:\intersrv\wwwroot\.<br>
           <br>
-          Rename the folder to PHPMailer if not already called that, then create a script that calls the function and sends a mail:
+          Rename the folder to PHPMailer if not already called that, then create a script that calls the function and sends a mail:<br>
           <br>
           <div class=code>
-  TBC<br>
+use PHPMailer\PHPMailer\PHPMailer;<br>
+use PHPMailer\PHPMailer\Exception;<br>
+use PHPMailer\PHPMailer\SMTP;<br>
+<br>
+require './PHPMailer/src/Exception.php';<br>
+require './PHPMailer/src/PHPMailer.php';<br>
+require './PHPMailer/src/SMTP.php';<br>
+<br>
+$auth = base64_encode('service_account:password);<br>
+<br>
+$context = stream_context_create([<br>
+    'http' => [<br>
+        'proxy' => 'tcp://oirproxy.domain.local:8080',<br>
+        'request_fulluri' => true,<br>
+        'header' => "Proxy-Authorization: Basic {$auth}"<br>
+    ],<br>
+]);<br>
+<br>
+$mail = new PHPMailer(true);<br>
+<br>
+try {<br>
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;<br>
+    $mail->isSMTP();<br>
+    $mail->Host       = 'relay.domain.com';<br>
+    $mail->SMTPAuth   = false;<br>
+    $mail->Port       = 465;<br>
+<br>
+    //Recipients<br>
+    $mail->setFrom('php@domain.com', 'PHP Mailer');<br>
+    $mail->addAddress('useer@domain.com', 'David Foley');<br>
+#    $mail->addAddress('ellen@example.com');<br>
+#    $mail->addReplyTo('info@example.com', 'Information');<br>
+#    $mail->addCC('cc@example.com');<br>
+#    $mail->addBCC('bcc@example.com');<br>
+<br>
+    //Attachments
+#    $mail->addAttachment('/var/tmp/file.tar.gz');<br>
+#    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');<br>
+<br>
+    //Content
+    $mail->isHTML(true); <br>
+    $mail->Subject = 'PHP test';<br>
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';<br>
+    $mail->AltBody = 'This email does not support plain text for non-HTML mail clients';<br>
+<br>
+    $mail->send();<br>
+    echo 'Message has been sent';<br>
+} catch (Exception $e) {<br>
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";<br>
+}<br>
+<br>
+?><br>
+
 
           </div>
           <br>
