@@ -135,7 +135,13 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 
          <div class=headline>Adding a Postfix server for relay to O365</div>
 	      <div class=datestamp>08-Jun-24</div>
-        <div class=content><br>
+        <div class=content><be>
+		<b>Postfix Articles</b><br>
+          <li><i>Adding a Postfix server for relay to O365</i></li>
+          <li><a href="postfixConfig.html" class=two>Advanced Postfix configuration</a></li>
+          <li><a href="postfixRouting.html" class=two>Postfix routing by filtering</a></li>
+          <li><a href="postfixReceive.html" class=two>Postfix Receive and Forward</a></li>
+          <br>
 After coming to understand that apps that offer a username and password doesn't mean they necessarily support client submission on port 587, I needed another way to move apps away from Exchange 2016 on-prem for mail relay to Office365.<br>
           <br>
 The most common choice is to set up an Ubuntu server with Postfix and then have Postfix submit the email with an O365 account. However, that has the major drawback of only allowing one email 'from address' to be used. I have many apps to support and some that are important enough to require their own address.<br>
