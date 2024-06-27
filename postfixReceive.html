@@ -146,7 +146,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <li><a href="postfixRouting.html" class=two>Postfix routing by filtering</a></li>
           <li><a href="postfixReceive.html" class=two>Postfix Receive and Forward</a></li>
           <br>
-        Up to now, my focus with Postfix has been on relaying mails from the LAN out to Office365. Everything I've thrown at Postfix it has been able to handle, but when it comes to Postfix receiving there is very little information and the proposed solutions tend to be complicated, like running 2 versions of Postfix on the same server.<br>
+        Up to now, my focus with Postfix has been on relaying mails from the LAN out to Office365. Everything I've thrown at it, Postfix has been able to handle, but when it comes to Postfix receiving there is very little information and the proposed solutions tend to be complicated, like running 2 versions of Postfix on the same server.<br>
           <br>
           One thing I wanted to setup was an outbound connector from Office365, this would allow an Outlook user to send an email to our legacy Domino mail servers.<br>
           <br>
@@ -161,11 +161,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           So now the email can route to your Postfix server, but the hard part is still to come. We don't want Postfix to host the received emails, we want to route them to a Domino server, or in this test, an IIS 6.0 SMTP Server.<br>
           <br>
-          It took me a few hours of testing before I stumbled upon a great article explaining how to forward the mail. You need to setup the following in your main.cf file:<br>
+          It took me a few hours of testing before I stumbled upon a great <a href='https://www.caicorp.com/2021/06/22/postfix-as-a-mail-relay-only-server-for-inbound-and-outbound-smtp-mail/'>article</a> explaining how to forward the mail. You need to setup the following in your main.cf file:<br>
           <br>
           <div class=code>
-# Incoming Mails<br>
-# ==============<br>
+# Incoming Mails (/etc/postfix/main.cf)<br>
+# =====================================<br>
 mydestination = localhost<br>
 transport_maps = hash:/etc/postfix/transport<br>
 relay_domains = hash:/etc/postfix/relay<br>
