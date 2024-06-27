@@ -146,18 +146,18 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <li><a href="postfixRouting.html" class=two>Postfix routing by filtering</a></li>
           <li><a href="postfixReceive.html" class=two>Postfix Receive and Forward</li>
           <br>
-        Up to now, my focus with Postfix has been on relaying mails from the LAN out to Office365. Everything I've thrown at Postfix it's been able to handle, but when it comes to Postfix receiving there is very little information and the proposed solutions tend to be complicated, like running 2 versions of Postfix on the same server.<br>
+        Up to now, my focus with Postfix has been on relaying mails from the LAN out to Office365. Everything I've thrown at Postfix it has been able to handle, but when it comes to Postfix receiving there is very little information and the proposed solutions tend to be complicated, like running 2 versions of Postfix on the same server.<br>
           <br>
           One thing I wanted to setup was an outbound connector from Office365, this would allow an Outlook user to send an email to our legacy Domino mail servers.<br>
           <br>
-          Top start off, create the connector in Office365. We will make things simple and use the same routing URL as are 3rd party certificate, so relay.domain.com. We already added a DNS A record for this previously, but you may need to tweak your firewall rule as all mails will come in via *.protection.office365.com.<br>
+          To start off, create the connector in Office365. We will make things simple and use the same routing URL as our 3rd party certificate, so relay.domain.com. We already added a DNS A record for this previously, but you may need to tweak your firewall rule as all mails will come in via *.protection.office365.com.<br>
           <br>
-
+		<img src=postfixReceive01.png class=imageMain><div class=imageCaption>↑ Configure the O365 Outbound Connector.</div><br>
 
           <br>
-          A valiation mail will be sent when you setup the connector, so if it fails you may need to check the firewall rule.<br>
+          A validation mail will be sent when you setup the connector, so if it fails you may need to check the firewall rule.<br>
           <br>
-
+		<img src=postfixReceive02.png class=imageMain><div class=imageCaption>↑ Validation mail showing a successful setup.</div><br>
           <br>
           So now the email can route to your Postfix server, but the hard part is still to come. We don't want Postfix to host the received emails, we want to route them to a Domino server, or in this test, an IIS 6.0 SMTP Server.<br>
           <br>
@@ -191,13 +191,17 @@ relay_domains = hash:/etc/postfix/relay<br>
           service postfix reload
           </div>
           <br>
-          I was worried when I added this config that it would intefer with the routing for outgoing relayed mails, but it didn't affect them at all.<br>
+          I was worried when I added this config that it would interfere with the routing for outgoing relayed mails, but it didn't affect them at all.<br>
           <br>
           After Postfix was setup it was time to move on to the IIS SMTP Server. Create a virtual domain for relay.domain.com (Alias) so it won't reject the relayed email from Postfix. The email will go to a default folder, C:\inetpub\mailroot\Drop, and is kept in mail.eml format.<br>
           <br>
-
+			<img src=postfixReceive03.png class=imageMain><div class=imageCaption>↑ We can see some emails have arrived in our IIS SMTP Server.</div><br>
           <br>
-          We can see the routing of this mail by looking at the message headers.
+          We can see the routing of this mail by looking at the message headers:<br>
+		<br>
+		
+		<img src=postfixReceive04.png class=imageMain><div class=imageCaption>↑ Mail routed from O365, to Postfix, to IIS SMTP Server.</div><br>
+		<br>
           
           
         
