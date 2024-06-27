@@ -150,7 +150,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           One thing I wanted to setup was an outbound connector from Office365, this would allow an Outlook user to send an email to our legacy Domino mail servers.<br>
           <br>
-          To start off, create the connector in Office365. We will make things simple and use the same routing URL as our 3rd party certificate, so relay.domain.com. We already added a DNS A record for this previously, but you may need to tweak your firewall rule as all mails will come in via *.protection.office365.com.<br>
+          To start off, create the connector in Office365 (EAC - Mail flow - Connectors). We will make things simple and use the same routing URL as our 3rd party certificate, so relay.domain.com. We already added a DNS A record for this previously, but you may need to tweak your firewall rule as all mails will come in via *.protection.office365.com.<br>
           <br>
 		<img src=postfixReceive01.png class=imageMain><div class=imageCaption>↑ Configure the O365 Outbound Connector.</div><br>
 
