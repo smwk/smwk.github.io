@@ -162,7 +162,7 @@ $auth = base64_encode('service_account:password);<br>
 <br>
 $context = stream_context_create([<br>
     'http' => [<br>
-        'proxy' => 'tcp://oirproxy.domain.local:8080',<br>
+        'proxy' => 'tcp://webproxy.domain.local:8080',<br>
         'request_fulluri' => true,<br>
         'header' => "Proxy-Authorization: Basic {$auth}"<br>
     ],<br>
