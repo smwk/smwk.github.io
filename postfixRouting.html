@@ -138,6 +138,12 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Postfix Routing by Filtering</div>
 	      <div class=datestamp>24-Jun-24</div>
         <div class=content><br>
+		<b>Postfix Articles</b><br>
+          <li><a href="postfixRelay.html" class=two>Adding a Postfix server for relay to O365</a></li>
+          <li><a href="postfixConfig.html" class=two>Advanced Postfix configuration</a></li>
+          <li><i>Postfix routing by filtering</i></li>
+          <li><a href="postfixReceive.html" class=two>Postfix Receive and Forward</a></li>
+          <br>
 When I initially setup Postfix I was aiming to get away from a common setup where all email is routed into one Office365 mailbox using a username and password. Having a connector in-place allows me to use any 'from' address, but with the drawback that emails could still be sent to the Quarantine.<br>
           <br>
           I had assumed with Postfix it was either one or the other but while researching further I found out you can make routing decisions based on email addresses, and get the best from both methods. With Microsoft's High Volume Email (HVE) you currently get 20 free accounts to relay email via.<br>
