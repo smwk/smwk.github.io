@@ -193,7 +193,7 @@ try {<br>
     //Content
     $mail->isHTML(true); <br>
     $mail->Subject = 'PHP test';<br>
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';<br>
+    $mail->Body    = 'This is the HTML message body &lt;b&gt;in bold!&lt;/b&gt;';<br>
     $mail->AltBody = 'This email does not support plain text for non-HTML mail clients';<br>
 <br>
     $mail->send();<br>
