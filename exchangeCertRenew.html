@@ -134,7 +134,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
        Renewing a 3rd party Exchange certificate really shouldn't be a big deal but thanks to SSL companies and Microsoft there are a number of problems that can occur.<br>
 		<br>
 		<ol>
-		<li> The cert comes as a text file along with a root cert and two intermediary certs, all of which must be installed. The guides showing to use ECP are not valid as you can now only do this via Exchange PowerShell.<Br></li>
+		<li> The cert comes as a text file, along with a root cert and two intermediary certs, all of which must be installed. The guides showing how to use ECP are not valid as you can now only do this via Exchange PowerShell.<Br></li>
 		<br>
 			<li> The private key is missing when you import the certificate (rename .txt file to .cer). This is where the cert key is 'lost' and you must get the serial to find the key again using certutil.<br></li>
 		<br>
@@ -144,8 +144,12 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		<br>
 			<li> With the HCW run, you now go to delete the old cert that is about to expire, but an error message comes up to say it is still in use. This is because the HCW goes on the cert names and not the thumbprint. To get around this delete the old cert via the Certificates.mmc snap-in.<br></li>
                 <br>
-			<li> When you reboot the Exchange server at a later date the Exchange Management Shell will fail to connect. This is because the back-end website no longer has a certificate selected under 'Bindings'.</li>
+			<li> When you reboot the Exchange server later, the Exchange Management Shell will fail to connect. This is because the back-end website no longer has a certificate selected under 'Bindings'.</li>
        		</ol>   
+		<br>
+		<br>
+		<b>Update 2024:</b> This year I spent a bit more time renewing the cert. You must install the Intermediary cert no matter what, on all Exchange servers. The SuperTekBoy <a href='https://supertekboy.com/2023/07/08/renew-a-certificate-in-exchange-2016-2019/'>article</a> gives a good explanation of the full renewal process.<br>
+		<br><br>
           </div>
           
           </td>
