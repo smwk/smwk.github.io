@@ -240,6 +240,10 @@ smtp_tls_CAfile = /etc/ssl/inter_cert.cer<br>
 			===============================<br>
 			Acquire::http::Proxy "http://[username]:[password]@ [proxy-web-or-IP-address]:[port-number]";<br>
 			Acquire::https::Proxy "http://[username]:[password]@ [proxy-web-or-IP-address]:[port-number]";<br>
+			<br>
+			Also, settings can be stored in the following locations:<br>
+			/etc/wgetrc<br>
+			~/.wgetrc<br>
 		</div>
 		<br>
 		If you don't want to worry about password changes then I would suggest setting up a service account in Active Directory and setting the password to never expire.<br>
