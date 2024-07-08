@@ -80,7 +80,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	  <details open>
 		    <summary><b>2024</b><br></summary>
 	<a href="postfixConfig.html" class=two>Advanced Postfix configuration</a><br>
-	  <a href="installExchange2019.html" class=two>Installing Exchange 2019 in Azure Landing Zone</a><br>
+	  <a href="installExchange2019.html" class=two>Installing Exchange 2016 in Azure Landing Zone</a><br>
 	  <a href="upgradePHP.html" class=two>Upgrading PHP on Windows</a><br>
 	  <a href="postfixRelay.html" class=two>Adding a Postfix server for relay to O365</a><br>
 	  <a href="integratedApps.html" class=two>O365 Integrated Apps troubleshooting</a><br>
@@ -134,13 +134,18 @@ a.two:hover {color: #447EAE; text-decoration: none;}
      
 	      
 
-         <div class=headline>Installing Exchange 2019 in Azure Landing Zone</div>
+         <div class=headline>Installing Exchange 2016 in Azure Landing Zone</div>
 	      <div class=datestamp>15-Jun-24</div>
         <div class=content><br>
 While I have yet to remove all the relayed emails via my on-prem Exchange 2016 servers, I decided it was to start planning for the <a href='https://learn.microsoft.com/en-us/exchange/decommission-on-premises-exchange'>scenario 2</a> decommissioning of Exchange.<br>
     <br>
-          The new server will be placed in the Azure Landing Zone, so a firewall rule will need to be enabled between the 2 Exchange 2016 servers on the company network and the new server.<br> The next version of Exchange will be released in 2025, but 2019 servers can be in-place upgraded to the new version.<br>
-          <br>
+Originally I was going to install Exchange 2019, but there were a few reasons not to:<br>
+		<li>With Exchange 2019 you need a minimum of 64GB RAM for even just the transport role. Azure hosting is very expensive past 16GB.</li>
+		<li>While it was originally planned just to turn off the server, the customer had a requirement to restore backups from tape up until Exchange 2016/19 goes end-of-life in October 2025. The restore server Exchange version must match the version of the backup.</li>
+
+		<br>
+	So this only left Exchange 2016 as an option, this also means Windows Server 2016 is also the only option for OS. As it will need to do mailbox restores I gave the server 16GB RAM. For now until October 2025 I will keep the server off except for monthly updates and any restore requests that come in.<br>
+<br>
           
   <br>
   
