@@ -146,7 +146,7 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		<br>
 	So this only left Exchange 2016 as an option, this also means Windows Server 2016 is also the only option for OS. For now, until October 2025, I will keep the server off except for monthly updates and any restore requests that come in.<br>
 <br>
-          With the requirements decided it was time to install and configure Exchange, but first I had the following problems:<br>
+          With the requirements decided it was time to install and configure Exchange, but when I went to install I came across a few problems:<br>
 		<br>
 		<b>Issue 1:</b> my manager is trying to restrict access from the Landing Zone to LAN as much as possible but with Exchange you need to have unrestricted access to other Exchange servers and Domain Controllers no matter what site they reside in. It took a bit of convincing just to get the rule to allow unrestricted access to other Exchange servers.<br>
 		When I went to install Exchange I got an error at the Mailbox Transport section. Once this happened I got the firewall admin to change the rule to include Domain Controllers, but still, I got the same error when resuming the install, even a reboot wouldn't help.<br>
