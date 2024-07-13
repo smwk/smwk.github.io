@@ -143,9 +143,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Moving from PowerShell 5.1 to Core</div>
 	      <div class=datestamp>12-Jul-24</div>
         <div class=content><br>
-    On my management server I have nearly always used PowerShell 5.1 for scripts. Exchange 2016 will only work with the snap-in called from 5.1 and is not compatible with PowerShell 7 (Core), because of this the scripts that don't rerquire Exchange used 5.1 to make it easier to administer.<br>
+    On my Management Server, I have nearly always used PowerShell 5.1 for scripts. Exchange 2016 will only work with the snap-in called from 5.1 and is not compatible with PowerShell 7 (Core), because of this the scripts that don't require Exchange used 5.1 to make it easier to administer.<br>
           <br>
-          Recently though I've noticed a few scripts no longer working as I update the modules. While I could go back and try to fix the issues it seems to make more sense now to start working towards moving the scripts the PowerShell Core, especially as I will shortly decommission my on-prem Exchange servers.<br>
+          Recently though, I've noticed a few scripts no longer working as I update the modules. While I could go back and try to fix the issues it seems to make more sense now to start working towards moving the scripts to PowerShell Core, especially as I will shortly decommission my on-prem Exchange servers.<br>
           <br>
           PowerShell Core is not without it's issues though, especially if you use a service account, with scheduled tasks, with an authenticated web proxy :(. The main issues I had to troubleshoot were:<br>
           <br>
@@ -156,7 +156,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           <b>Replace PowerShellGet with PSResourceGet</b><br>
           Installing Modules with the default v1 PowerShellGet module is a frustrating experience, more so if you only have TLS 1.2 enabled on your server and have an authenticated proxy. PSResourceGet is actually version 3 of PowerShellGet but the owners decided to rename it. 
-		Before getting into the install first, check your Internet connection is up and running:<br>
+		Before getting into the installation, check your Internet connection is up and running:<br>
 		<br>
 		          <div class=code>
 	  [PowerShell Core run as Admin]<br>
