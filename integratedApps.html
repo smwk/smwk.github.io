@@ -139,7 +139,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 
 Until recently I let my cloud admin handle Outlook add-ins aka Integrated Apps. The policy was to block all apps entirely to reduce the number of potential data leaks and security holes.<br>
           <br>
-  Now though I've been asked to deploy the Microsoft add-in 'Report Phishing' and configure the options.<br>
+  Now though, I've been asked to deploy the Microsoft add-in 'Report Phishing' and configure the options.<br>
           <br>
   The first thing to check is the Exchange User Policy under EAC - Roles - User Roles. The default role should have these settings enabled, but as I said previously we blocked all access, so here I have created a new policy and assigned it to test users.<br>
           <br>
@@ -166,7 +166,13 @@ With the app deployed and installed by users, we can now focus on setting up wha
           
 	<br>
 <b>Block Users from Installing Third Party Apps</b><br>
-When any app is deployed by an admin, it appears to overwrite any settings in Outlook that blocks the store. This seems to be new functionality from Microsoft in 2024. To stop users from installing third party apps you should get your Global Admin to block this setting under M365 Admin - Integrated Apps - Deployed Apps (setting cog).<br>
+When any app is deployed by an admin, it appears to overwrite any settings in Outlook that blocks the store. This seems to be a new functionality from Microsoft in 2024. To stop users from installing third party apps you should get your Global Admin to block this setting under M365 Admin - Integrated Apps - Deployed Apps (setting cog).<br>
+
+          <br>
+<img src=integratedApps05.png class=ImageMain>
+		<div class=ImageCaption>↑ Block 3rd party apps under M365 Admin - Integrated Apps - Available Apps (settings cog).</div>
+          <br>
+
 		
           </div>
           
