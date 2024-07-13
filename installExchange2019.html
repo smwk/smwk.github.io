@@ -148,11 +148,27 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 <br>
           With the requirements decided it was time to install and configure Exchange, but when I went to install I came across a few problems:<br>
 		<br>
-		<b>Issue 1:</b> my manager is trying to restrict access from the Landing Zone to LAN as much as possible but with Exchange you need to have unrestricted access to other Exchange servers and Domain Controllers no matter what site they reside in. It took a bit of convincing just to get the rule to allow unrestricted access to other Exchange servers.<br>
+		<b>Issue 1:</b> my manager is trying to restrict access from the Landing Zone to LAN as much as possible but with Exchange you need to have unrestricted access to other Exchange servers and Domain Controllers no matter what AD site they reside in. 
+		It took a bit of convincing just to get the rule to allow unrestricted access to other Exchange servers.<br>
 		<br>
 		When I went to install Exchange I got an error at the Mailbox Transport section. Once this happened I got the firewall admin to change the rule to include Domain Controllers, but still, I got the same error when resuming the install, even a reboot wouldn't help.<br>
 		<br>
+		<div class=code>
+		TBC
+		</div>
+		<br>
 		After researching I found the best option was to uninstall what was there via the command prompt, then install again via command prompt. This worked for the most part until I ran into issue 2.<br>
+		<br>
+		<div class=code>
+		[Elevated Command Prompt]<br>
+		=========================<br>
+		# Uninstall<br>
+		TBC<br>
+		<br>
+		(reboot server)<br>
+		# Install<br>
+		TBC<br>
+		</div>
 		<br>
 		<b>Issue 2:</b> the server requirement for an Exchange 2016 with Mailbox role calls for a minimum 8GB of RAM. To cut down on running costs we went for an image with 8GB, but I found out on the install that the server had reached a critical lack of memory just as Exchange was on the finishing up part. After a reboot there were still issues with memory so I asked the Azure admin to change the image to a 16GB version.<br>
 
