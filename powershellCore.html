@@ -183,11 +183,13 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           </div> 
           <br>
           One thing to note is when you update a module it will leave the old version installed, so it's probably a good idea to cleanup the old versions with the following command:<br>
+		<br>
           <div class=code>
           Uninstall-PSResource PSFramework -Version 0.9.25.107 -Scope allusers -SkipDependencyCheck
           </div> 
           <br> 
           Finally, if we want to list the installed modules and also check if there is a newer version we have these commands:<br>
+		<br>
           <div class=code>
           Get-InstalledPSResource -Scope AllUsers<br>
           Find-PSResource -Name az -Repository PSGallery<br>
