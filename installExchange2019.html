@@ -154,7 +154,7 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		When I went to install Exchange I got an error at the Mailbox Transport section. Once this happened I got the firewall admin to change the rule to include Domain Controllers, but still, I got the same error when resuming the install, even a reboot wouldn't help.<br>
 		<br>
 		<div class=code>
-		TBC
+		Topology Provider coundn't find the Microsoft Exchange Active Directory Topology service on end point 'TopologyClientTcpEndpoint (localhost)'.<br>
 		</div>
 		<br>
 		After researching I found the best option was to uninstall what was there via the command prompt, then install again via command prompt. This worked for the most part until I ran into issue 2.<br>
@@ -163,7 +163,7 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		[Elevated Command Prompt]<br>
 		=========================<br>
 		# Uninstall<br>
-		TBC<br>
+		Setup.exe /mode:Uninstall /IAcceptExchangeServerLicenseTerms_DiagnosticDataOFF<br>
 		<br>
 		(reboot server)<br>
 			<br>
@@ -180,7 +180,8 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		<br>
 		
   <br>
-  
+  Ref - <a href='https://www.alitajran.com/an-incomplete-installation-was-detected-when-uninstalling-exchange/'>https://www.alitajran.com/an-incomplete-installation-was-detected-when-uninstalling-exchange/</a><br>
+		<br>
 
 	<br>
 	
