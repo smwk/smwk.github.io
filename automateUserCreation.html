@@ -163,10 +163,10 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 	  TBC<br>
           </div>
           <br>
-	  <br>
           We are not done just by adding the permission, we have to allow the Azure App permission to view the Site where it has been granted permission:<br>
           You will need to get a Global Admin to approve this permission.<br>
           <br>
+	  <br>
           <b>2. Find the Site and Files we want to Access</b><br>
           Now that we have the permission to view our Excel file we need to go and actually find it. Due to a bug you will need the SiteID of the SharePoint Site, the name alone will not work in the Invoke-MgGraph command. Then we need the DriveID and finally we list all children to get the FileID.<br>
           <br>
