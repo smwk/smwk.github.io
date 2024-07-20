@@ -178,7 +178,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           When installing modules you should install them for all users, this means if you run scheduled tasks using a different account it will use the same module that you would use in testing:<br>
           <br>
           <div class=code>
-          Install-Module -Name MicrosoftTeams -Scope AllUsers<br>
+          Install-PSResource -Name MicrosoftTeams -Scope AllUsers<br>
 	  Update-PSResource PSFramework -Scope allusers<br>  
 	  Update-PSResource PackageManagement -Scope allusers<br>
           </div> 
@@ -212,7 +212,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		
 		<br>
 	<b>Other General Tips</b><br>
-		<li>Don't import modules like Microsoft.Graph, it will take about 15 minutes and when you run commands like Connect-MgGraph it will automatically import the bits it needs.</li>
+		<li>If using the module Microsoft.Graph in scripts, then don't import the module. The Connect-MGGraph command will already know what features the Azure app can access. If you do import the module, then it can take up to 15 minutes to load all the different parts.</li>
           
 			<br><br>
           </div>
