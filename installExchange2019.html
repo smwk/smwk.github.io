@@ -168,7 +168,7 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		(reboot server)<br>
 			<br>
 		# Install<br>
-		TBC<br>
+		Setup.exe /mode:Install /Roles:Mailbox /IAcceptExchangeServerLicenseTerms_DiagnosticDataOFF <br>
 		</div>
 		<br>
 		<b>Issue 2:</b> the <a href='https://learn.microsoft.com/en-us/exchange/plan-and-deploy/system-requirements?view=exchserver-2016'>server requirements</a> for an Exchange 2016 with Mailbox role calls for a minimum 8GB of RAM. To cut down on running costs we went for an image with 8GB, but I found out on the install that the server had reached a critical lack of memory just as Exchange was on the finishing up part. After a reboot there were still issues with memory so I asked the Azure admin to change the image to a 16GB version.<br>
@@ -180,13 +180,15 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		<br>
 		
   <br>
-<b>Issue 3: Ohter Firewall Rules</b><br>
+<b>Issue 3: Other Firewall Rules</b><br>
 		As explained in Issue 1, we need the Exchange server to be able to talk to all other Exchange servers and Domain Controllers, no matter what AD Site they are in. But what about the Exchange Management Tools, what ports do they need?<br>
 		<br>
-		Microsoft doesn't give a lot of information on this, but after testing I found to do all the work I needed I had to open:<br>
+		Management Server to Exchange:<br>
 		Port 80 - PowerShell<br>
 		Port 445 - SMB so I can check on the server health<br>
-		Domain Controller Port 9389 - If you are creating say a user mailbox, you will want to create the user against the Exchange server and then maybe edit that user straight away. If this is the case then you will want to be able to connect to the domain controller closest to the Exchange server and not wait on AD replication.<br>
+		<br>
+		Management Server to Domain Controller<br>
+		Domain Controller Port 9389 - you will want to make Exchange changes to the local DC<br>
 
 		<br>
 		<br>
