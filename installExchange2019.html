@@ -180,6 +180,16 @@ Originally I was going to install Exchange 2019, but there were a few reasons no
 		<br>
 		
   <br>
+<b>Issue 3: Ohter Firewall Rules</b><br>
+		As explained in Issue 1, we need the Exchange server to be able to talk to all other Exchange servers and Domain Controllers, no matter what AD Site they are in. But what about the Exchange Management Tools, what ports do they need?<br>
+		<br>
+		Microsoft doesn't give a lot of information on this, but after testing I found to do all the work I needed I had to open:<br>
+		Port 80 - PowerShell<br>
+		Port 445 - SMB so I can check on the server health<br>
+		Domain Controller Port 9389 - If you are creating say a user mailbox, you will want to create the user against the Exchange server and then maybe edit that user straight away. If this is the case then you will want to be able to connect to the domain controller closest to the Exchange server and not wait on AD replication.<br>
+
+		<br>
+		<br>
   Ref - <a href='https://www.alitajran.com/an-incomplete-installation-was-detected-when-uninstalling-exchange/'>https://www.alitajran.com/an-incomplete-installation-was-detected-when-uninstalling-exchange/</a><br>
 		<br>
 
