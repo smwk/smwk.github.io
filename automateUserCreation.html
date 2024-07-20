@@ -147,23 +147,24 @@ a.two:hover {color: #447EAE; text-decoration: none;}
  When I started my current role, just over 6 years ago, one of the first things I changed was the user creation process. The IT Department was using template accounts that were copied and then edited to be used as a new account. There were several issues with this method, so I designed a web interface where all users would get created via one web page.<br>
           <br>
           There were many advantages to this:<br>
-          - New users got created in the correct location.<br>
+          - New users were created in the correct location.<br>
           - Typos were eliminated.<br>
-          - Ohter mail objects like Shared Mailboxes, Contact and Groups all got created with the same settings.<br>
+          - Other mail objects like Shared Mailboxes, Contacts and Groups, all got created with the same settings.<br>
           - A change to a department could be made in the script rather than several template accounts.<br>
           <br>
-          Despite this though it did take a lot of work to keep up with OU and Group changes. Rather than putting the emphisis on me to keep up with administration changes, I decided the best solution was to create a spreadsheet in Teams and have managers update that, then have the script pull this data regularly and use in the creation script.<br>
+          Despite this, it took a lot of work to keep up with OU and Group changes. Rather than putting the emphasis on me to keep up with administration changes, I decided the best solution was to create a spreadsheet in Teams and have managers update that, then have the script pull this data regularly and use in the creation script.<br>
           <br>
-          I've never looked at pulling information from Teams via PowerShell up to now, other than knowing it should be possible in theory. There were a number of steps to this process:<br>
+          I've never looked at pulling information from Teams via PowerShell up to now, other than knowing it should be possible in theory. There were several steps to this process:<br>
           <br>
           <b>1. Assign Permissions to the Sharepoint Site</b><br>
-          Each Teams Channel will have it's own SharePoint site, so granting permissions to the files has to be done at the Sharepoint level. We don't want to give our SharePoint app control over all SharePoint Sites, just the Sites we implicitly grant access to:<br>
+          Each Teams Channel will have its own SharePoint site, so granting permissions to the files has to be done at the Sharepoint level. We don't want to give our SharePoint app control over all SharePoint Sites, just the Sites we implicitly grant access to:<br>
           <br>
           <div class=code>
-
+	  TBC<br>
           </div>
           <br>
-          We are not done just by adding the permission, we have to allow the Azure App a permission to view site where it has been granted a permission:<br>
+	  <br>
+          We are not done just by adding the permission, we have to allow the Azure App permission to view the Site where it has been granted permission:<br>
           You will need to get a Global Admin to approve this permission.<br>
           <br>
           <b>2. Find the Site and Files we want to Access</b><br>
@@ -173,15 +174,17 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           TBC
           </div>
           <br>
+	  <br>
           <b>3. Access and Parse the Excel file</b><br>
           TBC<br>
           <br>
+	  <br>
           <b>4. Build User Creation Script from Excel File</b><br>
-          My user creation process is esentially made up of two parts, a PHP front-end that saves the entries to a text file, and a PowerShell script that reads this text file and creates the user mailbox. This first step to validate is on the PHP page where users can select what OU the user should be created in. These OUs get changed reularly so the best way to keep updated is to use the Excel file to update a text field that will be included in the PHP page.<br>
+          My user creation process is made up of two parts, a PHP front-end that saves the entries to a text file, and a PowerShell script that reads this text file and creates the user mailbox. The first step to validate is on the PHP page where users can select what OU the user should be created in. These OUs get changed reularly so the best way to keep updated is to use the Excel file to update a text field that will be included in the PHP page.<br>
           <br>
           In order to keep managers updated when an OU is changed I also added an email alert when an OU from the Excel file is not found in Active Directory (AD).<br>
           <br>
-          I setup another alert if a group listed in Excel does not match anything in AD. Outside of that there's not really any other fields that would be changed and go unnoticed.<br>
+          I setup another alert if a group listed in Excel does not match anything in AD. Outside of that, there are not really any other fields that would be changed and go unnoticed.<br>
 
           <br>
 			<br><br>
