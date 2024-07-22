@@ -144,7 +144,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Automate User Creation via PowerShell and Excel</div>
 	      <div class=datestamp>20-Jul-24</div>
         <div class=content><br>
- When I started my current role, just over 6 years ago, one of the first things I changed was the user creation process. The IT Department was using template accounts that were copied and then edited to be used as a new account. There were several issues with this method, so I designed a web interface where all users would get created via one web page.<br>
+ When I started my current role, just over 6 years ago, one of the first things I changed was the user creation process. The IT Department was using template accounts that were copied and then edited to be used as a new account. This method had several issues, so I designed a web interface where all users would get created via one web page.<br>
           <br>
           There were many advantages to this:<br>
           - New users were created in the correct location.<br>
@@ -157,24 +157,29 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           I've never looked at pulling information from Teams via PowerShell up to now, other than knowing it should be possible in theory. There were several steps to this process:<br>
           <br>
           <b>1. Assign Permissions to the Sharepoint Site</b><br>
-          Each Teams Channel will have its own SharePoint site, so granting permissions to the files has to be done at the Sharepoint level. We don't want to give our SharePoint app control over all SharePoint Sites, just the Sites we implicitly grant access to:<br>
+          Each Teams Channel will have its own SharePoint site, granting permissions to the files has to be done at the SharePoint level. We don't want to give our SharePoint app control over all SharePoint Sites, just the Sites we implicitly grant access to:<br>
           <br>
           <div class=code>
-	  TBC<br>
+	  1. Connect to PnP PowerShell (as a SharePoint Admin): Connect-PnPOnline -Interactive -Url https://[mydomain].sharepoint.com/<br>
+	  2. Grant-PnPAzureADAppSitePermission -AppId "[myAzureAppID]" -DisplayName "AppRead" -Permissions Read -Site https://[mydomain].sharepoint.com/sites/HelpDesk-MailboxCreationSpreadsheet<br>
+	  3. In your Azure App add the permission 'Sites.Selected'. This will also need admin approval.<br>
           </div>
-          <br>
-          We are not done just by adding the permission, we have to allow the Azure App permission to view the Site where it has been granted permission:<br>
-          You will need to get a Global Admin to approve this permission.<br>
-          <br>
-	  <br>
+	<br>
+		<img src=automateUserCreation01.png class=ImageMain>
+          <div class=ImageCaption>Your new Azure App permission will need to be approved by a Global Admin.</div>
+		<br>
           <b>2. Find the Site and Files we want to Access</b><br>
-          Now that we have the permission to view our Excel file we need to go and actually find it. Due to a bug you will need the SiteID of the SharePoint Site, the name alone will not work in the Invoke-MgGraph command. Then we need the DriveID and finally we list all children to get the FileID.<br>
+          Now that we have the permission to view our Excel file we need to go and actually find it. Due to a bug you will need the SiteID of the SharePoint Site, the name alone will not work in the Invoke-MgGraph command. After this, we need the DriveID and finally we list all children to get the FileID.<br>
           <br>
           <div class=code>
-          TBC
+          1. Open the SharePoint Site from Teams channel, note the URL.<br>
+	  2. Based on this URL go to the following page: https://[mydomain].sharepoint.com/sites/HelpeDesk-MailboxCreationSpreadsheet/_api/site/Id , note down the SiteID from the XML.<br>
+	  3. Using the SiteID we connect to MgGraph and list the files: Invoke-MgGraphRequest -Method GET https://graph.microsoft.com/v1.0/[siteID]/drive/root/children<br>
           </div>
-          <br>
-	  <br>
+	<br>
+		<img src=automateUserCreation02.png class=ImageMain>
+          <div class=ImageCaption>Open the SharePoint Site from the Teams channel.</div>
+		<br>
           <b>3. Access and Parse the Excel file</b><br>
           TBC<br>
           <br>
@@ -182,9 +187,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <b>4. Build User Creation Script from Excel File</b><br>
           My user creation process is made up of two parts, a PHP front-end that saves the entries to a text file, and a PowerShell script that reads this text file and creates the user mailbox. The first step to validate is on the PHP page where users can select what OU the user should be created in. These OUs get changed reularly so the best way to keep updated is to use the Excel file to update a text field that will be included in the PHP page.<br>
           <br>
-          In order to keep managers updated when an OU is changed I also added an email alert when an OU from the Excel file is not found in Active Directory (AD).<br>
+          To keep managers updated when an OU is changed I also added an email alert when an OU from the Excel file is not found in Active Directory (AD).<br>
           <br>
-          I setup another alert if a group listed in Excel does not match anything in AD. Outside of that, there are not really any other fields that would be changed and go unnoticed.<br>
+          I set up another alert if a group listed in Excel does not match anything in AD. Outside of that, there are not really any other fields that would be changed and go unnoticed.<br>
 
           <br>
 			<br><br>
