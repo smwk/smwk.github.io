@@ -173,7 +173,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           <div class=code>
           1. Open the SharePoint Site from Teams channel, note the URL.<br>
-	  2. Based on this URL go to the following page: https://[mydomain].sharepoint.com/sites/HelpeDesk-MailboxCreationSpreadsheet/_api/site/Id , note down the SiteID from the XML.<br>
+	  2. Based on this URL go to the following page: https://[mydomain].sharepoint.com/sites/HelpDesk-MailboxCreationSpreadsheet/_api/site/Id , note down the SiteID from the XML.<br>
 	  3. Using the SiteID we connect to MgGraph and list the files: Invoke-MgGraphRequest -Method GET https://graph.microsoft.com/v1.0/[siteID]/drive/root/children<br>
           </div>
 	<br>
