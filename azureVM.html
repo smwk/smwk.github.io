@@ -144,15 +144,37 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>List Azure Virtual Machines via PowerShell</div>
 	      <div class=datestamp>13-Jul-24</div>
         <div class=content><br>
- A few years back a collegaue of mine asked if we could run checks against a Domino Notes Database that lists servers in the organization using PowerShell.<br>
+ A few years back a colleague of mine asked if we could run checks against a Domino Notes Database that lists servers in the organization using PowerShell.<br>
           <br>
-          The Notes admin was able to export the database to a CSV file, which I imported into the PowerShells script. The first part was easy, list all servers in Active Directory and see what was there or missing compared to the CSV file.<br>
+          The Notes admin was able to export the database to a CSV file, which I imported into the PowerShell script. The first part was easy, list all servers in Active Directory and see what was there or missing compared to the CSV file.<br>
           <br>
-          The next part got a bit more tricky, what about workgroup servers in the DMZ? Fortunately they were all hosted in VMware so connecting with PowerCli we could list them and again compare them to the CSV.<br>
+          The next part got a bit more tricky, what about workgroup servers in the DMZ? Fortunately, they were all hosted in VMware so by connecting with PowerCli we could list them and again compare them to the CSV.<br>
           <br>
-          This script worked well until we started moving servers into the Azure Landing Zone. Some could still be picked up in AD as they are domain joined, but how to list the workgroup VMs?<br>
+          This script worked well until we started moving servers into the Azure Landing Zone. Some could still be picked up in AD as they are domain-joined, but how to list the workgroup VMs?<br>
           <br>
           I asked the Cloud Admin what was the best way to list all the servers, which were spread across multiple subscriptions. He said the best way was to give 'Contributor Access' to a management scope.<br>
+		<br>
+	Once the permission was added it was quite straightforward to list all the VMs:<br>
+		<br>
+		<div class=code>
+			Connect-AzAccount -ServicePrincipal -ApplicationId $clientId -Tenant $tenantId -CertificateThumbprint $thumbprint -SubscriptionId $subId<br>
+			<br>
+$subs = Get-AzSubscription<br>
+foreach ($sub in $subs)<br>
+{<br>
+	$s_name = $sub.name<br>
+<br>
+	$null = Select-AzSubscription $s_name<br>
+<br>
+	$vms = Get-AzVM -status<br>
+	foreach ($vm in $vms)<br>
+	{<br>
+		$v_name = $vm.name<br>
+		$v_os = $vm.OsName<br>
+		$v_power = $vm.PowerState<br>
+			...<br>
+
+		</div>
 			<br><br>
           </div>
           
