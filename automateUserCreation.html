@@ -169,7 +169,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <div class=ImageCaption>↑ Your new Azure App permission will need to be approved by a Global Admin.</div>
 		<br>
           <b>2. Find the Site and Files we want to Access</b><br>
-          Now that we have the permission to view our Excel file we need to go and actually find it. Due to a bug you will need the SiteID of the SharePoint Site, the name alone will not work in the Invoke-MgGraph command. After this, we need the DriveID and finally we list all children to get the FileID.<br>
+          Now that we have the permission to view our Excel file we need to go and actually find it. Due to a bug, you will need the SiteID of the SharePoint Site, the name alone will not work in the Invoke-MgGraph command. After this, we need the DriveID and finally we list all children to get the FileID.<br>
           <br>
           <div class=code>
           1. Open the SharePoint Site from Teams channel, note the URL.<br>
@@ -181,7 +181,25 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <div class=ImageCaption>↑ Open the SharePoint Site from the Teams channel.</div>
 		<br>
           <b>3. Access and Parse the Excel file</b><br>
-          TBC<br>
+          After the last step, we have the DriveId and ItemId that we can use to access the file.
+		<br>
+		<div class=code>
+		Connect-MgGraph -CertificateThumbPrint "xxx" -AppID "xxx" -TenantId "xxx" -NoWelcome<br>
+		<br>
+		$driveid = "xxx"<br>
+		$driveitemid = "xxx"<br>
+		<br>
+		$excelfile = "c:\scripts\Exchange\ex-createUserNew.xlsx"<br>
+		Get-MgDriveItemContent -driveid $driveid -driveitemid $driveitemid  -OutFile $excelfile<br>
+		$rows = import-excel $excelfile<br>
+		foreach ($row in $rows)<br>
+		{<br>
+		&nbsp;$r_ou = $row.ou<br>
+		&nbsp;$r_group = $row.groups<br>
+		&nbsp;...<br>
+		</div>
+		<br>
+		Using Get-MgDriveContent we can return the Excel document as a file, then use the ImportExcel PowerShell Module to import the data and fill out our user creation script. The rows get imported into a [psCustomObject] for flexibility.<br>
           <br>
 	  <br>
           <b>4. Build User Creation Script from Excel File</b><br>
