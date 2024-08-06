@@ -173,6 +173,9 @@ It's best to check the account activity in Azure to find what Conditional Access
 		<b>Update August 2024:</b> After using HVE for three months, I encountered a new issue: the password expired on the Azure Entra account. Normally with on-prem service accounts, I would tick the AD 'password never expires' checkbox, but as these exist only in Entra there was no option. Instead, you need to assign a predefined Password Policy.<br>
 		<br>
 		<div class=code>
+		#conenct with correct permissions<br>
+		Connect-MgGraph -Scopes "User.ReadWrite.All" <br>
+		<br>
 		# check if already set<br>
 		Get-MGuser -UserId hve_account@domain.com -Property UserPrincipalName, PasswordPolicies | Select-Object UserPrincipalName,@{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}<br>
 		<br>
