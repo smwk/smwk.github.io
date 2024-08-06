@@ -170,8 +170,16 @@ It's best to check the account activity in Azure to find what Conditional Access
 <br>
           After allowing an exception the mail was sent via HVE.<br>
 <br>
-		Update August 2024: After using HVE for three months, I encountered a new issue: the password expired on the Azure Entra account. Normally with on-prem service accounts, I would tick the AD 'password never expires' checkbox, but as these exist only in Entra there was no option. Instead, you need to create a Password Policy in M365 Admin and assign it to the account.<br>
+		<b>Update August 2024:</b> After using HVE for three months, I encountered a new issue: the password expired on the Azure Entra account. Normally with on-prem service accounts, I would tick the AD 'password never expires' checkbox, but as these exist only in Entra there was no option. Instead, you need to assign a predefined Password Policy.<br>
 		<br>
+		<div class=code>
+		# check if already set<br>
+		Get-MGuser -UserId hve_account@domain.com -Property UserPrincipalName, PasswordPolicies | Select-Object UserPrincipalName,@{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}<br>
+		<br>
+		# update user
+		update-mguser -UserId hve_account@domain.com -PasswordPolicies DisablePasswordExpiration<br>
+
+		</div>
 		
           
           <br>
