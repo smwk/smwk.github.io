@@ -179,7 +179,7 @@ It's best to check the account activity in Azure to find what Conditional Access
 		# check if already set<br>
 		Get-MGuser -UserId hve_account@domain.com -Property UserPrincipalName, PasswordPolicies | Select-Object UserPrincipalName,@{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}<br>
 		<br>
-		# update user
+		# update user<br>
 		update-mguser -UserId hve_account@domain.com -PasswordPolicies DisablePasswordExpiration<br>
 
 		</div>
