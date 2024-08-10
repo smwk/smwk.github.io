@@ -145,7 +145,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Decommission On-Prem Exchange</div>
 	      <div class=datestamp>07-Aug-24</div>
         <div class=content><br>
-When you have moved all your mailboxes to the cloud, it's finally time to remove your on-prem Exchange servers and your Hybrid configuration. But before this happens you need to ensure no applications relay mail via Exchange.<br>
+When you have moved all your mailboxes to the cloud, it's finally time to remove your on-prem Exchange servers and your Hybrid configuration. But before this happens, you'll need to make sure no applications relay mail via Exchange.<br>
           <br>
           In my case, there were about 40 apps still relaying mails, so these had to be moved to High Volume Email (HVE) or where the application didn't support this we used an on-prem Postfix server.<br>
           <br>
@@ -155,7 +155,12 @@ When you have moved all your mailboxes to the cloud, it's finally time to remove
           - Remove intra-org connectors in Exchange.<br>
           - Move smtp-relay DNS record to point to Postfix server (for any apps that weren't already moved).<br>
           - Remove SCP points.<br>
-          - Update or remove internal DNS records used for E.<br>
+          - Update or remove internal DNS records used for Exchange.<br>
+	  - Remove Kerberos ASA account from AD if it exists.<br>
+	  - Remove DAG and cluster objects if this is configured.<br>
+	  - Move any system mailboxes to a remaining Exchange server.<br>
+	  - Uninstall Exchange 2016 and reboot.<br>
+	  - Update scripts so that they no longer use the decommed servers.<br>
         
 			<br><br>
           </div>
