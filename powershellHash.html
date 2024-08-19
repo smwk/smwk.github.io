@@ -146,9 +146,9 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Hash versus Generic List speed test</div>
 	      <div class=datestamp>19-Aug-24</div>
         <div class=content><br>
-In my PowerShell scripts I often use arrays to store and sort information. Genererally I use a Genric List with a psCustomObject to cover multiple keys and values, but for some data I simply need to store a string and match it to a value. Recently I've been cleaning up my scripts and looking for more efficient ways of checking data.<br>
+In my PowerShell scripts, I often use arrays to store and sort information. Generally, I use a Generic List with a psCustomObject to cover multiple keys and values, but for some data, I simply need to store a string and match it to a value. Recently I've been cleaning up my scripts and looking for more efficient ways of checking data.<br>
           <br>
-          If I take a well used example then I often get all the users in Active Directory (approx. 2,000 users) and check it against other data. So which is quicker, a generic list of type [string] or a has array?<br>
+          If I take a well-used example, I often get all the users in Active Directory (approx. 2,000 users) and check it against other data. So which is quicker, a generic list of type [string] or a has array?<br>
           <br>
           <div class=code>
           $allResults = @{}<br>
@@ -168,11 +168,11 @@ measure-command -expression { if ($allresults.Values -contains "user1@domain.com
 measure-command -expression { if ($userList -contains "user1@domain.com") { write-host "found string" } }<br>
           </div>
         <br>
-          In the results we see that both are very quick, but the Generic.List is quicker by about 25%:<br>
+          The results show that both are very quick, but the Generic.List is quicker by about 25%:<br>
           Hash - TotalMilliseconds : 31.7834<br>
           Generic.List - TotalMilliseconds : 24.0008<br>
 			<br>
-          In subsequent tests the results were a bit closer, but still the Generic List came out on top.<br>
+          In subsequent tests the results were a bit closer, but still, the Generic List came out on top.<br>
           <br><br>
           </div>
           
