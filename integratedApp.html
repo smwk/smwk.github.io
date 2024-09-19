@@ -150,10 +150,28 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Integrated App deployment issues</div>
 	      <div class=datestamp>19-Sep-24</div>
         <div class=content><br>
+This article is in addition to a <a href='https://smwk.github.io/integratedApps.html'>previous article</a> that dealt with setup issues.<br>
+		<br>
+	As part of project, I was asked to test deploy the 'Report Phishing' Outlook add-in for 10 users. Out of the 10, 3 users did not get the add-in and one user found that the add-in was greyed out for most of his mailbox folders.<br>
+				<br>
+		<img src=integratedApp01.png class=ImageMain>
+		<div class=ImageCaption>↑ Integrated App deployment via M365 Admin Center.</div>
+		<br>
+		
+		<b>Issue 1:</b> App not deploying for users.<br>
+		I asked one of the users to try to manually add the add-in via the Outlook Store. When he tried this he got the error: Sorry, we can't complete this operation right now. Please try again later.<br>
+					<br>
+		<img src=integratedApp02.png class=ImageMain>
+		<div class=ImageCaption>↑ Error when trying to install add-in manually.</div>
+		<br>
 
-
-
-          
+		<b>Issue 2:</b> Add-in is greyed out for certain folders.<br>
+		The 'Report Phishing' add-in is only meant for your primary mailbox and is not available in webmail (OWA). One user said that he could see the add-in, but on most of his own folders the add-in was greyed out in the ribbon menu.
+		By resetting the folder view we were able to fix this for some folders, but it remains greyed out for his Inbox folder, which is where he would use this most.<br>
+					<br>
+		<img src=integratedApp03.png class=ImageMain>
+		<div class=ImageCaption>↑ Add-in greyed out when viewing some folders.</div>
+		<br>
           <br><br>
           </div>
           
