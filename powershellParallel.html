@@ -151,11 +151,11 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>PoshRSJob v PowerShell Core Parallel shootout</div>
 	      <div class=datestamp>21-Sep-24</div>
         <div class=content><br>
-        When I first got into writing more advanced PowerShell scripts for checking computers on my network, I ran everything consecutively. I soon found out this was a pretty bad way of doing things, a 4 hour script would typcially get stuck on a remote WMI command that had no timeout.<br>
+        When I first got into writing more advanced PowerShell scripts for checking computers on my network, I ran everything consecutively. I soon found out this was a pretty bad way of doing things, a 4 hour script would typically get stuck on a remote WMI command that had no timeout.<br>
         <br>
-        Out of necessity I looked into runspaces, which basically spawns a load of PowerShell processes to checks computers in parallel. The results were brilliant, a 4 hour script went down to minutes, and as you can timeout the jobs, the script would no longer get stuck.<br>
+        Out of necessity, I looked into runspaces, which basically spawns a load of PowerShell processes to check computers in parallel. The results were brilliant, a 4-hour script went down to minutes, and as you can timeout the jobs, the script would no longer get stuck.<br>
           <br>
-          There were a few trade-offs, CPU and memory usage can be very high, and there can be memory leaks and processes that don't get removed after the runspace completes. But, overall using runspaces is much better way to scan a network.<br>
+          There were a few trade-offs, CPU and memory usage can be very high, and there can be memory leaks and processes that don't get removed after the runspace completes. But, overall using runspaces is a much better way to scan a network.<br>
           <br>
           While Runspaces in PowerShell 5.1 are native, they are not easily setup, so after some trial and error I settled on the excellent PS Module from Boe Prox, <a href='https://github.com/proxb/PoshRSJob'>PoshRSJob</a>. The module allows for easy creation of runspaces and has settings for throttle and timeout.<br>
           <br>
