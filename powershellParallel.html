@@ -159,13 +159,16 @@ a.two:hover {color: #447EAE; text-decoration: none;}
           <br>
           While Runspaces in PowerShell 5.1 are native, they are not easily setup, so after some trial and error I settled on the excellent PS Module from Boe Prox, <a href='https://github.com/proxb/PoshRSJob'>PoshRSJob</a>. The module allows for easy creation of runspaces and has settings for throttle and timeout.<br>
           <br>
-          After recently moving all my scripts to PowerShell Core (7.1) I wanted to try out the native <a href='https://devblogs.microsoft.com/powershell/powershell-foreach-object-parallel-feature/'>foreach parallel</a> option, but was disappointed at the speed at which it worked and seemingly no improvement in memory management.<br>
+          After recently moving all my scripts to PowerShell Core (7.1) I wanted to try out the native <a href='https://devblogs.microsoft.com/powershell/powershell-foreach-object-parallel-feature/'>foreach parallel</a> option, but how does it compare?<br>
           <br>
-          But how exactly do the two compare?<br>
-          <br>
-          <b>Test:</b> ping 1,800 computers in parallel.<br>
-          PoshRSJob: 11 seconds<br>
+          <b>Test:</b> ping 1,800 computers in parallel, throttle set to 200.<br>
+          PoshRSJob: 18 seconds<br>
           Foreach Parallel: 19 seconds<br>
+		<br>
+		Both handled memory usage well, with the Pwsh.exe hitting a max of 400MB.<br>
+		<br>
+		So from the results, we can see that both methods are pretty much equal. PoshRSJob has a progress option, while ForEach Parallel has the advantage of being a built-in process. Given that PoshRSJob no longer seems to be maintained, I will probably start to move my scripts to ForEach Parallel.<br>
+		
           <br><br>
           </div>
           
