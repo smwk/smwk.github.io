@@ -163,8 +163,12 @@ Running the MG Graph command <a href='https://learn.microsoft.com/en-us/answers/
           When we run the command we get a 403 error:<br>
           <br>
           <div class=code>
+		  New-MgBetaSecurityAuditLogQuery -BodyParameter $searchparameters<br>
+		  <br>
           New-MgBetaSecurityAuditLogQuery_Create: {"message":"App:xxxxxx dont have any permissions"}<br>
           </div>
+		<br>
+		Currently, I don't have a fix for this issue.<br>
 		<br>
 		References: <a href='https://techcommunity.microsoft.com/t5/security-compliance-and-identity/using-the-microsoft-purview-audit-search-graph-api/ba-p/4135267'>MS Tech Community</a><br>
           <br><br>
