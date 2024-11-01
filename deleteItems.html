@@ -155,15 +155,15 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         With Office365 E5 licenses a user gets a primary mailbox of 100GB. If you have enabled item retention and single item recovery then you will find that deleted items will count towards this 100GB total. Once you reach that limit it can be difficult to remove these items:<br>
           <br>
           1. Remove the retention policy on the user mailbox. It will probably take about 3 hours before this kicks in.<br>
-          2. Set single item recovery to false: <br>
+          2. Set single item recovery to false and change retain items range: <br>
           <div class=code>
 Set-Mailbox user@domain.com -RetainDeletedItemsFor 0<br>
 Set-Mailbox user@domain.com -SingleItemRecoveryEnabled $false<br>
 </div>
           3. In Outlook, delete items and empty 'Recover Deleted Items'.<br>
-          4. Download MFCMapi and hard delete the items.<br>
+          4. Download MFCMapi, logon to the mailbox, expand 'Recoverable Items' and select 'DiscoveryHolds'. Right-click on this folder, select 'Advance', then select 'Empty items and subfolders from folder' with the 'Hard Deletio' checkbox checked.<br>
 <br>
-          You may come accross a few issues, if you see MFCMapi return the following error then you can ignore once the 'Deletions' folder is reducing:<br>
+          You may come across a few issues, if you see MFCMapi return the following error then you can ignore it once the 'Deletions' folder is reduced:<br>
           <div class=code>
 Warning:<br>
 Code: MAPI_W_PARTIAL_COMPLETION == 0x00040680<br>
@@ -171,7 +171,15 @@ Function lpMAPIFolderToEmpty->EmptyFolder( lpProgress ? reinterpret_cast<ULONG_P
 File D:\a\1\s\UI\Dialogs\HierarchyTable\MsgStoreDlg.cpp<br>
 Line 717<br>
           </div>
+	If you see the error message but the item count is not reducing then it's likely the previous retention policy is still active.<br>
+		<br>
+		You can check the usage via PowerShell as well:<br>
+		<div class=code>
+			Get-MailboxStatistics user@domain.com | ft DisplayName, TotalDeletedItemSize, DeletedItemCount
+			</div>
           <br>
+		Once you have successfully deleted the items you should set the mailbox back to the previous settings.<br>
+		<br>
         References: <a href='https://technut.se/delete-items-in-the-recoverable-items-folder-in-exchange-online/'>TechNut.se</a><br>
           <br><br>
           </div>
