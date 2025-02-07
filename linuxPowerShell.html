@@ -161,9 +161,9 @@ Recently I was asked about installing a new server from which to run PowerShell 
           <br>
           Both have pros and cons, if you need to use anything from Active Directory then PowerShell Core on a Linux server is a non-starter. Similarly, if you are presenting data via a website and want to use NTLM to authenticate users then the only reliable option is IIS on a Windows server.<br>
           <br>
-          But, if you were only using PowerShell for Azure reports, or working against an API then Linux has a few advantages. There are far less updates needed, and less reboots. Apache and PHP can be installed easily and remote administration can be made via Remote Desktop by installed XRDP.<br>
+          But, if you were only using PowerShell for Azure reports, or working against an API then Linux has a few advantages, far fewer updates and reboots are needed. Apache and PHP can be installed easily and remote administration can be made via Remote Desktop by installing <a href='https://www.xrdp.org/'>XRDP</a>.<br>
           <br>
-          Scheduled Tasks can be replaced by Cronjobs, though again this cannot run against an AD account. Both options can be configured for high availability, but again Linux would win on cost for multiple servers.<br>
+          Cronjobs can replace scheduled Tasks, though this cannot run against an AD account. Both options can be configured for high availability, but Linux would win on cost for multiple servers.<br>
           
 
           
