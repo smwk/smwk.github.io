@@ -164,7 +164,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Add newline to Excel via PowerShell</div>
 	      <div class=datestamp>07-Jan-26</div>
         <div class=content><br>
-		For a lot of the scripts that I write, there is a need to export the data to a spreadsheet. The excellent ImportExcel PowerShell module allows me to export data out to Excel easily, but some of the extra formatting can be challenging. One such issue is where you have multiple lines within one cell, for example you want to list all of the software on a computer, but want to keep it all in one row.<br>
+		For many of the scripts that I write, there is a need to export the data to a spreadsheet. The excellent ImportExcel PowerShell module allows me to export data to Excel easily, but some of the extra formatting can be challenging. One such issue is where you have multiple lines within one cell, for example you want to list all of the software on a computer, but want to keep it all in one row.<br>
           <br>
           To fomat this we need to first make a change in the cell text:<br>
           <br>
@@ -181,7 +181,10 @@ a.two:hover {color: #447EAE; text-decoration: none;}
         Set-ExcelRange -worksheet $excelpkg.software -range "a:c" -VerticalAlignment top # We want all values to be displayed at the top of cell<br>
       
 			</div>
-
+<br>
+		<img src=ExcelNewline01.png class=imageMain>
+		<div class=ImageCaption>↑ Multiple lines per cell and text aligned to top. The purple colour is due to Microsoft making a change in Excel.</div>
+		<br>
           
           <br><br>
           </div>
