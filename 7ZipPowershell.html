@@ -80,7 +80,7 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 
     	   <details open>
 		   <summary><b>2026</b><br></summary>
- <a href="7ZipPowershell.html" class=two>Pass multiple source files to 7Zip archive in PowerShell</a><br>
+ <a href="7ZipPowershell.html" class=two>Pass multiple source files to 7-Zip archive in PowerShell</a><br>
            <a href="ExcelNewline.html" class=two> Add newline to Excel via PowerShell</a><br>
 		  <a href="RDPpassword.html" class=two>Change password via RDP</a><br>
 
@@ -165,8 +165,28 @@ a.two:hover {color: #447EAE; text-decoration: none;}
          <div class=headline>Pass multiple source files to 7Zip archive in PowerShell</div>
 	      <div class=datestamp>16-Feb-26</div>
         <div class=content><br>
-		Recently, I was asked to look at creating a password-protected Zip file via PowerShell using 7-Zip. 
+		Recently, I was asked to look at creating a password-protected Zip file via PowerShell using 7-Zip. With one directory as a source, it is relatively straightforward:<br>
+			<br>
+			<div class=code>
+				xxx
+			<br>
+			</div>
 
+		<br>
+			But, because of the size of some files that we were adding to the archive it was decided to leave them in place and directly add them to the archive. 7-Zip allows for this in its command line:<br>
+		<br>
+				<div class=code>
+				xxx
+			<br>
+			</div>
+			<br>
+			When running this via command line, the archive was created as expected, but under PowerShell and passing variables, there was no archive created:<br>
+				<br>
+				<div class=code>
+				xxx
+			<br>
+			</div>
+			<br>
           
           <br><br>
           </div>
