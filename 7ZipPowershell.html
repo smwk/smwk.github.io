@@ -195,16 +195,29 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 			<br>
 			Ideally, I would like the two files to be placed in a separate folder, but this is <a href="https://superuser.com/questions/238399/how-to-specify-relative-path-in-7-zip-command-line/1097301">not possible</a> with the command-line version of 7-Zip. You could copy the two files into a folder you wish to archive, but in my case, these files are too large.<br>
 			<br>
-			For the script I was creating, I needed to add 10 files that were too large to be copied temporarily. When running this via PowerShell, I found that the files did not get added, though if I outputted the command as a string, it would work via PowerShell.<br>
-			<br>
-			What was causing this? My first guess was that maybe an extra space was in the PowerShell command, not seen when exported to a string. Or maybe adding the files using one variable was causing the problem?<br>
+			For the script I was creating, I needed to add 10 files that were too large to be copied temporarily. When running this via PowerShell, I found that the files did not get added:
 				<br>
 				<div class=code>
-				xxx
+					NOT WORKING:<br>
+				$7zipPath = "c:\program files\7-Zip\7z.exe"<br>
+				Set-Alias Start-SevenZip $7zipPath<br>
+					<br>
+					$string1 = "c:\Scripts\files2\file1.jpg c:\Scripts\files2\file2.jpg"<br>
+					Start-SevenZip a -bd -tzip -mx1 -mmt=on -p"password" c:\scripts\file.zip c:\Scripts\files\ $string<br>
+					<br>
+					WORKING:<br>
+					$7zipPath = "c:\program files\7-Zip\7z.exe"<br>
+					Set-Alias Start-SevenZip $7zipPath<br>
+					<br>
+					$stringL = [System.Collections.Generic.List[string]]::new()<br>
+					$stringL.add("c:\Scripts\files2\file1.jpg")<br>
+					$stringL.add("c:\Scripts\files2\file2.jpg")<br>
+					Start-SevenZip a -bd -tzip -mx1 -mmt=on -p"password" c:\scripts\file.zip c:\Scripts\files\ $stringL<br>		
 			<br>
 			</div>
 			<br>
-          
+			I found it a bit strange that the command wouldn't take a string but would take an array input, but whatever works!<br>
+			
           <br><br>
           </div>
           
