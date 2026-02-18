@@ -168,15 +168,25 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 		Recently, I was asked to look at creating a password-protected Zip file via PowerShell using 7-Zip. With one directory as a source, it is relatively straightforward:<br>
 			<br>
 			<div class=code>
-				xxx
+				$7zipPath = "c:\program files\7-Zip\7z.exe"<br>
+				Set-Alias Start-SevenZip $7zipPath<br>
+					<br>
+					Start-SevenZip a -bd -tzip -mx1 -mmt=on c:\scripts\file.zip c:\dataFolder<br>
+					<br>
+					<li>-mtt=on - this turns multi-threading on, important if you have a large amount of data/files to zip</li>
+					<li>-bd - this stops 7zip from constantly showing the zip file progress, best when running via PowerShell</li>
+					<li>-mx1 - we are choosing the quickest compression as we will have large files</li>
 			<br>
 			</div>
 
 		<br>
-			But, because of the size of some files that we were adding to the archive it was decided to leave them in place and directly add them to the archive. 7-Zip allows for this in its command line:<br>
+			But, because of the size of some files that we were adding to the archive, it was decided to leave them in place and directly add them to the archive. 7-Zip allows for this in its command line:<br>
 		<br>
 				<div class=code>
-				xxx
+				$7zipPath = "c:\program files\7-Zip\7z.exe"<br>
+				Set-Alias Start-SevenZip $7zipPath<br>
+					<br>
+					Start-SevenZip a -bd -tzip -mx1 -mmt=on c:\scripts\file.zip c:\dataFolder <b>c:\otherFolder\file1.dat c:\otherFolder\file2.dat</b><br>
 			<br>
 			</div>
 			<br>
