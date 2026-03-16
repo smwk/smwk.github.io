@@ -182,14 +182,16 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 				$ws = $xlpkg.workbook.worksheets["ws1"]<br>
 				$rows = $ws.dimension.rows<br>
 			<br>
+				<pre>
 				for ($=2;$i-lt $rows;$i++) { # cycle through all the rows starting at row 2, below the header<br>
-				$diskSize = $ws.cells["b$i"].value<br>
-				$diskFree = $ws.cells["c$i"].value<br>
-				if ($diskSize) {<br>
-				[int]$percentFree = ($diskSize / $diskFree) * 100
-				if ($percentFree -lt $diskWarning) { set-format -worksheet sw1 -address "d$i" -backgroundColor red }<br>
+					$diskSize = $ws.cells["b$i"].value<br>
+					$diskFree = $ws.cells["c$i"].value<br>
+					if ($diskSize) {<br>
+					[int]$percentFree = ($diskSize / $diskFree) * 100<br>
+					if ($percentFree -lt $diskWarning) { set-format -worksheet sw1 -address "d$i" -backgroundColor red }<br>
+					}<br>
 				}<br>
-				}<br>
+				</pre>
 				close-excelPackage $xlpkg<br>
 				<br>
 			</div>
