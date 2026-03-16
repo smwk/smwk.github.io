@@ -171,23 +171,28 @@ a.two:hover {color: #447EAE; text-decoration: none;}
 			Most of the reports can be created with just the default export of PowerShell objects to a single worksheet. I normally create the spreadsheet as part of a table to make it easier to navigate:<br>
 			<br>
 			<div class=code>
-				TBC<br>
+				$dataArray | export-excel -path c:\scripts\report.xlsx <b>-tablename "MyTable"</b><br>
 				<br>
 			</div>
 			<br>
 			While this is fine for most use cases, there is sometimes a need to highlight certain cells based on a value. In this example, we have a column for Disk size and another column for Free Disk space. I was asked to highlight cells with less than 5% disk space:<br>
 			<br>
 			<div class=code>
-				TBC<br>
+				$xlpkg = $dataArray | export-excel -path c:\scripts\report.xlsx -tablename "MyTable" -worksheetname "ws1" -passtru<br>
+				$ws = $xlpkg.workbook.worksheets["ws1"]<br>
+				$rows = $ws.dimension.rows<br>
+			<br>
+				for ($=2;$i-lt $rows;$i++) { # cycle through all the rows starting at row 2, below the header<br>
+				$diskSize = $ws.cells["b$i"].value<br>
+				$diskFree = $ws.cells["c$i"].value<br>
+				if ($diskSize) {<br>
+				[int]$percentFree = ($diskSize / $diskFree) * 100
+				if ($percentFree -lt $diskWarning) { set-format -worksheet sw1 -address "d$i" -backgroundColor red }<br>
+				}<br>
+				}<br>
 				<br>
 			</div>
-			<br>
-			Some of the other asks have been regarding formatting, font size, cell borders, etc:<br>
-			<br>
-			<div class=code>
-				TBC<br>
-				<br>
-			</div>
+			
 			<br>
 			
           <br><br>
